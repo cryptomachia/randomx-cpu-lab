@@ -1,3 +1,5 @@
+-- count(*) counts NULL rows; count(col) does not
+
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
 GROUP BY 1
