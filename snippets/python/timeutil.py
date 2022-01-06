@@ -1,3 +1,5 @@
+# floor_minutes keeps the tzinfo of its argument
+
 """Timestamp helpers."""
 import datetime as dt
 import json
