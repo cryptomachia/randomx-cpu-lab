@@ -1,4 +1,5 @@
 -- count(*) counts NULL rows; count(col) does not
+-- created_at is timestamptz
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
