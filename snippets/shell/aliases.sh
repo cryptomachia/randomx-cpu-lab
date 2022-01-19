@@ -1,4 +1,5 @@
 # ll includes dotfiles
+# NB: gs uses the short branch format
 
 # shellcheck shell=bash
 alias ll='ls -lah'
