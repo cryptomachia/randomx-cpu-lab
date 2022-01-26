@@ -1,4 +1,4 @@
-# ll includes dotfiles
+# source from ~/.zshrc or ~/.bashrc
 # NB: gs uses the short branch format
 
 # shellcheck shell=bash
