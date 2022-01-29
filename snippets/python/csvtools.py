@@ -1,3 +1,5 @@
+# empty trailing lines are skipped by DictReader
+
 """Small helpers for messy CSV exports."""
 import csv
 import io
