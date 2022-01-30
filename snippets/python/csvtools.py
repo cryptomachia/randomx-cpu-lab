@@ -1,4 +1,4 @@
-# empty trailing lines are skipped by DictReader
+# keep this dependency-free so it runs on a bare python3
 
 """Small helpers for messy CSV exports."""
 import csv
