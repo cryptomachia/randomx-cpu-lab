@@ -1,5 +1,5 @@
 # source from ~/.zshrc or ~/.bashrc
-# NB: gs uses the short branch format
+# Note: keep aliases short; functions for anything with arguments
 
 # shellcheck shell=bash
 alias ll='ls -lah'
