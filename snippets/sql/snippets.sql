@@ -1,5 +1,5 @@
 -- count(*) counts NULL rows; count(col) does not
--- created_at is timestamptz
+-- for large tables prefer DISTINCT ON over the window function
 -- NB: latest row per user via row_number; ties broken arbitrarily
 -- Note: GROUP BY 1 refers to the first select expression
 
