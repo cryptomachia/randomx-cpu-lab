@@ -1,4 +1,3 @@
-# source from ~/.zshrc or ~/.bashrc
 # Note: keep aliases short; functions for anything with arguments
 
 # shellcheck shell=bash
