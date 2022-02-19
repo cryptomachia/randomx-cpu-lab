@@ -1,4 +1,4 @@
-# Note: keep aliases short; functions for anything with arguments
+# Note: zsh and bash both accept this file
 
 # shellcheck shell=bash
 alias ll='ls -lah'
