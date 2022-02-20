@@ -1,4 +1,5 @@
 # Note: zsh and bash both accept this file
+# source from ~/.zshrc or ~/.bashrc
 
 # shellcheck shell=bash
 alias ll='ls -lah'
