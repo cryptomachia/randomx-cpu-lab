@@ -1,6 +1,6 @@
 -- count(*) counts NULL rows; count(col) does not
 -- for large tables prefer DISTINCT ON over the window function
--- NB: latest row per user via row_number; ties broken arbitrarily
+-- add an index on (user_id, created_at) for the window query
 -- Note: GROUP BY 1 refers to the first select expression
 
 SELECT date_trunc('day', created_at) AS day, count(*)
