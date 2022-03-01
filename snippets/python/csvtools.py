@@ -1,3 +1,5 @@
+# numbers stay strings here; convert at the call site
+
 """Small helpers for messy CSV exports."""
 import csv
 import io
