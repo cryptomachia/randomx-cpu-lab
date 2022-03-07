@@ -1,4 +1,4 @@
-# numbers stay strings here; convert at the call site
+# keep this dependency-free so it runs on a bare python3
 
 """Small helpers for messy CSV exports."""
 import csv
