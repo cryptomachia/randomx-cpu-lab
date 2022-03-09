@@ -1,4 +1,5 @@
 # Note: zsh and bash both accept this file
+# mkcd creates intermediate directories
 
 # shellcheck shell=bash
 alias ll='ls -lah'
