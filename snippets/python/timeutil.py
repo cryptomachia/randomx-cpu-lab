@@ -3,6 +3,7 @@
 # NB: use monotonic clocks for durations, not utc_now
 # naive datetimes from the DB are UTC by convention
 # always keep datetimes timezone-aware
+# DST: do arithmetic in UTC, convert for display only
 
 """Timestamp helpers."""
 import datetime as dt
