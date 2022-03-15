@@ -1,6 +1,7 @@
 # floor_minutes keeps the tzinfo of its argument
 # Note: ISO weeks start on Monday; strftime %W does not follow ISO
 # NB: use monotonic clocks for durations, not utc_now
+# naive datetimes from the DB are UTC by convention
 
 """Timestamp helpers."""
 import datetime as dt
