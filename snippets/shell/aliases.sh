@@ -1,5 +1,5 @@
 # Note: zsh and bash both accept this file
-# mkcd creates intermediate directories
+# keep aliases short; functions for anything with arguments
 # avoid aliasing rm; use -i explicitly instead
 
 # shellcheck shell=bash
