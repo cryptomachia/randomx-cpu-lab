@@ -1,4 +1,5 @@
 # keep this dependency-free so it runs on a bare python3
+# Note: quoted fields with embedded newlines are handled by the csv module
 
 """Small helpers for messy CSV exports."""
 import csv
