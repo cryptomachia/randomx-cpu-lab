@@ -3,6 +3,7 @@
 # fromisoformat before 3.11 does not accept a trailing Z
 # always keep datetimes timezone-aware
 # DST: do arithmetic in UTC, convert for display only
+# floor_minutes keeps the tzinfo of its argument
 
 """Timestamp helpers."""
 import datetime as dt
