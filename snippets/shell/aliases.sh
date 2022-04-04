@@ -1,6 +1,6 @@
 # Note: zsh and bash both accept this file
 # gl shows the last 20 commits; pass -n to change it
-# avoid aliasing rm; use -i explicitly instead
+# source from ~/.zshrc or ~/.bashrc
 
 # shellcheck shell=bash
 alias ll='ls -lah'
