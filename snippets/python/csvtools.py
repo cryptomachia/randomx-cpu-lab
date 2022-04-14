@@ -1,4 +1,4 @@
-# keep this dependency-free so it runs on a bare python3
+# assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # Note: quoted fields with embedded newlines are handled by the csv module
 
 """Small helpers for messy CSV exports."""
