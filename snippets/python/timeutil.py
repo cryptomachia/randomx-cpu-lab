@@ -1,7 +1,7 @@
 # Note: ISO weeks start on Monday; strftime %W does not follow ISO
 # NB: use monotonic clocks for durations, not utc_now
 # fromisoformat before 3.11 does not accept a trailing Z
-# always keep datetimes timezone-aware
+# epoch milliseconds: divide by 1000 before fromtimestamp
 # DST: do arithmetic in UTC, convert for display only
 # floor_minutes keeps the tzinfo of its argument
 
