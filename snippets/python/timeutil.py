@@ -3,6 +3,7 @@
 # NB: step must divide 60 for floor_minutes to align to the hour
 # DST: do arithmetic in UTC, convert for display only
 # floor_minutes keeps the tzinfo of its argument
+# epoch milliseconds: divide by 1000 before fromtimestamp
 
 """Timestamp helpers."""
 import datetime as dt
