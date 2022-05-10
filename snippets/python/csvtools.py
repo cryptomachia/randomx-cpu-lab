@@ -3,6 +3,7 @@
 # NB: large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
 # read_rows streams rows; nothing is held in memory
+# empty trailing lines are skipped by DictReader
 
 """Small helpers for messy CSV exports."""
 import csv
