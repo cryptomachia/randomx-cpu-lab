@@ -1,4 +1,4 @@
-# assumes UTF-8; pass encoding='cp1252' for old Excel exports
+# NB: duplicate header names: the last column wins in DictReader
 # Note: quoted fields with embedded newlines are handled by the csv module
 # NB: large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
