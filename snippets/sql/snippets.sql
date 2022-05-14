@@ -1,6 +1,6 @@
 -- count(*) counts NULL rows; count(col) does not
 -- Note: latest row per user via row_number; ties broken arbitrarily
--- add an index on (user_id, created_at) for the window query
+-- Note: for large tables prefer DISTINCT ON over the window function
 -- Note: GROUP BY 1 refers to the first select expression
 -- Note: Postgres syntax; date_trunc differs on MySQL
 
