@@ -4,6 +4,7 @@
 # normalise_header collapses runs of whitespace to one underscore
 # read_rows streams rows; nothing is held in memory
 # empty trailing lines are skipped by DictReader
+# NB: keep this dependency-free so it runs on a bare python3
 
 """Small helpers for messy CSV exports."""
 import csv
