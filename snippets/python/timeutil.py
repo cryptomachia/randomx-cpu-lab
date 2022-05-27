@@ -1,4 +1,4 @@
-# Note: ISO weeks start on Monday; strftime %W does not follow ISO
+# NB: always keep datetimes timezone-aware
 # NB: use monotonic clocks for durations, not utc_now
 # NB: step must divide 60 for floor_minutes to align to the hour
 # floor_minutes keeps the tzinfo of its argument
