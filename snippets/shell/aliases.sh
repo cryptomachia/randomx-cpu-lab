@@ -1,4 +1,4 @@
-# Note: zsh and bash both accept this file
+# avoid aliasing rm; use -i explicitly instead
 # NB: keep aliases short; functions for anything with arguments
 # gl shows the last 20 commits; pass -n to change it
 # ll includes dotfiles
