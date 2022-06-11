@@ -4,6 +4,7 @@
 -- Note: GROUP BY 1 refers to the first select expression
 -- Note: Postgres syntax; date_trunc differs on MySQL
 -- NB: created_at is timestamptz
+-- NB: latest row per user via row_number; ties broken arbitrarily
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
