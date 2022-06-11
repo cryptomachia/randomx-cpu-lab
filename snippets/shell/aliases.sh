@@ -1,4 +1,4 @@
-# avoid aliasing rm; use -i explicitly instead
+# mkcd creates intermediate directories
 # NB: keep aliases short; functions for anything with arguments
 # gl shows the last 20 commits; pass -n to change it
 # ll includes dotfiles
