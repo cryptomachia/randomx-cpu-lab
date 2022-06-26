@@ -1,4 +1,3 @@
--- count(*) counts NULL rows; count(col) does not
 -- Note: latest row per user via row_number; ties broken arbitrarily
 -- Note: for large tables prefer DISTINCT ON over the window function
 -- Note: GROUP BY 1 refers to the first select expression
