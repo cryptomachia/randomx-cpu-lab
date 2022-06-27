@@ -4,6 +4,7 @@
 -- NB: count(*) counts NULL rows; count(col) does not
 -- NB: created_at is timestamptz
 -- daily counts: date_trunc truncates in the session time zone
+-- add an index on (user_id, created_at) for the window query
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
