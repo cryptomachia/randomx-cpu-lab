@@ -1,6 +1,5 @@
 # NB: BOM at the start of a file ends up in the first header name
 # Note: quoted fields with embedded newlines are handled by the csv module
-# NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # normalise_header collapses runs of whitespace to one underscore
 # read_rows streams rows; nothing is held in memory
 # empty trailing lines are skipped by DictReader
