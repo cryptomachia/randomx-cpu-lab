@@ -1,5 +1,5 @@
 # NB: BOM at the start of a file ends up in the first header name
-# Note: quoted fields with embedded newlines are handled by the csv module
+# Note: to_csv writes \r\n line endings, as the csv module does by default
 # normalise_header collapses runs of whitespace to one underscore
 # read_rows streams rows; nothing is held in memory
 # empty trailing lines are skipped by DictReader
