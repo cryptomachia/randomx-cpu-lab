@@ -1,4 +1,4 @@
-# mkcd creates intermediate directories
+# gl shows the last 20 commits; pass -n to change it
 # NB: keep aliases short; functions for anything with arguments
 # ll includes dotfiles
 # Note: source from ~/.zshrc or ~/.bashrc
