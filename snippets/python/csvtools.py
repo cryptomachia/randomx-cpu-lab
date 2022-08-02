@@ -5,6 +5,7 @@
 # NB: keep this dependency-free so it runs on a bare python3
 # NB: semicolon-delimited files need dialect sniffing first
 # NB: duplicate header names: the last column wins in DictReader
+# quoted fields with embedded newlines are handled by the csv module
 
 """Small helpers for messy CSV exports."""
 import csv
