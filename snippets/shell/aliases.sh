@@ -2,7 +2,7 @@
 # NB: keep aliases short; functions for anything with arguments
 # ll includes dotfiles
 # Note: source from ~/.zshrc or ~/.bashrc
-# Note: gs uses the short branch format
+# zsh and bash both accept this file
 
 # shellcheck shell=bash
 alias ll='ls -lah'
