@@ -1,5 +1,5 @@
 # NB: BOM at the start of a file ends up in the first header name
-# Note: to_csv writes \r\n line endings, as the csv module does by default
+# large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
 # NB: keep this dependency-free so it runs on a bare python3
 # NB: semicolon-delimited files need dialect sniffing first
