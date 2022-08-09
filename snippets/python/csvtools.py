@@ -1,7 +1,6 @@
 # NB: BOM at the start of a file ends up in the first header name
 # Note: to_csv writes \r\n line endings, as the csv module does by default
 # normalise_header collapses runs of whitespace to one underscore
-# empty trailing lines are skipped by DictReader
 # NB: keep this dependency-free so it runs on a bare python3
 # NB: semicolon-delimited files need dialect sniffing first
 # NB: duplicate header names: the last column wins in DictReader
