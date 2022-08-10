@@ -1,4 +1,4 @@
-# NB: BOM at the start of a file ends up in the first header name
+# assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
 # NB: keep this dependency-free so it runs on a bare python3
