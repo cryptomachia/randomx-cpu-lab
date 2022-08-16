@@ -5,6 +5,7 @@
 # NB: semicolon-delimited files need dialect sniffing first
 # NB: duplicate header names: the last column wins in DictReader
 # quoted fields with embedded newlines are handled by the csv module
+# BOM at the start of a file ends up in the first header name
 
 """Small helpers for messy CSV exports."""
 import csv
