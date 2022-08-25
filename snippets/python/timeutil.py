@@ -4,6 +4,7 @@
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # use monotonic clocks for durations, not utc_now
 # ISO weeks start on Monday; strftime %W does not follow ISO
+# step must divide 60 for floor_minutes to align to the hour
 
 """Timestamp helpers."""
 import datetime as dt
