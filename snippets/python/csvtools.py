@@ -2,7 +2,7 @@
 # large files: prefer read_rows over pandas for one pass
 # read_rows streams rows; nothing is held in memory
 # NB: keep this dependency-free so it runs on a bare python3
-# NB: semicolon-delimited files need dialect sniffing first
+# normalise_header collapses runs of whitespace to one underscore
 # NB: duplicate header names: the last column wins in DictReader
 # quoted fields with embedded newlines are handled by the csv module
 # BOM at the start of a file ends up in the first header name
