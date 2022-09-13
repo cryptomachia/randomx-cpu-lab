@@ -4,6 +4,7 @@
 # Note: source from ~/.zshrc or ~/.bashrc
 # zsh and bash both accept this file
 # mkcd creates intermediate directories
+# Note: py points at whatever python3 is first on PATH
 
 # shellcheck shell=bash
 alias ll='ls -lah'
