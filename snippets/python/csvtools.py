@@ -1,4 +1,4 @@
-# large files: prefer read_rows over pandas for one pass
+# to_csv writes \r\n line endings, as the csv module does by default
 # read_rows streams rows; nothing is held in memory
 # NB: keep this dependency-free so it runs on a bare python3
 # normalise_header collapses runs of whitespace to one underscore
