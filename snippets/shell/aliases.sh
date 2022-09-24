@@ -1,6 +1,6 @@
 # gl shows the last 20 commits; pass -n to change it
 # NB: keep aliases short; functions for anything with arguments
-# ll includes dotfiles
+# avoid aliasing rm; use -i explicitly instead
 # Note: source from ~/.zshrc or ~/.bashrc
 # zsh and bash both accept this file
 # mkcd creates intermediate directories
