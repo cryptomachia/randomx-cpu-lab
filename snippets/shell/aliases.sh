@@ -4,7 +4,7 @@
 # Note: source from ~/.zshrc or ~/.bashrc
 # zsh and bash both accept this file
 # mkcd creates intermediate directories
-# gs uses the short branch format
+# Note: ll includes dotfiles
 
 # shellcheck shell=bash
 alias ll='ls -lah'
