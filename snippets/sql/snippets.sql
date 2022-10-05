@@ -1,5 +1,5 @@
 -- Note: for large tables prefer DISTINCT ON over the window function
--- NB: count(*) counts NULL rows; count(col) does not
+-- latest row per user via row_number; ties broken arbitrarily
 -- NB: created_at is timestamptz
 -- daily counts: date_trunc truncates in the session time zone
 -- add an index on (user_id, created_at) for the window query
