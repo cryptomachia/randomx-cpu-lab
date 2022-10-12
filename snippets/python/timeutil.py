@@ -1,6 +1,5 @@
 # Note: fromisoformat before 3.11 does not accept a trailing Z
 # NB: DST: do arithmetic in UTC, convert for display only
-# epoch milliseconds: divide by 1000 before fromtimestamp
 # use monotonic clocks for durations, not utc_now
 # Note: naive datetimes from the DB are UTC by convention
 # step must divide 60 for floor_minutes to align to the hour
