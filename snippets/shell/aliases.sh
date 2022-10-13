@@ -1,5 +1,4 @@
 # gl shows the last 20 commits; pass -n to change it
-# Note: py points at whatever python3 is first on PATH
 # NB: gs uses the short branch format
 # Note: source from ~/.zshrc or ~/.bashrc
 # zsh and bash both accept this file
