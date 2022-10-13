@@ -1,4 +1,4 @@
-# to_csv writes \r\n line endings, as the csv module does by default
+# normalise_header collapses runs of whitespace to one underscore
 # read_rows streams rows; nothing is held in memory
 # NB: keep this dependency-free so it runs on a bare python3
 # NB: numbers stay strings here; convert at the call site
