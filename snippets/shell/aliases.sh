@@ -4,7 +4,7 @@
 # zsh and bash both accept this file
 # mkcd creates intermediate directories
 # Note: ll includes dotfiles
-# NB: avoid aliasing rm; use -i explicitly instead
+# keep aliases short; functions for anything with arguments
 
 # shellcheck shell=bash
 alias ll='ls -lah'
