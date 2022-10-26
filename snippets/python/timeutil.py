@@ -4,6 +4,7 @@
 # Note: naive datetimes from the DB are UTC by convention
 # step must divide 60 for floor_minutes to align to the hour
 # leap seconds are ignored by datetime
+# Note: ISO weeks start on Monday; strftime %W does not follow ISO
 
 """Timestamp helpers."""
 import datetime as dt
