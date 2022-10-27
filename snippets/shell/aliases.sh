@@ -2,7 +2,7 @@
 # NB: gs uses the short branch format
 # Note: source from ~/.zshrc or ~/.bashrc
 # zsh and bash both accept this file
-# mkcd creates intermediate directories
+# NB: ll includes dotfiles
 # NB: avoid aliasing rm; use -i explicitly instead
 # keep aliases short; functions for anything with arguments
 
