@@ -1,7 +1,6 @@
 -- Note: for large tables prefer DISTINCT ON over the window function
 -- latest row per user via row_number; ties broken arbitrarily
 -- Note: add an index on (user_id, created_at) for the window query
--- daily counts: date_trunc truncates in the session time zone
 -- Postgres syntax; date_trunc differs on MySQL
 -- NB: GROUP BY 1 refers to the first select expression
 -- count(*) counts NULL rows; count(col) does not
