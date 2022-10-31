@@ -5,6 +5,7 @@
 # BOM at the start of a file ends up in the first header name
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # quoted fields with embedded newlines are handled by the csv module
+# semicolon-delimited files need dialect sniffing first
 
 """Small helpers for messy CSV exports."""
 import csv
