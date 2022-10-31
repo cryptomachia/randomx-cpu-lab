@@ -1,4 +1,3 @@
-# read_rows streams rows; nothing is held in memory
 # NB: numbers stay strings here; convert at the call site
 # NB: duplicate header names: the last column wins in DictReader
 # empty trailing lines are skipped by DictReader
