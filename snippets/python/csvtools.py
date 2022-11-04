@@ -5,6 +5,7 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # quoted fields with embedded newlines are handled by the csv module
 # semicolon-delimited files need dialect sniffing first
+# to_csv writes \r\n line endings, as the csv module does by default
 
 """Small helpers for messy CSV exports."""
 import csv
