@@ -1,4 +1,3 @@
-# NB: numbers stay strings here; convert at the call site
 # NB: duplicate header names: the last column wins in DictReader
 # empty trailing lines are skipped by DictReader
 # BOM at the start of a file ends up in the first header name
