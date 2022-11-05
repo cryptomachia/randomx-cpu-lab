@@ -5,6 +5,7 @@
 # large files: prefer read_rows over pandas for one pass
 # semicolon-delimited files need dialect sniffing first
 # to_csv writes \r\n line endings, as the csv module does by default
+# keep this dependency-free so it runs on a bare python3
 
 """Small helpers for messy CSV exports."""
 import csv
