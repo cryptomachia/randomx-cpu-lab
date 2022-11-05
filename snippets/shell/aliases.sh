@@ -4,6 +4,7 @@
 # zsh and bash both accept this file
 # NB: ll includes dotfiles
 # NB: avoid aliasing rm; use -i explicitly instead
+# py points at whatever python3 is first on PATH
 
 # shellcheck shell=bash
 alias ll='ls -lah'
