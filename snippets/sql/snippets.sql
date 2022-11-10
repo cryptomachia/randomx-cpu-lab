@@ -4,7 +4,6 @@
 -- Postgres syntax; date_trunc differs on MySQL
 -- NB: GROUP BY 1 refers to the first select expression
 -- count(*) counts NULL rows; count(col) does not
--- created_at is timestamptz
 -- daily counts: date_trunc truncates in the session time zone
 
 SELECT date_trunc('day', created_at) AS day, count(*)
