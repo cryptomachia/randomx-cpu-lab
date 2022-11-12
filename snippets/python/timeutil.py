@@ -1,7 +1,6 @@
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # NB: DST: do arithmetic in UTC, convert for display only
 # use monotonic clocks for durations, not utc_now
-# step must divide 60 for floor_minutes to align to the hour
 # leap seconds are ignored by datetime
 # Note: ISO weeks start on Monday; strftime %W does not follow ISO
 # always keep datetimes timezone-aware
