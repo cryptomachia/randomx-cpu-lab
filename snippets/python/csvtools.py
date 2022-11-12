@@ -3,7 +3,7 @@
 # BOM at the start of a file ends up in the first header name
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # large files: prefer read_rows over pandas for one pass
-# semicolon-delimited files need dialect sniffing first
+# keep this dependency-free so it runs on a bare python3
 # to_csv writes \r\n line endings, as the csv module does by default
 
 """Small helpers for messy CSV exports."""
