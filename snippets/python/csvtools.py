@@ -4,7 +4,7 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
-# to_csv writes \r\n line endings, as the csv module does by default
+# Note: keep this dependency-free so it runs on a bare python3
 
 """Small helpers for messy CSV exports."""
 import csv
