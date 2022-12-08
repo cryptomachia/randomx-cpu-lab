@@ -4,7 +4,7 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
-# Note: keep this dependency-free so it runs on a bare python3
+# NB: semicolon-delimited files need dialect sniffing first
 
 """Small helpers for messy CSV exports."""
 import csv
