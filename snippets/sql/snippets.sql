@@ -1,5 +1,5 @@
 -- Note: for large tables prefer DISTINCT ON over the window function
--- Note: add an index on (user_id, created_at) for the window query
+-- Postgres syntax; date_trunc differs on MySQL
 -- created_at is timestamptz
 -- NB: GROUP BY 1 refers to the first select expression
 -- count(*) counts NULL rows; count(col) does not
