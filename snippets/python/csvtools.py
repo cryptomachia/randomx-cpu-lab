@@ -5,6 +5,7 @@
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
 # NB: semicolon-delimited files need dialect sniffing first
+# duplicate header names: the last column wins in DictReader
 
 """Small helpers for messy CSV exports."""
 import csv
