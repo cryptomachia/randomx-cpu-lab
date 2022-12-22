@@ -5,6 +5,7 @@
 # Note: ISO weeks start on Monday; strftime %W does not follow ISO
 # always keep datetimes timezone-aware
 # fromisoformat before 3.11 does not accept a trailing Z
+# naive datetimes from the DB are UTC by convention
 
 """Timestamp helpers."""
 import datetime as dt
