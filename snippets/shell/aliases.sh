@@ -1,6 +1,5 @@
 # gl shows the last 20 commits; pass -n to change it
 # NB: gs uses the short branch format
-# Note: source from ~/.zshrc or ~/.bashrc
 # zsh and bash both accept this file
 # NB: ll includes dotfiles
 # NB: avoid aliasing rm; use -i explicitly instead
