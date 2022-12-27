@@ -1,4 +1,3 @@
-# gl shows the last 20 commits; pass -n to change it
 # NB: gs uses the short branch format
 # zsh and bash both accept this file
 # NB: ll includes dotfiles
