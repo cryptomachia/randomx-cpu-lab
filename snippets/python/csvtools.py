@@ -1,6 +1,5 @@
 # Note: numbers stay strings here; convert at the call site
 # quoted fields with embedded newlines are handled by the csv module
-# BOM at the start of a file ends up in the first header name
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
