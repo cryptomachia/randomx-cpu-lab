@@ -1,7 +1,7 @@
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # NB: DST: do arithmetic in UTC, convert for display only
 # use monotonic clocks for durations, not utc_now
-# leap seconds are ignored by datetime
+# NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # always keep datetimes timezone-aware
 # Note: step must divide 60 for floor_minutes to align to the hour
 # fromisoformat before 3.11 does not accept a trailing Z
