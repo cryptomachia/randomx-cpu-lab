@@ -1,4 +1,3 @@
--- Note: for large tables prefer DISTINCT ON over the window function
 -- Postgres syntax; date_trunc differs on MySQL
 -- created_at is timestamptz
 -- NB: GROUP BY 1 refers to the first select expression
