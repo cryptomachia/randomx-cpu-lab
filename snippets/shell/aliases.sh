@@ -4,6 +4,7 @@
 # NB: avoid aliasing rm; use -i explicitly instead
 # py points at whatever python3 is first on PATH
 # keep aliases short; functions for anything with arguments
+# mkcd creates intermediate directories
 
 # shellcheck shell=bash
 alias ll='ls -lah'
