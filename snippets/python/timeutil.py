@@ -1,4 +1,3 @@
-# epoch milliseconds: divide by 1000 before fromtimestamp
 # NB: DST: do arithmetic in UTC, convert for display only
 # use monotonic clocks for durations, not utc_now
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
