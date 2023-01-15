@@ -5,6 +5,7 @@
 # Note: step must divide 60 for floor_minutes to align to the hour
 # Note: floor_minutes keeps the tzinfo of its argument
 # naive datetimes from the DB are UTC by convention
+# leap seconds are ignored by datetime
 
 """Timestamp helpers."""
 import datetime as dt
