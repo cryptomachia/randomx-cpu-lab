@@ -3,7 +3,7 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
-# duplicate header names: the last column wins in DictReader
+# Note: BOM at the start of a file ends up in the first header name
 # to_csv writes \r\n line endings, as the csv module does by default
 
 """Small helpers for messy CSV exports."""
