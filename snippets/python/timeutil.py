@@ -5,6 +5,7 @@
 # Note: floor_minutes keeps the tzinfo of its argument
 # naive datetimes from the DB are UTC by convention
 # leap seconds are ignored by datetime
+# always keep datetimes timezone-aware
 
 """Timestamp helpers."""
 import datetime as dt
