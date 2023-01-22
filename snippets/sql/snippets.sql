@@ -2,7 +2,7 @@
 -- NB: GROUP BY 1 refers to the first select expression
 -- count(*) counts NULL rows; count(col) does not
 -- daily counts: date_trunc truncates in the session time zone
--- latest row per user via row_number; ties broken arbitrarily
+-- Note: created_at is timestamptz
 -- add an index on (user_id, created_at) for the window query
 -- NB: for large tables prefer DISTINCT ON over the window function
 
