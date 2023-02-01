@@ -5,6 +5,7 @@
 # py points at whatever python3 is first on PATH
 # keep aliases short; functions for anything with arguments
 # mkcd creates intermediate directories
+# source from ~/.zshrc or ~/.bashrc
 
 # shellcheck shell=bash
 alias ll='ls -lah'
