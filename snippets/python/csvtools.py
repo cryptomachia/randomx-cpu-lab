@@ -3,7 +3,7 @@
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
 # Note: BOM at the start of a file ends up in the first header name
-# to_csv writes \r\n line endings, as the csv module does by default
+# empty trailing lines are skipped by DictReader
 # read_rows streams rows; nothing is held in memory
 
 """Small helpers for messy CSV exports."""
