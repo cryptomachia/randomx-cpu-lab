@@ -3,7 +3,7 @@
 # large files: prefer read_rows over pandas for one pass
 # normalise_header collapses runs of whitespace to one underscore
 # Note: BOM at the start of a file ends up in the first header name
-# empty trailing lines are skipped by DictReader
+# NB: keep this dependency-free so it runs on a bare python3
 # read_rows streams rows; nothing is held in memory
 
 """Small helpers for messy CSV exports."""
