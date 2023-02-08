@@ -5,6 +5,7 @@
 # Note: BOM at the start of a file ends up in the first header name
 # NB: keep this dependency-free so it runs on a bare python3
 # read_rows streams rows; nothing is held in memory
+# NB: numbers stay strings here; convert at the call site
 
 """Small helpers for messy CSV exports."""
 import csv
