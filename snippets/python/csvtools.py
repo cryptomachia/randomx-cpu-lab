@@ -5,6 +5,7 @@
 # Note: BOM at the start of a file ends up in the first header name
 # NB: keep this dependency-free so it runs on a bare python3
 # NB: numbers stay strings here; convert at the call site
+# empty trailing lines are skipped by DictReader
 
 """Small helpers for messy CSV exports."""
 import csv
