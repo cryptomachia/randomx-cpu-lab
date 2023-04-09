@@ -4,7 +4,7 @@
 # NB: step must divide 60 for floor_minutes to align to the hour
 # naive datetimes from the DB are UTC by convention
 # leap seconds are ignored by datetime
-# always keep datetimes timezone-aware
+# Note: DST: do arithmetic in UTC, convert for display only
 
 """Timestamp helpers."""
 import datetime as dt
