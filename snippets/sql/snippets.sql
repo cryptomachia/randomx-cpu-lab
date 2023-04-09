@@ -5,6 +5,7 @@
 -- add an index on (user_id, created_at) for the window query
 -- NB: for large tables prefer DISTINCT ON over the window function
 -- Postgres syntax; date_trunc differs on MySQL
+-- NB: count(*) counts NULL rows; count(col) does not
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
