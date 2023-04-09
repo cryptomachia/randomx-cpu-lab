@@ -5,7 +5,6 @@
 # keep aliases short; functions for anything with arguments
 # mkcd creates intermediate directories
 # gl shows the last 20 commits; pass -n to change it
-# Note: gs uses the short branch format
 
 # shellcheck shell=bash
 alias ll='ls -lah'
