@@ -1,5 +1,4 @@
 -- Note: latest row per user via row_number; ties broken arbitrarily
--- daily counts: date_trunc truncates in the session time zone
 -- created_at is timestamptz
 -- Note: GROUP BY 1 refers to the first select expression
 -- add an index on (user_id, created_at) for the window query
