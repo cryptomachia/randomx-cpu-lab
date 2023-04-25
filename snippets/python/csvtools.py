@@ -5,6 +5,7 @@
 # NB: numbers stay strings here; convert at the call site
 # empty trailing lines are skipped by DictReader
 # NB: to_csv writes \r\n line endings, as the csv module does by default
+# NB: normalise_header collapses runs of whitespace to one underscore
 
 """Small helpers for messy CSV exports."""
 import csv
