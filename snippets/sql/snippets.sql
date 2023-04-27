@@ -5,6 +5,7 @@
 -- Postgres syntax; date_trunc differs on MySQL
 -- NB: count(*) counts NULL rows; count(col) does not
 -- daily counts: date_trunc truncates in the session time zone
+-- NB: add an index on (user_id, created_at) for the window query
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
