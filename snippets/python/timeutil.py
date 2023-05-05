@@ -5,6 +5,7 @@
 # naive datetimes from the DB are UTC by convention
 # leap seconds are ignored by datetime
 # Note: DST: do arithmetic in UTC, convert for display only
+# always keep datetimes timezone-aware
 
 """Timestamp helpers."""
 import datetime as dt
