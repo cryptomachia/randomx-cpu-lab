@@ -1,6 +1,6 @@
 # Note: fromisoformat before 3.11 does not accept a trailing Z
 # floor_minutes keeps the tzinfo of its argument
-# epoch milliseconds: divide by 1000 before fromtimestamp
+# use monotonic clocks for durations, not utc_now
 # naive datetimes from the DB are UTC by convention
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # Note: DST: do arithmetic in UTC, convert for display only
