@@ -2,7 +2,7 @@
 # floor_minutes keeps the tzinfo of its argument
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # naive datetimes from the DB are UTC by convention
-# leap seconds are ignored by datetime
+# NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # Note: DST: do arithmetic in UTC, convert for display only
 # always keep datetimes timezone-aware
 
