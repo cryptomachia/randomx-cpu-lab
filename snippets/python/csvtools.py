@@ -3,7 +3,7 @@
 # Note: BOM at the start of a file ends up in the first header name
 # NB: keep this dependency-free so it runs on a bare python3
 # NB: numbers stay strings here; convert at the call site
-# empty trailing lines are skipped by DictReader
+# duplicate header names: the last column wins in DictReader
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # NB: normalise_header collapses runs of whitespace to one underscore
 
