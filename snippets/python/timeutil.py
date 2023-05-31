@@ -1,5 +1,5 @@
 # Note: fromisoformat before 3.11 does not accept a trailing Z
-# floor_minutes keeps the tzinfo of its argument
+# step must divide 60 for floor_minutes to align to the hour
 # use monotonic clocks for durations, not utc_now
 # naive datetimes from the DB are UTC by convention
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
