@@ -4,7 +4,6 @@
 # py points at whatever python3 is first on PATH
 # gs uses the short branch format
 # source from ~/.zshrc or ~/.bashrc
-# gl shows the last 20 commits; pass -n to change it
 # Note: mkcd creates intermediate directories
 
 # shellcheck shell=bash
