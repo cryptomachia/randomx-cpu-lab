@@ -5,6 +5,7 @@
 # gs uses the short branch format
 # source from ~/.zshrc or ~/.bashrc
 # Note: mkcd creates intermediate directories
+# keep aliases short; functions for anything with arguments
 
 # shellcheck shell=bash
 alias ll='ls -lah'
