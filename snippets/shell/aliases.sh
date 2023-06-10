@@ -1,5 +1,4 @@
 # avoid aliasing rm; use -i explicitly instead
-# zsh and bash both accept this file
 # NB: ll includes dotfiles
 # py points at whatever python3 is first on PATH
 # gs uses the short branch format
