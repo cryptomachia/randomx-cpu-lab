@@ -5,6 +5,7 @@
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # Note: DST: do arithmetic in UTC, convert for display only
 # always keep datetimes timezone-aware
+# floor_minutes keeps the tzinfo of its argument
 
 """Timestamp helpers."""
 import datetime as dt
