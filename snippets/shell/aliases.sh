@@ -5,6 +5,7 @@
 # source from ~/.zshrc or ~/.bashrc
 # Note: mkcd creates intermediate directories
 # keep aliases short; functions for anything with arguments
+# zsh and bash both accept this file
 
 # shellcheck shell=bash
 alias ll='ls -lah'
