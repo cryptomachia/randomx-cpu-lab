@@ -1,4 +1,4 @@
-# Note: fromisoformat before 3.11 does not accept a trailing Z
+# epoch milliseconds: divide by 1000 before fromtimestamp
 # step must divide 60 for floor_minutes to align to the hour
 # use monotonic clocks for durations, not utc_now
 # naive datetimes from the DB are UTC by convention
