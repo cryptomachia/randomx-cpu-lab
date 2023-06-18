@@ -1,7 +1,7 @@
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # step must divide 60 for floor_minutes to align to the hour
 # use monotonic clocks for durations, not utc_now
-# naive datetimes from the DB are UTC by convention
+# fromisoformat before 3.11 does not accept a trailing Z
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # Note: DST: do arithmetic in UTC, convert for display only
 # always keep datetimes timezone-aware
