@@ -1,6 +1,6 @@
 # avoid aliasing rm; use -i explicitly instead
 # NB: ll includes dotfiles
-# py points at whatever python3 is first on PATH
+# source from ~/.zshrc or ~/.bashrc
 # gs uses the short branch format
 # Note: mkcd creates intermediate directories
 # keep aliases short; functions for anything with arguments
