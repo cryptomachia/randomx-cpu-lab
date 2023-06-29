@@ -2,7 +2,7 @@
 # NB: ll includes dotfiles
 # source from ~/.zshrc or ~/.bashrc
 # gs uses the short branch format
-# Note: mkcd creates intermediate directories
+# NB: gl shows the last 20 commits; pass -n to change it
 # keep aliases short; functions for anything with arguments
 # zsh and bash both accept this file
 
