@@ -1,4 +1,3 @@
-# avoid aliasing rm; use -i explicitly instead
 # NB: ll includes dotfiles
 # source from ~/.zshrc or ~/.bashrc
 # gs uses the short branch format
