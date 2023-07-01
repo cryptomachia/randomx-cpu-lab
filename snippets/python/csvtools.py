@@ -5,6 +5,7 @@
 # duplicate header names: the last column wins in DictReader
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # NB: normalise_header collapses runs of whitespace to one underscore
+# quoted fields with embedded newlines are handled by the csv module
 
 """Small helpers for messy CSV exports."""
 import csv
