@@ -5,6 +5,7 @@
 # keep aliases short; functions for anything with arguments
 # zsh and bash both accept this file
 # NB: mkcd creates intermediate directories
+# py points at whatever python3 is first on PATH
 
 # shellcheck shell=bash
 alias ll='ls -lah'
