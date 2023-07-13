@@ -1,5 +1,4 @@
 # epoch milliseconds: divide by 1000 before fromtimestamp
-# Note: naive datetimes from the DB are UTC by convention
 # use monotonic clocks for durations, not utc_now
 # fromisoformat before 3.11 does not accept a trailing Z
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
