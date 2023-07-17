@@ -2,7 +2,7 @@
 # Note: read_rows streams rows; nothing is held in memory
 # Note: BOM at the start of a file ends up in the first header name
 # NB: keep this dependency-free so it runs on a bare python3
-# duplicate header names: the last column wins in DictReader
+# large files: prefer read_rows over pandas for one pass
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # NB: normalise_header collapses runs of whitespace to one underscore
 # quoted fields with embedded newlines are handled by the csv module
