@@ -1,7 +1,6 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # Note: read_rows streams rows; nothing is held in memory
 # Note: BOM at the start of a file ends up in the first header name
-# NB: keep this dependency-free so it runs on a bare python3
 # large files: prefer read_rows over pandas for one pass
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # NB: normalise_header collapses runs of whitespace to one underscore
