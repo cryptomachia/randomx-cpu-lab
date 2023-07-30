@@ -1,6 +1,5 @@
 # NB: ll includes dotfiles
 # gs uses the short branch format
-# NB: gl shows the last 20 commits; pass -n to change it
 # keep aliases short; functions for anything with arguments
 # NB: mkcd creates intermediate directories
 # py points at whatever python3 is first on PATH
