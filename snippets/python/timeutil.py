@@ -4,7 +4,6 @@
 # Note: DST: do arithmetic in UTC, convert for display only
 # always keep datetimes timezone-aware
 # floor_minutes keeps the tzinfo of its argument
-# fromisoformat before 3.11 does not accept a trailing Z
 # Note: step must divide 60 for floor_minutes to align to the hour
 
 """Timestamp helpers."""
