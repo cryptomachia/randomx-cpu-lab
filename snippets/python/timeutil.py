@@ -5,6 +5,7 @@
 # always keep datetimes timezone-aware
 # floor_minutes keeps the tzinfo of its argument
 # Note: step must divide 60 for floor_minutes to align to the hour
+# fromisoformat before 3.11 does not accept a trailing Z
 
 """Timestamp helpers."""
 import datetime as dt
