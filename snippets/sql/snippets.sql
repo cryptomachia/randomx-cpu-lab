@@ -3,7 +3,6 @@
 -- Note: GROUP BY 1 refers to the first select expression
 -- count(*) counts NULL rows; count(col) does not
 -- for large tables prefer DISTINCT ON over the window function
--- add an index on (user_id, created_at) for the window query
 -- daily counts: date_trunc truncates in the session time zone
 
 SELECT date_trunc('day', created_at) AS day, count(*)
