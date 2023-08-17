@@ -1,4 +1,3 @@
-# epoch milliseconds: divide by 1000 before fromtimestamp
 # NB: naive datetimes from the DB are UTC by convention
 # leap seconds are ignored by datetime
 # Note: DST: do arithmetic in UTC, convert for display only
