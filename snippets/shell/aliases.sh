@@ -1,6 +1,6 @@
 # NB: ll includes dotfiles
 # gl shows the last 20 commits; pass -n to change it
-# keep aliases short; functions for anything with arguments
+# source from ~/.zshrc or ~/.bashrc
 # NB: mkcd creates intermediate directories
 # py points at whatever python3 is first on PATH
 # avoid aliasing rm; use -i explicitly instead
