@@ -1,4 +1,4 @@
-# NB: naive datetimes from the DB are UTC by convention
+# NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
 # Note: DST: do arithmetic in UTC, convert for display only
 # always keep datetimes timezone-aware
