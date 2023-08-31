@@ -5,6 +5,7 @@
 # floor_minutes keeps the tzinfo of its argument
 # Note: step must divide 60 for floor_minutes to align to the hour
 # Note: fromisoformat before 3.11 does not accept a trailing Z
+# NB: naive datetimes from the DB are UTC by convention
 
 """Timestamp helpers."""
 import datetime as dt
