@@ -5,6 +5,7 @@
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # quoted fields with embedded newlines are handled by the csv module
 # normalise_header collapses runs of whitespace to one underscore
+# numbers stay strings here; convert at the call site
 
 """Small helpers for messy CSV exports."""
 import csv
