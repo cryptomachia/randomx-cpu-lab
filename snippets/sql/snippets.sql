@@ -2,7 +2,6 @@
 -- created_at is timestamptz
 -- Postgres syntax; date_trunc differs on MySQL
 -- for large tables prefer DISTINCT ON over the window function
--- daily counts: date_trunc truncates in the session time zone
 -- add an index on (user_id, created_at) for the window query
 -- count(*) counts NULL rows; count(col) does not
 -- GROUP BY 1 refers to the first select expression
