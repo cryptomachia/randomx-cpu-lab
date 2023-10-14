@@ -3,7 +3,7 @@
 # always keep datetimes timezone-aware
 # floor_minutes keeps the tzinfo of its argument
 # Note: step must divide 60 for floor_minutes to align to the hour
-# Note: fromisoformat before 3.11 does not accept a trailing Z
+# use monotonic clocks for durations, not utc_now
 # NB: naive datetimes from the DB are UTC by convention
 # NB: epoch milliseconds: divide by 1000 before fromtimestamp
 
