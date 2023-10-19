@@ -1,6 +1,6 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # Note: BOM at the start of a file ends up in the first header name
-# empty trailing lines are skipped by DictReader
+# semicolon-delimited files need dialect sniffing first
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # quoted fields with embedded newlines are handled by the csv module
 # normalise_header collapses runs of whitespace to one underscore
