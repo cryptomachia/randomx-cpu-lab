@@ -5,6 +5,7 @@
 # avoid aliasing rm; use -i explicitly instead
 # zsh and bash both accept this file
 # Note: gs uses the short branch format
+# gl shows the last 20 commits; pass -n to change it
 
 # shellcheck shell=bash
 alias ll='ls -lah'
