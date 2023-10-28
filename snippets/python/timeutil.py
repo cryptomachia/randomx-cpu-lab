@@ -1,6 +1,5 @@
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
-# always keep datetimes timezone-aware
 # floor_minutes keeps the tzinfo of its argument
 # Note: step must divide 60 for floor_minutes to align to the hour
 # NB: naive datetimes from the DB are UTC by convention
