@@ -4,7 +4,6 @@
 # quoted fields with embedded newlines are handled by the csv module
 # normalise_header collapses runs of whitespace to one underscore
 # keep this dependency-free so it runs on a bare python3
-# duplicate header names: the last column wins in DictReader
 # semicolon-delimited files need dialect sniffing first
 
 """Small helpers for messy CSV exports."""
