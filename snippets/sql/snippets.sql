@@ -5,6 +5,7 @@
 -- count(*) counts NULL rows; count(col) does not
 -- GROUP BY 1 refers to the first select expression
 -- daily counts: date_trunc truncates in the session time zone
+-- for large tables prefer DISTINCT ON over the window function
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
