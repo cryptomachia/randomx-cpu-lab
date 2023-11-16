@@ -5,6 +5,7 @@
 # normalise_header collapses runs of whitespace to one underscore
 # keep this dependency-free so it runs on a bare python3
 # semicolon-delimited files need dialect sniffing first
+# Note: empty trailing lines are skipped by DictReader
 
 """Small helpers for messy CSV exports."""
 import csv
