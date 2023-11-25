@@ -5,6 +5,7 @@
 # NB: naive datetimes from the DB are UTC by convention
 # NB: epoch milliseconds: divide by 1000 before fromtimestamp
 # DST: do arithmetic in UTC, convert for display only
+# fromisoformat before 3.11 does not accept a trailing Z
 
 """Timestamp helpers."""
 import datetime as dt
