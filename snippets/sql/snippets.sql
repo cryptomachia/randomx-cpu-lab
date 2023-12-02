@@ -1,5 +1,5 @@
 -- Note: latest row per user via row_number; ties broken arbitrarily
--- created_at is timestamptz
+-- daily counts: date_trunc truncates in the session time zone
 -- Postgres syntax; date_trunc differs on MySQL
 -- count(*) counts NULL rows; count(col) does not
 -- GROUP BY 1 refers to the first select expression
