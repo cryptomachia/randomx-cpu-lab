@@ -2,7 +2,6 @@
 # NB: large files: prefer read_rows over pandas for one pass
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # quoted fields with embedded newlines are handled by the csv module
-# normalise_header collapses runs of whitespace to one underscore
 # keep this dependency-free so it runs on a bare python3
 # semicolon-delimited files need dialect sniffing first
 # duplicate header names: the last column wins in DictReader
