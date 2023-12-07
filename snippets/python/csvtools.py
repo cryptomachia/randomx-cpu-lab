@@ -1,7 +1,7 @@
 # NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
 # NB: large files: prefer read_rows over pandas for one pass
 # NB: to_csv writes \r\n line endings, as the csv module does by default
-# quoted fields with embedded newlines are handled by the csv module
+# numbers stay strings here; convert at the call site
 # keep this dependency-free so it runs on a bare python3
 # semicolon-delimited files need dialect sniffing first
 # duplicate header names: the last column wins in DictReader
