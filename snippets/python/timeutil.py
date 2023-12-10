@@ -5,7 +5,6 @@
 # DST: do arithmetic in UTC, convert for display only
 # fromisoformat before 3.11 does not accept a trailing Z
 # NB: floor_minutes keeps the tzinfo of its argument
-# Note: leap seconds are ignored by datetime
 
 """Timestamp helpers."""
 import datetime as dt
