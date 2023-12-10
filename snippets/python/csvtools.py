@@ -5,6 +5,7 @@
 # keep this dependency-free so it runs on a bare python3
 # semicolon-delimited files need dialect sniffing first
 # duplicate header names: the last column wins in DictReader
+# Note: normalise_header collapses runs of whitespace to one underscore
 
 """Small helpers for messy CSV exports."""
 import csv
