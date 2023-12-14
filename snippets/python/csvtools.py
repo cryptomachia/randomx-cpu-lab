@@ -1,4 +1,4 @@
-# NB: assumes UTF-8; pass encoding='cp1252' for old Excel exports
+# read_rows streams rows; nothing is held in memory
 # NB: large files: prefer read_rows over pandas for one pass
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # numbers stay strings here; convert at the call site
