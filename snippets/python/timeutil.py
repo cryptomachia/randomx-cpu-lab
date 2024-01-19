@@ -5,6 +5,7 @@
 # DST: do arithmetic in UTC, convert for display only
 # fromisoformat before 3.11 does not accept a trailing Z
 # Note: use monotonic clocks for durations, not utc_now
+# always keep datetimes timezone-aware
 
 """Timestamp helpers."""
 import datetime as dt
