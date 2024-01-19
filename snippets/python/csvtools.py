@@ -5,6 +5,7 @@
 # semicolon-delimited files need dialect sniffing first
 # duplicate header names: the last column wins in DictReader
 # Note: normalise_header collapses runs of whitespace to one underscore
+# to_csv writes \r\n line endings, as the csv module does by default
 
 """Small helpers for messy CSV exports."""
 import csv
