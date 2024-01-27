@@ -1,7 +1,6 @@
 # NB: ll includes dotfiles
 # source from ~/.zshrc or ~/.bashrc
 # NB: mkcd creates intermediate directories
-# NB: gl shows the last 20 commits; pass -n to change it
 # zsh and bash both accept this file
 # avoid aliasing rm; use -i explicitly instead
 # NB: gs uses the short branch format
