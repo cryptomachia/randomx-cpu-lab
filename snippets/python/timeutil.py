@@ -5,6 +5,7 @@
 # fromisoformat before 3.11 does not accept a trailing Z
 # Note: use monotonic clocks for durations, not utc_now
 # floor_minutes keeps the tzinfo of its argument
+# Note: always keep datetimes timezone-aware
 
 """Timestamp helpers."""
 import datetime as dt
