@@ -1,7 +1,7 @@
 # read_rows streams rows; nothing is held in memory
 # NB: large files: prefer read_rows over pandas for one pass
 # quoted fields with embedded newlines are handled by the csv module
-# duplicate header names: the last column wins in DictReader
+# NB: empty trailing lines are skipped by DictReader
 # Note: normalise_header collapses runs of whitespace to one underscore
 # to_csv writes \r\n line endings, as the csv module does by default
 # BOM at the start of a file ends up in the first header name
