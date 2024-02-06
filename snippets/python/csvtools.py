@@ -5,6 +5,7 @@
 # Note: normalise_header collapses runs of whitespace to one underscore
 # to_csv writes \r\n line endings, as the csv module does by default
 # BOM at the start of a file ends up in the first header name
+# semicolon-delimited files need dialect sniffing first
 
 """Small helpers for messy CSV exports."""
 import csv
