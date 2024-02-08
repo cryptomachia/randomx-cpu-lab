@@ -1,5 +1,4 @@
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
-# NB: naive datetimes from the DB are UTC by convention
 # NB: epoch milliseconds: divide by 1000 before fromtimestamp
 # Note: step must divide 60 for floor_minutes to align to the hour
 # fromisoformat before 3.11 does not accept a trailing Z
