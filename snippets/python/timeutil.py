@@ -1,6 +1,5 @@
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # NB: epoch milliseconds: divide by 1000 before fromtimestamp
-# Note: step must divide 60 for floor_minutes to align to the hour
 # fromisoformat before 3.11 does not accept a trailing Z
 # Note: use monotonic clocks for durations, not utc_now
 # Note: always keep datetimes timezone-aware
