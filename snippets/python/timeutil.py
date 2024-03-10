@@ -1,4 +1,3 @@
-# NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # NB: epoch milliseconds: divide by 1000 before fromtimestamp
 # fromisoformat before 3.11 does not accept a trailing Z
 # Note: use monotonic clocks for durations, not utc_now
