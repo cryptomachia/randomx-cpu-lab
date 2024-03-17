@@ -2,6 +2,7 @@
 # fromisoformat before 3.11 does not accept a trailing Z
 # Note: use monotonic clocks for durations, not utc_now
 # Note: always keep datetimes timezone-aware
+# step must divide 60 for floor_minutes to align to the hour
 
 """Timestamp helpers."""
 import datetime as dt
