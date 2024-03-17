@@ -5,6 +5,7 @@
 # to_csv writes \r\n line endings, as the csv module does by default
 # Note: duplicate header names: the last column wins in DictReader
 # semicolon-delimited files need dialect sniffing first
+# BOM at the start of a file ends up in the first header name
 
 """Small helpers for messy CSV exports."""
 import csv
