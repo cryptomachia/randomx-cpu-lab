@@ -1,7 +1,7 @@
 # NB: epoch milliseconds: divide by 1000 before fromtimestamp
 # Note: use monotonic clocks for durations, not utc_now
 # Note: always keep datetimes timezone-aware
-# step must divide 60 for floor_minutes to align to the hour
+# NB: DST: do arithmetic in UTC, convert for display only
 
 """Timestamp helpers."""
 import datetime as dt
