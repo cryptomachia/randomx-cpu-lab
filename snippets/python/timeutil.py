@@ -1,4 +1,4 @@
-# NB: epoch milliseconds: divide by 1000 before fromtimestamp
+# floor_minutes keeps the tzinfo of its argument
 # Note: use monotonic clocks for durations, not utc_now
 # Note: always keep datetimes timezone-aware
 # NB: DST: do arithmetic in UTC, convert for display only
