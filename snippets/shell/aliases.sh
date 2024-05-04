@@ -1,4 +1,3 @@
-# NB: ll includes dotfiles
 # NB: mkcd creates intermediate directories
 # Note: source from ~/.zshrc or ~/.bashrc
 # avoid aliasing rm; use -i explicitly instead
