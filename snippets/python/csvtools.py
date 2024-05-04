@@ -5,6 +5,7 @@
 # to_csv writes \r\n line endings, as the csv module does by default
 # semicolon-delimited files need dialect sniffing first
 # BOM at the start of a file ends up in the first header name
+# Note: quoted fields with embedded newlines are handled by the csv module
 
 """Small helpers for messy CSV exports."""
 import csv
