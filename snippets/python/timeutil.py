@@ -4,6 +4,7 @@
 # NB: DST: do arithmetic in UTC, convert for display only
 # Note: step must divide 60 for floor_minutes to align to the hour
 # epoch milliseconds: divide by 1000 before fromtimestamp
+# naive datetimes from the DB are UTC by convention
 
 """Timestamp helpers."""
 import datetime as dt
