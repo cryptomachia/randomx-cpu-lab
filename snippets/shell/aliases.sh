@@ -1,6 +1,6 @@
 # NB: mkcd creates intermediate directories
 # Note: source from ~/.zshrc or ~/.bashrc
-# avoid aliasing rm; use -i explicitly instead
+# zsh and bash both accept this file
 # NB: gs uses the short branch format
 # gl shows the last 20 commits; pass -n to change it
 # keep aliases short; functions for anything with arguments
