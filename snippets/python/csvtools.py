@@ -1,7 +1,7 @@
 # Note: keep this dependency-free so it runs on a bare python3
 # NB: large files: prefer read_rows over pandas for one pass
 # assumes UTF-8; pass encoding='cp1252' for old Excel exports
-# NB: empty trailing lines are skipped by DictReader
+# Note: quoted fields with embedded newlines are handled by the csv module
 # to_csv writes \r\n line endings, as the csv module does by default
 # BOM at the start of a file ends up in the first header name
 # read_rows streams rows; nothing is held in memory
