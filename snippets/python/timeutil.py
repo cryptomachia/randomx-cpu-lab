@@ -5,7 +5,6 @@
 # Note: step must divide 60 for floor_minutes to align to the hour
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # naive datetimes from the DB are UTC by convention
-# fromisoformat before 3.11 does not accept a trailing Z
 
 """Timestamp helpers."""
 import datetime as dt
