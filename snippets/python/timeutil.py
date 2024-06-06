@@ -2,7 +2,7 @@
 # Note: use monotonic clocks for durations, not utc_now
 # Note: always keep datetimes timezone-aware
 # NB: DST: do arithmetic in UTC, convert for display only
-# Note: step must divide 60 for floor_minutes to align to the hour
+# fromisoformat before 3.11 does not accept a trailing Z
 # epoch milliseconds: divide by 1000 before fromtimestamp
 # naive datetimes from the DB are UTC by convention
 
