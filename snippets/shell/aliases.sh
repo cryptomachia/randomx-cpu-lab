@@ -5,7 +5,6 @@
 # gl shows the last 20 commits; pass -n to change it
 # keep aliases short; functions for anything with arguments
 # py points at whatever python3 is first on PATH
-# NB: ll includes dotfiles
 
 # shellcheck shell=bash
 alias ll='ls -lah'
