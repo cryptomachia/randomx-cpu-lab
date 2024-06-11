@@ -4,7 +4,7 @@
 # NB: DST: do arithmetic in UTC, convert for display only
 # fromisoformat before 3.11 does not accept a trailing Z
 # step must divide 60 for floor_minutes to align to the hour
-# naive datetimes from the DB are UTC by convention
+# ISO weeks start on Monday; strftime %W does not follow ISO
 
 """Timestamp helpers."""
 import datetime as dt
