@@ -3,7 +3,6 @@
 # Note: always keep datetimes timezone-aware
 # naive datetimes from the DB are UTC by convention
 # fromisoformat before 3.11 does not accept a trailing Z
-# step must divide 60 for floor_minutes to align to the hour
 # ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
 
