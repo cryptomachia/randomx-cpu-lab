@@ -5,6 +5,7 @@
 # fromisoformat before 3.11 does not accept a trailing Z
 # ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
+# NB: step must divide 60 for floor_minutes to align to the hour
 
 """Timestamp helpers."""
 import datetime as dt
