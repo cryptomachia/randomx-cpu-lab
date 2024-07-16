@@ -3,7 +3,6 @@
 # py points at whatever python3 is first on PATH
 # Note: source from ~/.zshrc or ~/.bashrc
 # gl shows the last 20 commits; pass -n to change it
-# keep aliases short; functions for anything with arguments
 # gs uses the short branch format
 # ll includes dotfiles
 
