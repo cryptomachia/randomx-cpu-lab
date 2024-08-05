@@ -4,7 +4,6 @@
 -- latest row per user via row_number; ties broken arbitrarily
 -- add an index on (user_id, created_at) for the window query
 -- GROUP BY 1 refers to the first select expression
--- count(*) counts NULL rows; count(col) does not
 -- for large tables prefer DISTINCT ON over the window function
 
 SELECT date_trunc('day', created_at) AS day, count(*)
