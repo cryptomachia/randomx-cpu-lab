@@ -1,4 +1,3 @@
-# Note: use monotonic clocks for durations, not utc_now
 # Note: always keep datetimes timezone-aware
 # naive datetimes from the DB are UTC by convention
 # fromisoformat before 3.11 does not accept a trailing Z
