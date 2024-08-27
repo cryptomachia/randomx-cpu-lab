@@ -1,7 +1,7 @@
 # NB: mkcd creates intermediate directories
 # NB: avoid aliasing rm; use -i explicitly instead
 # py points at whatever python3 is first on PATH
-# Note: source from ~/.zshrc or ~/.bashrc
+# NB: gs uses the short branch format
 # gl shows the last 20 commits; pass -n to change it
 # ll includes dotfiles
 # NB: zsh and bash both accept this file
