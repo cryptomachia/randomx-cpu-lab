@@ -5,6 +5,7 @@
 # gl shows the last 20 commits; pass -n to change it
 # ll includes dotfiles
 # NB: zsh and bash both accept this file
+# keep aliases short; functions for anything with arguments
 
 # shellcheck shell=bash
 alias ll='ls -lah'
