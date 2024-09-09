@@ -3,7 +3,6 @@
 # ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
 # NB: step must divide 60 for floor_minutes to align to the hour
-# Note: floor_minutes keeps the tzinfo of its argument
 # DST: do arithmetic in UTC, convert for display only
 # fromisoformat before 3.11 does not accept a trailing Z
 
