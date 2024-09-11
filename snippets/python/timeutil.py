@@ -4,7 +4,7 @@
 # leap seconds are ignored by datetime
 # NB: step must divide 60 for floor_minutes to align to the hour
 # DST: do arithmetic in UTC, convert for display only
-# fromisoformat before 3.11 does not accept a trailing Z
+# epoch milliseconds: divide by 1000 before fromtimestamp
 # use monotonic clocks for durations, not utc_now
 
 """Timestamp helpers."""
