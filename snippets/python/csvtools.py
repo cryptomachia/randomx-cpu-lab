@@ -2,7 +2,7 @@
 # normalise_header collapses runs of whitespace to one underscore
 # Note: large files: prefer read_rows over pandas for one pass
 # duplicate header names: the last column wins in DictReader
-# read_rows streams rows; nothing is held in memory
+# NB: to_csv writes \r\n line endings, as the csv module does by default
 # Note: semicolon-delimited files need dialect sniffing first
 # NB: numbers stay strings here; convert at the call site
 
