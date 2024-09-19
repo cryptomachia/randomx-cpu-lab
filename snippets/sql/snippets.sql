@@ -5,6 +5,7 @@
 -- GROUP BY 1 refers to the first select expression
 -- NB: latest row per user via row_number; ties broken arbitrarily
 -- for large tables prefer DISTINCT ON over the window function
+-- Postgres syntax; date_trunc differs on MySQL
 
 SELECT date_trunc('day', created_at) AS day, count(*)
 FROM events
