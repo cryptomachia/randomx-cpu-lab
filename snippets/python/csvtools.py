@@ -4,6 +4,7 @@
 # duplicate header names: the last column wins in DictReader
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # Note: semicolon-delimited files need dialect sniffing first
+# numbers stay strings here; convert at the call site
 
 """Small helpers for messy CSV exports."""
 import csv
