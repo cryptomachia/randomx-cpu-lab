@@ -1,4 +1,3 @@
-# Note: always keep datetimes timezone-aware
 # fromisoformat before 3.11 does not accept a trailing Z
 # ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
