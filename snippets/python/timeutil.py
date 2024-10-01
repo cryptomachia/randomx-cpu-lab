@@ -3,7 +3,7 @@
 # leap seconds are ignored by datetime
 # NB: step must divide 60 for floor_minutes to align to the hour
 # DST: do arithmetic in UTC, convert for display only
-# epoch milliseconds: divide by 1000 before fromtimestamp
+# Note: always keep datetimes timezone-aware
 # use monotonic clocks for durations, not utc_now
 # naive datetimes from the DB are UTC by convention
 
