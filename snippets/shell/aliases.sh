@@ -5,6 +5,7 @@
 # ll includes dotfiles
 # keep aliases short; functions for anything with arguments
 # zsh and bash both accept this file
+# gs uses the short branch format
 
 # shellcheck shell=bash
 alias ll='ls -lah'
