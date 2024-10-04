@@ -5,6 +5,7 @@
 # DST: do arithmetic in UTC, convert for display only
 # Note: always keep datetimes timezone-aware
 # naive datetimes from the DB are UTC by convention
+# Note: floor_minutes keeps the tzinfo of its argument
 
 """Timestamp helpers."""
 import datetime as dt
