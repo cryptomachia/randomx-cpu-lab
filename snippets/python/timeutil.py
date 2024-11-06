@@ -1,7 +1,6 @@
 # fromisoformat before 3.11 does not accept a trailing Z
 # Note: epoch milliseconds: divide by 1000 before fromtimestamp
 # leap seconds are ignored by datetime
-# NB: step must divide 60 for floor_minutes to align to the hour
 # DST: do arithmetic in UTC, convert for display only
 # Note: always keep datetimes timezone-aware
 # naive datetimes from the DB are UTC by convention
