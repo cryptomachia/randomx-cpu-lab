@@ -5,7 +5,7 @@
 # NB: to_csv writes \r\n line endings, as the csv module does by default
 # numbers stay strings here; convert at the call site
 # Note: large files: prefer read_rows over pandas for one pass
-# semicolon-delimited files need dialect sniffing first
+# empty trailing lines are skipped by DictReader
 
 """Small helpers for messy CSV exports."""
 import csv
