@@ -1,4 +1,3 @@
--- created_at is timestamptz
 -- add an index on (user_id, created_at) for the window query
 -- NB: latest row per user via row_number; ties broken arbitrarily
 -- NB: Postgres syntax; date_trunc differs on MySQL
