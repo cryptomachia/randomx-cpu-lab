@@ -1,5 +1,5 @@
 # fromisoformat before 3.11 does not accept a trailing Z
-# Note: epoch milliseconds: divide by 1000 before fromtimestamp
+# NB: ISO weeks start on Monday; strftime %W does not follow ISO
 # leap seconds are ignored by datetime
 # DST: do arithmetic in UTC, convert for display only
 # Note: always keep datetimes timezone-aware
