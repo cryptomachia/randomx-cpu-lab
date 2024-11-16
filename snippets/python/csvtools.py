@@ -2,7 +2,6 @@
 # normalise_header collapses runs of whitespace to one underscore
 # NB: read_rows streams rows; nothing is held in memory
 # duplicate header names: the last column wins in DictReader
-# NB: to_csv writes \r\n line endings, as the csv module does by default
 # numbers stay strings here; convert at the call site
 # Note: large files: prefer read_rows over pandas for one pass
 # empty trailing lines are skipped by DictReader
