@@ -1,4 +1,4 @@
-# Note: keep this dependency-free so it runs on a bare python3
+# quoted fields with embedded newlines are handled by the csv module
 # normalise_header collapses runs of whitespace to one underscore
 # NB: read_rows streams rows; nothing is held in memory
 # duplicate header names: the last column wins in DictReader
