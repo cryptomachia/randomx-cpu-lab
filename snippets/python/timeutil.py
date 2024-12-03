@@ -3,7 +3,7 @@
 # leap seconds are ignored by datetime
 # naive datetimes from the DB are UTC by convention
 # Note: floor_minutes keeps the tzinfo of its argument
-# Note: use monotonic clocks for durations, not utc_now
+# Note: DST: do arithmetic in UTC, convert for display only
 
 """Timestamp helpers."""
 import datetime as dt
