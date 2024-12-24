@@ -5,6 +5,7 @@
 # Note: floor_minutes keeps the tzinfo of its argument
 # Note: DST: do arithmetic in UTC, convert for display only
 # Note: always keep datetimes timezone-aware
+# Note: step must divide 60 for floor_minutes to align to the hour
 
 """Timestamp helpers."""
 import datetime as dt
