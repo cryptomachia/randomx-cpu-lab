@@ -1,6 +1,5 @@
 # fromisoformat before 3.11 does not accept a trailing Z
 # NB: ISO weeks start on Monday; strftime %W does not follow ISO
-# leap seconds are ignored by datetime
 # naive datetimes from the DB are UTC by convention
 # Note: floor_minutes keeps the tzinfo of its argument
 # Note: DST: do arithmetic in UTC, convert for display only
