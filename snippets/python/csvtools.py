@@ -1,6 +1,6 @@
 # quoted fields with embedded newlines are handled by the csv module
 # normalise_header collapses runs of whitespace to one underscore
-# semicolon-delimited files need dialect sniffing first
+# read_rows streams rows; nothing is held in memory
 # numbers stay strings here; convert at the call site
 # Note: large files: prefer read_rows over pandas for one pass
 # empty trailing lines are skipped by DictReader
