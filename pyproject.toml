@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rxlab"
+version = "0.1.0"
+description = "Measurement and analysis tools for RandomX (Monero PoW) on CPUs"
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy", "matplotlib"]
+
+[tool.setuptools]
+packages = ["rxlab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: long-running (minutes); deselect with -m 'not slow'"]
