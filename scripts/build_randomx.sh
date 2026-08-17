@@ -3,7 +3,11 @@
 # libraries under third_party/. Two tags are built:
 #   v1.2.1  - the version Monero mainnet runs today
 #   v2.0.1  - RandomX v2; also computes v1 hashes when RANDOMX_FLAG_V2 is unset
-
+#
+# Do NOT pass -DARCH=native on Apple Silicon: Apple clang's -march=native does
+# not define __ARM_FEATURE_CRYPTO, so the library compiles with HAVE_AES=0 and
+# every hardware-AES VM fails to allocate. The default ARCH uses
+# -march=armv8-a+crypto, which is what we want.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -20,7 +24,7 @@ for tag in ${TAGS[@]}; do
   if [ ! -d "$src" ]; then
     git clone -q --depth 1 --branch "$tag" https://github.com/tevador/RandomX "$src"
   fi
-  cmake -S "$src" -B "$build" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DARCH=native >"$build.log" 2>&1
+  cmake -S "$src" -B "$build" -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON >"$build.log" 2>&1
   cmake --build "$build" -j "$JOBS" >>"$build.log" 2>&1
   echo "built $tag -> $(ls "$build"/librandomx.* | head -1)"
 done
