@@ -50,6 +50,26 @@ def test_official_vectors(caches, mode, version):
             assert vm.hash(data).hex() == (h2 if version == "v2" else h1)
 
 
+def rounds_to_nearest():
+    """True iff the thread's FPU rounds to nearest (runtime values: no constant folding)."""
+    one, three = float("1"), float("3")
+    three_quarter_ulp = float.fromhex("0x1.8p-53")
+    # -0.0 when rounding down; 1/3 moves up a ulp when rounding up; the 3/4-ulp
+    # increment is dropped when rounding down or toward zero.
+    return (str(one - one) == "0.0"
+            and one / three == float.fromhex("0x1.5555555555555p-2")
+            and one + three_quarter_ulp == float.fromhex("0x1.0000000000001p+0"))
+
+
+def test_batch_api_restores_rounding_mode(caches):
+    """The C batch calls leave CFROUND's mode behind; hash_many must not leak it."""
+    flags = recommended_flags() & (Flags.HARD_AES | Flags.JIT | Flags.SECURE)
+    with VM(flags, cache=caches[b"test key 000"]) as vm:
+        for _ in vm.hash_many(b"rounding-%d" % i for i in range(64)):
+            assert rounds_to_nearest()
+    assert rounds_to_nearest()
+
+
 def test_batch_api_matches_single(caches):
     flags = recommended_flags() & (Flags.HARD_AES | Flags.JIT | Flags.SECURE)
     inputs = [b"nonce-%d" % i for i in range(16)]

@@ -42,6 +42,20 @@ def library_path(tag=DEFAULT_TAG):
 _libs = {}
 _libs_lock = threading.Lock()
 
+# randomx_calculate_hash saves and restores the floating-point environment, but
+# the batch calls (first/next/last) return with the rounding mode the last
+# CFROUND selected. Host code on the same thread -- Python floats included --
+# would then round toward -inf, +inf or zero, so hash_many restores it.
+_libc = ctypes.CDLL(None)
+_FENV_BYTES = 64  # >= sizeof(fenv_t) on every supported platform
+
+
+def _save_fenv():
+    env = ctypes.create_string_buffer(_FENV_BYTES)
+    if _libc.fegetenv(env) != 0:
+        raise OSError("fegetenv failed")
+    return env
+
 
 def load(tag=DEFAULT_TAG):
     with _libs_lock:
@@ -180,12 +194,15 @@ class VM:
             prev = bytes(next(it))
         except StopIteration:
             return
+        env = _save_fenv()
         self.lib.randomx_calculate_hash_first(self.ptr, prev, len(prev))
         for cur in it:
             cur = bytes(cur)
             self.lib.randomx_calculate_hash_next(self.ptr, cur, len(cur), self._out)
+            _libc.fesetenv(env)
             yield self._out.raw
         self.lib.randomx_calculate_hash_last(self.ptr, self._out)
+        _libc.fesetenv(env)
         yield self._out.raw
 
     def close(self):
