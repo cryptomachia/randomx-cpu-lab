@@ -620,3 +620,24 @@ class _OneDataset:
 def full_dataset():
     yield _OneDataset.get
     _OneDataset.close()
+
+
+@pytest.mark.slow
+@pytest.mark.parametrize("t", sorted(trace_vectors(), key=lambda t: (t["key"], t["id"], t["v2"])),
+                         ids=lambda t: "%s-%s" % (t["id"], "v2" if t["v2"] else "v1"))
+def test_official_vector_end_to_end(t, full_dataset):
+    """Whole hashes on the full C Dataset, checked program by program against the C trace."""
+    source = full_dataset(bytes.fromhex(t["key"]))
+    got = []
+
+    def observer(i, register_file, machine):
+        got.append({"register_file": register_file.hex(),
+                    "scratchpad": hash256(machine.scratchpad).hex(), "fprc": machine.fprc})
+
+    start = time.perf_counter()
+    digest = randomx_hash(bytes.fromhex(t["input"]), source, v2=t["v2"], observer=observer)
+    seconds = time.perf_counter() - start
+    print("\n%s %s: %.2f s per hash" % (t["id"], "v2" if t["v2"] else "v1", seconds))
+    for i, (g, w) in enumerate(zip(got, t["programs"])):
+        assert g == w, "first divergence in program %d" % i
+    assert digest.hex() == t["hash"]
