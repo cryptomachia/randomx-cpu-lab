@@ -444,10 +444,93 @@ def test_instructions_match_c_interpreter():
 
 # ---------------------------------------------------------------- floating point
 
+def test_float_modes_bracket_the_exact_result():
+    """Directed modes give the neighbours of the exact rational result (IEEE 754 4.3.2),
+    including denormal operands and results."""
+    rng = random.Random(1)
+    special = [5e-324, -5e-324, 2.2250738585072014e-308, 1e-310, -3e-320, 1.5, -2.75, 1e300, 7.0]
+    values = special + [rng.uniform(-1, 1) * 2.0 ** rng.randint(-1074, 1000) for _ in range(300)]
+    values = [v for v in values if v != 0]
+    ops = [(fp.add, lambda x, y: Fraction(x) + Fraction(y)),
+           (fp.sub, lambda x, y: Fraction(x) - Fraction(y)),
+           (fp.mul, lambda x, y: Fraction(x) * Fraction(y)),
+           (fp.div, lambda x, y: Fraction(x) / Fraction(y))]
+    checked = 0
+    for _ in range(2000):
+        x, y = rng.choice(values), rng.choice(values)
+        for fn, exact_fn in ops:
+            res = [fn(x, y, mode) for mode in range(4)]
+            if any(math.isinf(v) for v in res):
+                continue
+            exact = exact_fn(x, y)
+            near, down, up, zero = res
+            assert Fraction(down) <= exact <= Fraction(up)
+            assert up == down or math.nextafter(down, math.inf) == up
+            assert zero == (down if exact >= 0 else up)
+            assert near in (down, up)
+            assert abs(Fraction(near) - exact) <= abs(Fraction(down if near == up else up) - exact)
+            checked += 1
+    assert checked > 5000
+    for x in [v for v in values if v > 0][:200]:
+        down, up = fp.sqrt(x, fp.ROUND_DOWN), fp.sqrt(x, fp.ROUND_UP)
+        assert Fraction(down) ** 2 <= Fraction(x) <= Fraction(up) ** 2
+        assert up == down or math.nextafter(down, math.inf) == up
+        assert fp.sqrt(x, fp.ROUND_ZERO) == down
+
+
+def test_float_edge_semantics():
+    """IEEE 754 6.3 signed zeros and 7.4 overflow per rounding mode."""
+    assert math.copysign(1, fp.add(1.0, -1.0, fp.ROUND_DOWN)) == -1
+    for mode in (fp.ROUND_NEAREST, fp.ROUND_UP, fp.ROUND_ZERO):
+        assert math.copysign(1, fp.add(1.0, -1.0, mode)) == 1
+    big = 1.7976931348623157e308
+    assert fp.mul(big, 2.0, fp.ROUND_NEAREST) == math.inf
+    assert fp.mul(big, 2.0, fp.ROUND_UP) == math.inf
+    assert fp.mul(big, 2.0, fp.ROUND_DOWN) == big
+    assert fp.mul(big, 2.0, fp.ROUND_ZERO) == big
+    assert fp.mul(-big, 2.0, fp.ROUND_UP) == -big
+    assert fp.mul(5e-324, 0.5, fp.ROUND_UP) == 5e-324
+    assert fp.mul(5e-324, 0.5, fp.ROUND_DOWN) == 0.0
+    # FSCAL_R (specs.md 5.3.4): for normal x, -x * 2**k where k reads the 4 low bits of
+    # the biased exponent with digits {+1, -1}; zero becomes -2**-1008, denormals turn normal.
+    for x in (3.0, 0.75, -1e-300, 12345.678, 2.0 ** 1000):
+        low = (fp.to_bits(x) >> 52) & 15
+        k = sum((-1 if low >> i & 1 else 1) << i for i in range(4))
+        assert fp.fscal(x) == -x * 2.0 ** k and fp.fscal(fp.fscal(x)) == x
+    assert fp.fscal(0.0) == -2.0 ** -1008 and fp.fscal(-2.0 ** -1008) == 0.0
+    assert fp.fscal(fp.fscal(1e-310)) == 1e-310 and fp.fscal(1e-310) < -2.0 ** -1008
+
+
+def test_group_e_conversion():
+    """specs.md 4.3.2: sign cleared, exponent 0b011sssssdddd, low 22 fraction bits from the mask."""
+    rng = random.Random(3)
+    for _ in range(1000):
+        v = rng.randint(-2 ** 31, 2 ** 31 - 1)
+        emask = program.float_mask(rng.getrandbits(64))
+        bits = fp.to_bits(fp.convert_e(v, emask))
+        assert bits >> 63 == 0
+        assert bits >> 60 == 0b011
+        assert (bits >> 56) & 0xF == (emask >> 56) & 0xF
+        assert bits & ((1 << 22) - 1) == emask & ((1 << 22) - 1)
+        assert 2.0 ** -255 <= fp.convert_e(v, emask) < 2
+
+
 # ---------------------------------------------------------------- the VM and the hash
 
 def trace_vectors():
     return golden("hash_trace")["vectors"]
+
+
+def test_trace_covers_the_official_vectors():
+    official = {(k, d): (h1, h2) for k, d, h1, h2 in VECTORS}
+    seen = 0
+    for t in trace_vectors():
+        pair = (bytes.fromhex(t["key"]), bytes.fromhex(t["input"]))
+        if pair in official:
+            assert t["hash"] == official[pair][1 if t["v2"] else 0]
+            seen += 1
+        assert t["seed"] == hash512(bytes.fromhex(t["input"])).hex()
+    assert seen == 2 * len(VECTORS)
 
 
 def run_program(t, index, source, stats=None):
@@ -462,6 +545,57 @@ def run_program(t, index, source, stats=None):
         register_file = machine.execute(program.generate(seed, t["v2"]))
         seed = hash512(register_file)
     return machine, register_file
+
+
+@pytest.mark.parametrize("v2", [False, True], ids=["v1", "v2"])
+def test_first_program_matches_c(v2):
+    """Program 0 of vector 1a against the C VM, with lazily built C Dataset items."""
+    t = next(t for t in trace_vectors() if t["id"] == "1a" and t["v2"] == v2)
+    with CDatasetItemSource(bytes.fromhex(t["key"]), lazy=True) as source:
+        machine, register_file = run_program(t, 0, source)
+    want = t["programs"][0]
+    assert register_file.hex() == want["register_file"]
+    assert hash256(machine.scratchpad).hex() == want["scratchpad"]
+    assert machine.fprc == want["fprc"]
+
+
+def test_dynamic_counters_match_the_executed_work():
+    """stats= counts what actually runs: directed-mode FP instructions equal the MPFR
+    calls made (two lanes each), and the instrumented VM still matches the C trace."""
+    t = next(t for t in trace_vectors() if t["id"] == "1a" and not t["v2"])
+    calls = collections.Counter()
+    tables = {name: getattr(fp, name) for name in ("ADD", "SUB", "MUL", "DIV", "SQRT")}
+    saved = {name: list(table) for name, table in tables.items()}
+
+    def counting(name, fn):
+        def wrapper(*args):
+            calls[name] += 1
+            return fn(*args)
+        return wrapper
+
+    for name, table in tables.items():
+        table[1:] = [counting(name, fn) for fn in table[1:]]
+    stats = collections.Counter()
+    try:
+        with CDatasetItemSource(bytes.fromhex(t["key"]), lazy=True) as source:
+            _, register_file = run_program(t, 0, source, stats)
+    finally:
+        for name, table in tables.items():
+            table[:] = saved[name]
+    assert register_file.hex() == t["programs"][0]["register_file"]
+
+    def directed(*kinds):
+        return 2 * sum(stats[k, mode] for k in kinds for mode in (1, 2, 3))
+
+    assert directed("FADD_R", "FADD_M") == calls["ADD"] > 0
+    assert directed("FSUB_R", "FSUB_M") == calls["SUB"] > 0
+    assert directed("FMUL_R") == calls["MUL"] > 0
+    assert directed("FDIV_M") == calls["DIV"] > 0
+    assert directed("FSQRT_R") == calls["SQRT"] > 0
+    executed = sum(v for k, v in stats.items() if k not in ("CFROUND changed", "CBRANCH taken"))
+    assert executed >= 256 * 2048  # taken branches only add re-executions
+    assert 0 < stats["CFROUND changed"] <= stats["CFROUND"]
+    assert 0 < stats["CBRANCH taken"] < stats["CBRANCH"]
 
 
 class _OneDataset:
