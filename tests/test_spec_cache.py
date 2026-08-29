@@ -203,3 +203,45 @@ def test_superscalar_execution_matches_c():
         p = superscalar.generate(gen)
         assert superscalar.execute(p, ints(expected["input"])) == ints(expected["output"])
         assert run_statements(p, ints(expected["input"])) == ints(expected["output"])
+
+
+def test_dataset_constants_are_nothing_up_my_sleeve():
+    """specs.md §7.3: Hash512 of a fixed string, bytes 8-63, two documented tweaks."""
+    digest = hashlib.blake2b(b"RandomX SuperScalarHash initialize").digest()
+    derived = list(struct.unpack("<7Q", digest[8:]))
+    derived[0] += 2 ** 33 + 700
+    derived[2] += 2 ** 14
+    assert tuple(derived) == dataset.XORS
+
+
+def test_dataset_programs_and_reciprocals():
+    g = golden("dataset")
+    source = dataset.DatasetItemSource(np.zeros(dataset.CACHE_WORDS, np.uint64), KEY)
+    assert source.reciprocals == ints(g["reciprocal_cache"])
+    assert [p.address_register for p in source.programs] == g["address_registers"]
+
+
+def test_dataset_items_match_c(cache_words):
+    g = golden("dataset")
+    source = dataset.DatasetItemSource(cache_words, KEY)
+    for number, words in g["items"].items():
+        assert source.item(int(number)) == tuple(ints(words)), number
+        assert source.reference_item(int(number)) == tuple(ints(words)), number
+    for number, word0 in TESTS_CPP_ITEM_WORD0.items():
+        assert source.item(number)[0] == word0
+    assert str(params.DATASET_ITEM_COUNT - 1) in g["items"]  # C's last item index agrees
+
+
+def test_dataset_item0_trace(cache_words):
+    """Each of the 8 cache accesses of item 0: line index, program output, mix."""
+    source = dataset.DatasetItemSource(cache_words, KEY)
+    r = dataset.initial_registers(0)
+    cache_index = 0
+    for program, step in zip(source.programs, golden("dataset")["item0_trace"]):
+        assert cache_index % params.CACHE_LINE_COUNT == step["cache_line"]
+        line = source.cache_line(cache_index)
+        superscalar.execute(program, r)
+        assert r == ints(step["after_program"])
+        r = [x ^ y for x, y in zip(r, line)]
+        assert r == ints(step["after_mix"])
+        cache_index = r[program.address_register]
