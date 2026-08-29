@@ -144,6 +144,12 @@ def program_hash(program):
     return hash256(b"".join(struct.pack("<4BI", *ins) for ins in program.instructions))
 
 
+def test_superscalar_tests_cpp_hashes():
+    gen = BlakeGenerator(KEY)
+    for expected in TESTS_CPP_PROGRAM_HASHES:
+        assert program_hash(superscalar.generate(gen)) == expected
+
+
 def check_keys(count):
     g = golden("superscalar_keys")
     for row in g["rows"][:count * params.CACHE_ACCESSES]:
@@ -157,9 +163,43 @@ def check_keys(count):
             assert getattr(p, field) == expected[field], field
 
 
+def test_superscalar_more_keys():
+    check_keys(4)
+
+
+@pytest.mark.slow
+def test_superscalar_all_golden_keys():
+    """All 2048 programs of cache_superscalar_keys.json (256 keys)."""
+    check_keys(256)
+
+
+def test_superscalar_programs_match_c():
+    """Instructions and every reference-CPU statistic of the 8 cache programs."""
+    g = golden("superscalar")
+    gen = BlakeGenerator(bytes.fromhex(g["key"]))
+    for expected in g["programs"]:
+        p = superscalar.generate(gen)
+        assert [list(ins) for ins in p.instructions] == expected["instructions"]
+        assert len(p.instructions) == expected["size"]
+        for field in ("address_register", "cpu_latency", "asic_latency", "code_size",
+                      "macro_ops", "decode_cycles", "mul_count", "ipc"):
+            assert getattr(p, field) == expected[field], field
+        assert list(p.cpu_latencies) == expected["cpu_latencies"]
+        assert list(p.asic_latencies) == expected["asic_latencies"]
+
+
 def run_statements(program, registers):
     body = "".join(f"    {line}\n" for line in superscalar.to_python(program))
     namespace = {"M": params.MASK64, "S": 1 << 63}
     exec(f"def f(r0, r1, r2, r3, r4, r5, r6, r7):\n{body}"
          "    return [r0, r1, r2, r3, r4, r5, r6, r7]", namespace)
     return namespace["f"](*registers)
+
+
+def test_superscalar_execution_matches_c():
+    g = golden("superscalar")
+    gen = BlakeGenerator(bytes.fromhex(g["key"]))
+    for expected in g["programs"]:
+        p = superscalar.generate(gen)
+        assert superscalar.execute(p, ints(expected["input"])) == ints(expected["output"])
+        assert run_statements(p, ints(expected["input"])) == ints(expected["output"])
