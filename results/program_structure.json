@@ -1,0 +1,1104 @@
+{
+ "machine": {
+  "system": "Darwin",
+  "machine": "arm64",
+  "python": "3.9.6",
+  "logical_cpus": 10,
+  "cpu": "Apple M4",
+  "model": "Mac16,13",
+  "memory_bytes": 25769803776,
+  "page_size": 16384,
+  "power_source": "battery",
+  "clusters": [
+   {
+    "name": "Performance",
+    "cores": 4,
+    "l1d_bytes": 131072,
+    "l2_bytes": 16777216,
+    "cpus_per_l2": 4
+   },
+   {
+    "name": "Efficiency",
+    "cores": 6,
+    "l1d_bytes": 65536,
+    "l2_bytes": 4194304,
+    "cpus_per_l2": 6
+   }
+  ]
+ },
+ "setup": {
+  "key": "test key 001",
+  "blob": "0b0b98bea7e805e0010a2126d287a2a0cc833d312cb786385a7c2f9de69d25537f584a9bc9977b00000000666fd8753bf61a8631f12984e3fd44f4014eca629276817b56f32e9b68bd82f416",
+  "nonce_offset": 39,
+  "nonces": [
+   0,
+   19999
+  ],
+  "mode": "fast (2080 MiB dataset), bytecode interpreter",
+  "library": "RandomX v2.0.1 (computes v1 and v2)"
+ },
+ "model": {
+  "latency_cycles": {
+   "alu": 1,
+   "mul": 3,
+   "mulh": 3,
+   "agu": 2,
+   "load_l1": 4,
+   "load_l2": 10,
+   "load_l3": 18,
+   "fadd": 3,
+   "fmul": 4,
+   "fdiv": 10,
+   "fsqrt": 13,
+   "fswap": 2,
+   "fxor": 2,
+   "fcvt": 5,
+   "emask": 2
+  },
+  "units_per_cycle": {
+   "alu": 6,
+   "mul": 2,
+   "load": 3,
+   "store": 2,
+   "fp": 4,
+   "branch": 2
+  },
+  "issue_width": 8,
+  "window_uops": 600,
+  "divider_cycles": 2,
+  "mispredict_cycles": 13,
+  "fprc_write_cycles": 10,
+  "dataset_latency_cycles": 450,
+  "status": "assumed parameters (public figures for wide OoO cores), not measured"
+ },
+ "v1": {
+  "programs": 160000,
+  "inputs": 20000,
+  "instructions_per_program": 256,
+  "instruction_mix": {
+   "IADD_RS": {
+    "configured": 0.0625,
+    "measured": 0.06253349609375
+   },
+   "IADD_M": {
+    "configured": 0.02734375,
+    "measured": 0.02736865234375
+   },
+   "ISUB_R": {
+    "configured": 0.0625,
+    "measured": 0.062532373046875
+   },
+   "ISUB_M": {
+    "configured": 0.02734375,
+    "measured": 0.0273889404296875
+   },
+   "IMUL_R": {
+    "configured": 0.0625,
+    "measured": 0.062443408203125
+   },
+   "IMUL_M": {
+    "configured": 0.015625,
+    "measured": 0.0156200927734375
+   },
+   "IMULH_R": {
+    "configured": 0.015625,
+    "measured": 0.015607861328125
+   },
+   "IMULH_M": {
+    "configured": 0.00390625,
+    "measured": 0.0039209228515625
+   },
+   "ISMULH_R": {
+    "configured": 0.015625,
+    "measured": 0.015608740234375
+   },
+   "ISMULH_M": {
+    "configured": 0.00390625,
+    "measured": 0.0039169921875
+   },
+   "IMUL_RCP": {
+    "configured": 0.03125,
+    "measured": 0.031232958984375
+   },
+   "INEG_R": {
+    "configured": 0.0078125,
+    "measured": 0.00780810546875
+   },
+   "IXOR_R": {
+    "configured": 0.05859375,
+    "measured": 0.0585841064453125
+   },
+   "IXOR_M": {
+    "configured": 0.01953125,
+    "measured": 0.0194783203125
+   },
+   "IROR_R": {
+    "configured": 0.03125,
+    "measured": 0.0312747314453125
+   },
+   "IROL_R": {
+    "configured": 0.0078125,
+    "measured": 0.0078281982421875
+   },
+   "ISWAP_R": {
+    "configured": 0.015625,
+    "measured": 0.0156282470703125
+   },
+   "FSWAP_R": {
+    "configured": 0.015625,
+    "measured": 0.01564677734375
+   },
+   "FADD_R": {
+    "configured": 0.0625,
+    "measured": 0.0625278076171875
+   },
+   "FADD_M": {
+    "configured": 0.01953125,
+    "measured": 0.019482421875
+   },
+   "FSUB_R": {
+    "configured": 0.0625,
+    "measured": 0.0624724365234375
+   },
+   "FSUB_M": {
+    "configured": 0.01953125,
+    "measured": 0.0195447998046875
+   },
+   "FSCAL_R": {
+    "configured": 0.0234375,
+    "measured": 0.0233947509765625
+   },
+   "FMUL_R": {
+    "configured": 0.125,
+    "measured": 0.1250477294921875
+   },
+   "FDIV_M": {
+    "configured": 0.015625,
+    "measured": 0.015624609375
+   },
+   "FSQRT_R": {
+    "configured": 0.0234375,
+    "measured": 0.02340478515625
+   },
+   "CBRANCH": {
+    "configured": 0.09765625,
+    "measured": 0.0976428466796875
+   },
+   "CFROUND": {
+    "configured": 0.00390625,
+    "measured": 0.0039225830078125
+   },
+   "ISTORE": {
+    "configured": 0.0625,
+    "measured": 0.0625123046875
+   }
+  },
+  "mix_chisquare": {
+   "statistic": 37.46208892745535,
+   "dof": 28,
+   "p_value": 0.10901527853210255
+  },
+  "type_absent": {
+   "IADD_RS": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "IADD_M": {
+    "programs": 0.00086875,
+    "hashes_all_8": 0.0
+   },
+   "ISUB_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "ISUB_M": {
+    "programs": 0.00090625,
+    "hashes_all_8": 0.0
+   },
+   "IMUL_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "IMUL_M": {
+    "programs": 0.01733125,
+    "hashes_all_8": 0.0
+   },
+   "IMULH_R": {
+    "programs": 0.0177375,
+    "hashes_all_8": 0.0
+   },
+   "IMULH_M": {
+    "programs": 0.36585625,
+    "hashes_all_8": 0.00035
+   },
+   "ISMULH_R": {
+    "programs": 0.0184875,
+    "hashes_all_8": 0.0
+   },
+   "ISMULH_M": {
+    "programs": 0.3671375,
+    "hashes_all_8": 0.0004
+   },
+   "IMUL_RCP": {
+    "programs": 0.00021875,
+    "hashes_all_8": 0.0
+   },
+   "INEG_R": {
+    "programs": 0.134625,
+    "hashes_all_8": 0.0
+   },
+   "IXOR_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "IXOR_M": {
+    "programs": 0.00625625,
+    "hashes_all_8": 0.0
+   },
+   "IROR_R": {
+    "programs": 0.00036875,
+    "hashes_all_8": 0.0
+   },
+   "IROL_R": {
+    "programs": 0.1343875,
+    "hashes_all_8": 0.0
+   },
+   "ISWAP_R": {
+    "programs": 0.0177125,
+    "hashes_all_8": 0.0
+   },
+   "FSWAP_R": {
+    "programs": 0.0179125,
+    "hashes_all_8": 0.0
+   },
+   "FADD_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "FADD_M": {
+    "programs": 0.0065125,
+    "hashes_all_8": 0.0
+   },
+   "FSUB_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "FSUB_M": {
+    "programs": 0.00655,
+    "hashes_all_8": 0.0
+   },
+   "FSCAL_R": {
+    "programs": 0.00240625,
+    "hashes_all_8": 0.0
+   },
+   "FMUL_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "FDIV_M": {
+    "programs": 0.01799375,
+    "hashes_all_8": 0.0
+   },
+   "FSQRT_R": {
+    "programs": 0.00231875,
+    "hashes_all_8": 0.0
+   },
+   "CBRANCH": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "CFROUND": {
+    "programs": 0.36585625,
+    "hashes_all_8": 0.00015
+   },
+   "ISTORE": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   }
+  },
+  "effective_nops_per_program": {
+   "measured": 0.49923125,
+   "expected": 0.5
+  },
+  "memory_operands_per_program": {
+   "rd_l1": {
+    "measured": 26.90533125,
+    "expected": 26.90625
+   },
+   "rd_l2": {
+    "measured": 8.96915,
+    "expected": 8.96875
+   },
+   "rd_l3": {
+    "measured": 3.12603125,
+    "expected": 3.125
+   },
+   "wr_l1": {
+    "measured": 10.50205,
+    "expected": 10.5
+   },
+   "wr_l2": {
+    "measured": 3.5046125,
+    "expected": 3.5
+   },
+   "wr_l3": {
+    "measured": 1.9964875,
+    "expected": 2.0
+   }
+  },
+  "fp_reads_per_program": 13.99086875,
+  "per_iteration_fixed": {
+   "dataset_reads": 1.0,
+   "dataset_prefetches": 1,
+   "scratchpad_reads_64B": 2,
+   "scratchpad_writes_64B": 2,
+   "note": "dataset_reads counted by progdump; the rest fixed by spec 4.6.2"
+  },
+  "fp_share": {
+   "measured": 0.3671461181640625,
+   "configured": 0.3671875
+  },
+  "cbranch": {
+   "per_program": {
+    "n": 160000,
+    "mean": 24.99656875,
+    "sd": 4.7607757910540975,
+    "cv": 0.19045717188900566,
+    "min": 6.0,
+    "p0.1": 12.0,
+    "p1": 15.0,
+    "p50": 25.0,
+    "p99": 37.0,
+    "p99.9": 41.0,
+    "max": 47.0
+   },
+   "expected_per_program": 25.0,
+   "taken_rate_measured": 0.003895827791388592,
+   "taken_rate_expected": 0.00390625,
+   "body_length_mean": 6.206662114375198,
+   "body_length_max": 92,
+   "reexecuted_slots_per_iteration_measured": 0.6068239868164063,
+   "reexecuted_slots_per_iteration_expected": 0.6060361572265625,
+   "programs_with_no_jump_taken": 0.0,
+   "taken_per_program": {
+    "n": 160000,
+    "mean": 200.219025,
+    "sd": 40.75630898743027,
+    "cv": 0.20355862280035714,
+    "min": 41.0,
+    "p0.1": 88.0,
+    "p1": 112.0,
+    "p50": 199.0,
+    "p99": 301.0,
+    "p99.9": 338.0,
+    "max": 417.0
+   },
+   "taken_dispersion_ratio": 1.0074035463510835,
+   "programs_taken_z_above_5": 7
+  },
+  "cfround": {
+   "per_program": 1.00418125,
+   "fprc_writes_per_iteration": 1.0065442626953125,
+   "fprc_changes_per_iteration": 0.7526472747802735,
+   "writes_per_execution": 1.0
+  },
+  "critical_path_unit": {
+   "n": 160000,
+   "mean": 40.0875625,
+   "sd": 4.1131634476158885,
+   "cv": 0.10260447857401878,
+   "min": 26.0,
+   "p0.1": 29.0,
+   "p1": 31.0,
+   "p50": 40.0,
+   "p99": 50.0,
+   "p99.9": 54.0,
+   "max": 61.0
+  },
+  "critical_path_model_cycles": {
+   "n": 160000,
+   "mean": 130.056275,
+   "sd": 17.621790811983935,
+   "cv": 0.1354935839272956,
+   "min": 74.0,
+   "p0.1": 86.0,
+   "p1": 95.0,
+   "p50": 129.0,
+   "p99": 176.0,
+   "p99.9": 195.0,
+   "max": 230.0
+  },
+  "ilp_unit": {
+   "n": 160000,
+   "mean": 6.441027906730305,
+   "sd": 0.6645392314047047,
+   "cv": 0.10317285393381388,
+   "min": 4.163934426229508,
+   "p0.1": 4.7407407407407405,
+   "p1": 5.1,
+   "p50": 6.4,
+   "p99": 8.225806451612904,
+   "p99.9": 8.827586206896552,
+   "max": 9.846153846153847
+  },
+  "fp_chain_longest_share": 0.8379625,
+  "cost_model": {
+   "compute_cycles_per_iteration": {
+    "n": 160000,
+    "mean": 147.87839292924943,
+    "sd": 19.877085110371308,
+    "cv": 0.1344150738768256,
+    "min": 78.00619049072266,
+    "p0.1": 97.44881061553956,
+    "p1": 107.35407970428467,
+    "p50": 146.5697774887085,
+    "p99": 199.4358659362793,
+    "p99.9": 219.3543806495669,
+    "max": 252.51139068603516
+   },
+   "bounds": {
+    "throughput": {
+     "n": 160000,
+     "mean": 63.24853515625,
+     "sd": 3.041918263580738,
+     "cv": 0.04809468323757924,
+     "min": 50.5,
+     "p0.1": 54.25,
+     "p1": 56.375,
+     "p50": 63.25,
+     "p99": 70.625,
+     "p99.9": 73.25,
+     "max": 77.125
+    },
+    "int_chain": {
+     "n": 160000,
+     "mean": 136.10188125,
+     "sd": 17.64401483949363,
+     "cv": 0.12963828771098365,
+     "min": 75.0,
+     "p0.1": 91.0,
+     "p1": 100.0,
+     "p50": 135.0,
+     "p99": 182.0,
+     "p99.9": 199.0,
+     "max": 237.0
+    },
+    "window": {
+     "n": 160000,
+     "mean": 109.82483307291668,
+     "sd": 16.795294866459805,
+     "cv": 0.1529280254431054,
+     "min": 56.61,
+     "p0.1": 67.613295,
+     "p1": 76.32,
+     "p50": 108.55,
+     "p99": 154.22666666666666,
+     "p99.9": 172.21833333333333,
+     "max": 207.93666666666667
+    }
+   },
+   "binding_bound_share": {
+    "throughput": 0.0,
+    "int_chain": 0.9626375,
+    "window": 0.0373625
+   },
+   "mean_additive_components": {
+    "reexec": 0.14988025574684144,
+    "mispredict": 1.2693570068359374,
+    "fprc": 10.0418125
+   },
+   "memory_floor_cycles": 450.0,
+   "compute_above_memory_floor_share": 0.0,
+   "cycles_per_iteration": {
+    "n": 160000,
+    "mean": 450.0,
+    "sd": 0.0,
+    "cv": 0.0,
+    "min": 450.0,
+    "p0.1": 450.0,
+    "p1": 450.0,
+    "p50": 450.0,
+    "p99": 450.0,
+    "p99.9": 450.0,
+    "max": 450.0
+   },
+   "per_hash_compute_cycles": {
+    "n": 20000,
+    "mean": 2422839.5897528226,
+    "sd": 115607.04317157173,
+    "cv": 0.04771551680949952,
+    "min": 2029340.8918229167,
+    "p0.1": 2098580.492930104,
+    "p1": 2171550.6801171876,
+    "p50": 2419836.22859375,
+    "p99": 2703152.253515625,
+    "p99.9": 2787661.790109382,
+    "max": 2900855.951041667
+   },
+   "per_hash_cycles": {
+    "n": 20000,
+    "mean": 7372800.0,
+    "sd": 0.0,
+    "cv": 0.0,
+    "min": 7372800.0,
+    "p0.1": 7372800.0,
+    "p1": 7372800.0,
+    "p50": 7372800.0,
+    "p99": 7372800.0,
+    "p99.9": 7372800.0,
+    "max": 7372800.0
+   },
+   "cv_ratio_hash_over_program": 0.3549863525963223,
+   "adjacent_program_correlation": 0.0013548460056275297,
+   "program0_share_of_hash_compute_variance": 0.12318757985518829,
+   "skip_on_program0_free_gain": {
+    "0.01": 0.0,
+    "0.05": 0.0,
+    "0.1": 0.0,
+    "0.25": 0.0,
+    "0.5": 0.0
+   }
+  },
+  "executed_slots_per_hash": {
+   "n": 20000,
+   "mean": 4204246.2042,
+   "sd": 687.333270003397,
+   "cv": 0.00016348549457373786,
+   "min": 4201662.0,
+   "p0.1": 4202188.991,
+   "p1": 4202669.99,
+   "p50": 4204238.0,
+   "p99": 4205882.01,
+   "p99.9": 4206367.008,
+   "max": 4207286.0
+  },
+  "duplicate_programs": 0,
+  "simt": {
+   "programs_sampled": 4096,
+   "distinct_types_per_warp_slot_mean": 16.160003662109375,
+   "distinct_types_per_warp_slot_expected": 16.13545847790716,
+   "same_type_probability_two_lanes": 0.059356689453125,
+   "lane_jumps_per_iteration_mean": 0.09776319580078124,
+   "warp_iterations_with_a_jump": 0.9533456391620322
+  },
+  "hash_check_vs_library": {
+   "checked": 16,
+   "matched": 16
+  }
+ },
+ "v2": {
+  "programs": 160000,
+  "inputs": 20000,
+  "instructions_per_program": 384,
+  "instruction_mix": {
+   "IADD_RS": {
+    "configured": 0.0625,
+    "measured": 0.06251223958333334
+   },
+   "IADD_M": {
+    "configured": 0.02734375,
+    "measured": 0.027372395833333334
+   },
+   "ISUB_R": {
+    "configured": 0.0625,
+    "measured": 0.062473714192708335
+   },
+   "ISUB_M": {
+    "configured": 0.02734375,
+    "measured": 0.027357275390625
+   },
+   "IMUL_R": {
+    "configured": 0.0625,
+    "measured": 0.06250458984375
+   },
+   "IMUL_M": {
+    "configured": 0.015625,
+    "measured": 0.015610286458333334
+   },
+   "IMULH_R": {
+    "configured": 0.015625,
+    "measured": 0.015633935546875
+   },
+   "IMULH_M": {
+    "configured": 0.00390625,
+    "measured": 0.00391748046875
+   },
+   "ISMULH_R": {
+    "configured": 0.015625,
+    "measured": 0.015622574869791666
+   },
+   "ISMULH_M": {
+    "configured": 0.00390625,
+    "measured": 0.0039103190104166664
+   },
+   "IMUL_RCP": {
+    "configured": 0.03125,
+    "measured": 0.031238232421875
+   },
+   "INEG_R": {
+    "configured": 0.0078125,
+    "measured": 0.007829264322916666
+   },
+   "IXOR_R": {
+    "configured": 0.05859375,
+    "measured": 0.058547314453125
+   },
+   "IXOR_M": {
+    "configured": 0.01953125,
+    "measured": 0.019519319661458333
+   },
+   "IROR_R": {
+    "configured": 0.03125,
+    "measured": 0.031232958984375
+   },
+   "IROL_R": {
+    "configured": 0.0078125,
+    "measured": 0.00783203125
+   },
+   "ISWAP_R": {
+    "configured": 0.015625,
+    "measured": 0.015642447916666666
+   },
+   "FSWAP_R": {
+    "configured": 0.015625,
+    "measured": 0.015623811848958334
+   },
+   "FADD_R": {
+    "configured": 0.0625,
+    "measured": 0.06251077473958333
+   },
+   "FADD_M": {
+    "configured": 0.01953125,
+    "measured": 0.01952646484375
+   },
+   "FSUB_R": {
+    "configured": 0.0625,
+    "measured": 0.06242379557291667
+   },
+   "FSUB_M": {
+    "configured": 0.01953125,
+    "measured": 0.019534033203125
+   },
+   "FSCAL_R": {
+    "configured": 0.0234375,
+    "measured": 0.023469873046875
+   },
+   "FMUL_R": {
+    "configured": 0.125,
+    "measured": 0.12499571940104166
+   },
+   "FDIV_M": {
+    "configured": 0.015625,
+    "measured": 0.015624137369791668
+   },
+   "FSQRT_R": {
+    "configured": 0.0234375,
+    "measured": 0.023414436848958334
+   },
+   "CBRANCH": {
+    "configured": 0.09765625,
+    "measured": 0.09769200846354166
+   },
+   "CFROUND": {
+    "configured": 0.00390625,
+    "measured": 0.003895279947916667
+   },
+   "ISTORE": {
+    "configured": 0.0625,
+    "measured": 0.06253328450520833
+   }
+  },
+  "mix_chisquare": {
+   "statistic": 30.35845350024801,
+   "dof": 28,
+   "p_value": 0.3462908377024627
+  },
+  "type_absent": {
+   "IADD_RS": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "IADD_M": {
+    "programs": 3.125e-05,
+    "hashes_all_8": 0.0
+   },
+   "ISUB_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "ISUB_M": {
+    "programs": 2.5e-05,
+    "hashes_all_8": 0.0
+   },
+   "IMUL_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "IMUL_M": {
+    "programs": 0.0023875,
+    "hashes_all_8": 0.0
+   },
+   "IMULH_R": {
+    "programs": 0.0022125,
+    "hashes_all_8": 0.0
+   },
+   "IMULH_M": {
+    "programs": 0.22164375,
+    "hashes_all_8": 0.0
+   },
+   "ISMULH_R": {
+    "programs": 0.00240625,
+    "hashes_all_8": 0.0
+   },
+   "ISMULH_M": {
+    "programs": 0.2223625,
+    "hashes_all_8": 0.0
+   },
+   "IMUL_RCP": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "INEG_R": {
+    "programs": 0.04889375,
+    "hashes_all_8": 0.0
+   },
+   "IXOR_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "IXOR_M": {
+    "programs": 0.000425,
+    "hashes_all_8": 0.0
+   },
+   "IROR_R": {
+    "programs": 6.25e-06,
+    "hashes_all_8": 0.0
+   },
+   "IROL_R": {
+    "programs": 0.0493875,
+    "hashes_all_8": 0.0
+   },
+   "ISWAP_R": {
+    "programs": 0.00218125,
+    "hashes_all_8": 0.0
+   },
+   "FSWAP_R": {
+    "programs": 0.00246875,
+    "hashes_all_8": 0.0
+   },
+   "FADD_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "FADD_M": {
+    "programs": 0.00051875,
+    "hashes_all_8": 0.0
+   },
+   "FSUB_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "FSUB_M": {
+    "programs": 0.00054375,
+    "hashes_all_8": 0.0
+   },
+   "FSCAL_R": {
+    "programs": 0.00013125,
+    "hashes_all_8": 0.0
+   },
+   "FMUL_R": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "FDIV_M": {
+    "programs": 0.00249375,
+    "hashes_all_8": 0.0
+   },
+   "FSQRT_R": {
+    "programs": 0.00014375,
+    "hashes_all_8": 0.0
+   },
+   "CBRANCH": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   },
+   "CFROUND": {
+    "programs": 0.22244375,
+    "hashes_all_8": 0.0
+   },
+   "ISTORE": {
+    "programs": 0.0,
+    "hashes_all_8": 0.0
+   }
+  },
+  "effective_nops_per_program": {
+   "measured": 0.75095,
+   "expected": 0.75
+  },
+  "memory_operands_per_program": {
+   "rd_l1": {
+    "measured": 40.37115625,
+    "expected": 40.359375
+   },
+   "rd_l2": {
+    "measured": 13.45858125,
+    "expected": 13.453125
+   },
+   "rd_l3": {
+    "measured": 4.681,
+    "expected": 4.6875
+   },
+   "wr_l1": {
+    "measured": 15.7644875,
+    "expected": 15.75
+   },
+   "wr_l2": {
+    "measured": 5.24935625,
+    "expected": 5.25
+   },
+   "wr_l3": {
+    "measured": 2.9989375,
+    "expected": 3.0
+   }
+  },
+  "fp_reads_per_program": 20.9989,
+  "per_iteration_fixed": {
+   "dataset_reads": 1.0,
+   "dataset_prefetches": 1,
+   "scratchpad_reads_64B": 2,
+   "scratchpad_writes_64B": 2,
+   "note": "dataset_reads counted by progdump; the rest fixed by spec 4.6.2"
+  },
+  "fp_share": {
+   "measured": 0.367123046875,
+   "configured": 0.3671875
+  },
+  "cbranch": {
+   "per_program": {
+    "n": 160000,
+    "mean": 37.51373125,
+    "sd": 5.818028919823418,
+    "cv": 0.15509064883604237,
+    "min": 13.0,
+    "p0.1": 21.0,
+    "p1": 25.0,
+    "p50": 37.0,
+    "p99": 52.0,
+    "p99.9": 57.0,
+    "max": 68.0
+   },
+   "expected_per_program": 37.5,
+   "taken_rate_measured": 0.003895757019372142,
+   "taken_rate_expected": 0.00390625,
+   "body_length_mean": 6.250615066449835,
+   "body_length_max": 110,
+   "reexecuted_slots_per_iteration_measured": 0.9169885070800782,
+   "reexecuted_slots_per_iteration_expected": 0.9159527099609375,
+   "programs_with_no_jump_taken": 0.0,
+   "taken_per_program": {
+    "n": 160000,
+    "mean": 300.47426875,
+    "sd": 49.985207723475234,
+    "cv": 0.1663543701476276,
+    "min": 114.0,
+    "p0.1": 159.0,
+    "p1": 191.0,
+    "p50": 299.0,
+    "p99": 422.0,
+    "p99.9": 467.0,
+    "max": 2384.0
+   },
+   "taken_dispersion_ratio": 1.101889065517356,
+   "programs_taken_z_above_5": 11
+  },
+  "cfround": {
+   "per_program": 1.4957875,
+   "fprc_writes_per_iteration": 0.10015497741699218,
+   "fprc_changes_per_iteration": 0.07398688354492187,
+   "writes_per_execution": 0.06679925120351089
+  },
+  "critical_path_unit": {
+   "n": 160000,
+   "mean": 59.49274375,
+   "sd": 5.0576755750393705,
+   "cv": 0.08501331853667231,
+   "min": 40.0,
+   "p0.1": 45.0,
+   "p1": 48.0,
+   "p50": 59.0,
+   "p99": 72.0,
+   "p99.9": 76.0,
+   "max": 89.0
+  },
+  "critical_path_model_cycles": {
+   "n": 160000,
+   "mean": 184.4937875,
+   "sd": 21.133080471127666,
+   "cv": 0.11454629859082743,
+   "min": 111.0,
+   "p0.1": 130.0,
+   "p1": 141.0,
+   "p50": 183.0,
+   "p99": 239.0,
+   "p99.9": 260.0,
+   "max": 314.0
+  },
+  "ilp_unit": {
+   "n": 160000,
+   "mean": 6.488713307896656,
+   "sd": 0.5542817592190612,
+   "cv": 0.08542244554779597,
+   "min": 4.303370786516854,
+   "p0.1": 5.026315789473684,
+   "p1": 5.319444444444445,
+   "p50": 6.47457627118644,
+   "p99": 7.9375,
+   "p99.9": 8.511111111111111,
+   "max": 9.6
+  },
+  "fp_chain_longest_share": 0.84209375,
+  "cost_model": {
+   "compute_cycles_per_iteration": {
+    "n": 160000,
+    "mean": 236.67178227603435,
+    "sd": 29.871126712806806,
+    "cv": 0.1262133002318274,
+    "min": 136.3886947631836,
+    "p0.1": 160.63167844136555,
+    "p1": 175.23969506072999,
+    "p50": 234.7944884999593,
+    "p99": 314.2210879007975,
+    "p99.9": 345.3348747724927,
+    "max": 426.68679077148437
+   },
+   "bounds": {
+    "throughput": {
+     "n": 160000,
+     "mean": 94.88436171875,
+     "sd": 3.7285601863366695,
+     "cv": 0.03929583462223862,
+     "min": 79.75,
+     "p0.1": 83.875,
+     "p1": 86.5,
+     "p50": 94.875,
+     "p99": 103.75,
+     "p99.9": 106.75,
+     "max": 112.625
+    },
+    "int_chain": {
+     "n": 160000,
+     "mean": 189.92143125,
+     "sd": 21.39806404639633,
+     "cv": 0.11266798015137813,
+     "min": 115.0,
+     "p0.1": 132.0,
+     "p1": 145.0,
+     "p50": 189.0,
+     "p99": 244.0,
+     "p99.9": 265.0,
+     "max": 305.0
+    },
+    "window": {
+     "n": 160000,
+     "mean": 233.60345222916663,
+     "sd": 29.882439074528993,
+     "cv": 0.12791950970490842,
+     "min": 129.19666666666666,
+     "p0.1": 157.16159833333333,
+     "p1": 172.05666666666667,
+     "p50": 231.74666666666667,
+     "p99": 311.2669166666669,
+     "p99.9": 342.02689333333745,
+     "max": 422.9866666666667
+    }
+   },
+   "binding_bound_share": {
+    "throughput": 0.0,
+    "int_chain": 0.00075625,
+    "window": 0.99924375
+   },
+   "mean_additive_components": {
+    "reexec": 0.22647300682862598,
+    "mispredict": 1.9049941650390625,
+    "fprc": 0.9348671875
+   },
+   "memory_floor_cycles": 225.0,
+   "compute_above_memory_floor_share": 0.63188125,
+   "cycles_per_iteration": {
+    "n": 160000,
+    "mean": 243.34348804479922,
+    "sd": 22.438611301082037,
+    "cv": 0.09220962303684542,
+    "min": 225.0,
+    "p0.1": 225.0,
+    "p1": 225.0,
+    "p50": 234.7944884999593,
+    "p99": 314.2210879007975,
+    "p99.9": 345.3348747724927,
+    "max": 426.68679077148437
+   },
+   "per_hash_compute_cycles": {
+    "n": 20000,
+    "mean": 3877630.480810547,
+    "sd": 173244.8078763585,
+    "cv": 0.044678008576037626,
+    "min": 3262928.1481250003,
+    "p0.1": 3374281.7909379164,
+    "p1": 3494133.503228125,
+    "p50": 3874071.063645833,
+    "p99": 4295885.214599999,
+    "p99.9": 4452303.279423859,
+    "max": 4652933.672291666
+   },
+   "per_hash_cycles": {
+    "n": 20000,
+    "mean": 3986939.7081259894,
+    "sd": 130074.20556642163,
+    "cv": 0.03262507464091083,
+    "min": 3686400.0,
+    "p0.1": 3696779.40241125,
+    "p1": 3738911.185440625,
+    "p50": 3975960.5099479165,
+    "p99": 4330838.426387498,
+    "p99.9": 4474342.161111044,
+    "max": 4665463.050208334
+   },
+   "cv_ratio_hash_over_program": 0.3539881176862778,
+   "adjacent_program_correlation": 0.0021063337749258415,
+   "program0_share_of_hash_compute_variance": 0.12621409311784765,
+   "skip_on_program0_free_gain": {
+    "0.01": 0.00046763949642425473,
+    "0.05": 0.001727632428834447,
+    "0.1": 0.002914949462768268,
+    "0.25": 0.005728773769256179,
+    "0.5": 0.008973379258880199
+   }
+  },
+  "executed_slots_per_hash": {
+   "n": 20000,
+   "mean": 6306479.9397,
+   "sd": 857.1884615805578,
+   "cv": 0.0001359218565311625,
+   "min": 6302991.0,
+   "p0.1": 6303855.0,
+   "p1": 6304509.99,
+   "p50": 6306474.0,
+   "p99": 6308455.0,
+   "p99.9": 6309193.034,
+   "max": 6314563.0
+  },
+  "duplicate_programs": 0,
+  "simt": {
+   "programs_sampled": 4096,
+   "distinct_types_per_warp_slot_mean": 16.14129638671875,
+   "distinct_types_per_warp_slot_expected": 16.13545847790716,
+   "same_type_probability_two_lanes": 0.059356689453125,
+   "lane_jumps_per_iteration_mean": 0.14671595153808595,
+   "warp_iterations_with_a_jump": 0.9909322972682092
+  },
+  "hash_check_vs_library": {
+   "checked": 16,
+   "matched": 16
+  }
+ }
+}
