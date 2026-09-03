@@ -180,6 +180,17 @@ def test_fast_mode_sweep_is_verified(session, verifier):
     assert verifier.verify(init)["hashes_checked"] == 1
 
 
+@pytest.mark.slow
+@needs_rxbench
+@pytest.mark.parametrize("name", ["thread_scaling", "mode_matrix", "qos_placement", "v1_vs_v2",
+                                  "dataset_init", "sustained", "tune"])
+def test_experiment_smoke(name):
+    script = bench.ROOT / "experiments" / f"bench_{name}.py"
+    out = subprocess.run([sys.executable, str(script), "--smoke"], capture_output=True, text=True, timeout=300)
+    assert out.returncode == 0, out.stderr[-2000:]
+    assert (bench.SMOKE / f"bench_{name}.json").exists()
+
+
 def test_blob_places_nonce_little_endian():
     info = {"template": "00" * 76, "nonce_offset": 39}
     v = bench.Verifier(TAG, info=info)
