@@ -310,9 +310,11 @@ def cost_model(t, v2):
     iteration) and the window bound (the full critical path overlapped across
     iterations by a WINDOW_UOPS reorder buffer), plus expected CBRANCH
     re-execution and misprediction and rounding-mode writes (v2 applies only
-    1/16 of CFROUNDs). Memory: the dataset read is prefetched 1 (v1) or 2 (v2)
-    iterations ahead, so an iteration cannot be shorter than the dataset latency
-    divided by that distance. cycles = max(compute, memory floor)."""
+    1/16 of CFROUNDs). Memory: the line read at the end of iteration i is
+    requested when program i-d ends (prefetch distance d = 1 in v1, 2 in v2),
+    and nothing of iteration i+1 can start before it arrives, so in steady
+    state (d+1) * cycles - compute >= latency. cycles = max(compute,
+    (compute + latency) / (d+1)): compute-bound exactly when compute >= latency / d."""
     u = uops(t)
     size = params.PROGRAM_SIZE_V2 if v2 else params.PROGRAM_SIZE_V1
     col = lambda k: np.asarray(t[k], dtype=float)
@@ -325,10 +327,12 @@ def cost_model(t, v2):
     mispredict = col("n_CBRANCH") / 256 * MISPREDICT_CYCLES
     fprc = col("n_CFROUND") / (16 if v2 else 1) * FPRC_WRITE_CYCLES
     compute = bounds.max(0) + reexec + mispredict + fprc
-    floor = DATASET_LATENCY_CYCLES / (2 if v2 else 1)
+    distance = 2 if v2 else 1
+    floor = (compute + DATASET_LATENCY_CYCLES) / (distance + 1)
     return {"throughput": tput, "int_chain": chain, "window": window, "compute": compute,
             "binding": np.array(["throughput", "int_chain", "window"])[bounds.argmax(0)],
-            "memory_floor": floor, "cycles": np.maximum(compute, floor),
+            "memory_floor": floor, "compute_bound_above": DATASET_LATENCY_CYCLES / distance,
+            "cycles": np.maximum(compute, floor),
             "reexec": reexec, "mispredict": mispredict, "fprc": fprc}
 
 

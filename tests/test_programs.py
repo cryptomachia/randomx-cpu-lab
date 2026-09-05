@@ -52,7 +52,8 @@ def test_dynamic_counters_are_consistent(dumps, v2):
         assert np.all(tab["ds_reads"] == iters)
         assert np.all((tab["executed"] > slots) == (tab["taken"] > 0))
         assert np.all(tab["executed"] >= slots)
-        assert np.all(tab["cbr_exec"] >= iters * tab["n_CBRANCH"])
+        # a jump lands after the previous CBRANCH, so it re-executes only itself
+        assert np.all(tab["cbr_exec"] == iters * tab["n_CBRANCH"] + tab["taken"])
         assert np.all(tab["cfround_exec"] >= iters * tab["n_CFROUND"])
         assert np.all(tab["fprc_changes"] <= tab["fprc_writes"])
         if v2:
@@ -111,21 +112,24 @@ def test_cost_model_memory_floor_and_bounds(dumps):
     for v2 in (False, True):
         _, tab = dumps[v2][0]
         c = P.cost_model(tab, v2)
-        floor = P.DATASET_LATENCY_CYCLES / (2 if v2 else 1)
-        assert np.all(c["cycles"] >= floor)
+        d = 2 if v2 else 1
+        # the line requested when program i-d ends must arrive before iteration i+1 starts
+        assert np.all((d + 1) * c["cycles"] - c["compute"] >= P.DATASET_LATENCY_CYCLES - 1e-9)
+        assert np.all(c["cycles"] >= c["compute"])
+        assert np.all((c["cycles"] == c["compute"])
+                      == (c["compute"] >= P.DATASET_LATENCY_CYCLES / d))
         assert np.all(c["compute"] >= np.maximum(c["throughput"], c["int_chain"]))
         assert np.all(tab["cp_model"] >= tab["cp_int"])
 
 
-def test_bench_prefix_reports_costs():
-    P.ensure_progdump()
+def test_bench_prefix_reports_costs(dumps):
     res = P.bench_prefix(False, 50)
     assert res["count"] == 50
     assert res["ns_prefix"] > 0 and res["ns_prefix_and_features"] > 0
 
 
 @pytest.mark.slow
-def test_fast_mode_dump_matches_library_vm():
+def test_fast_mode_dump_matches_library_vm(dumps):
     """Fast (dataset) mode progdump against the library's own light-mode VM."""
     tab = P.dump(False, start=0, count=2, threads=4, cache=False)
     base = recommended_flags() & (Flags.HARD_AES | Flags.JIT | Flags.SECURE)
