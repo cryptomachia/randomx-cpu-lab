@@ -112,11 +112,17 @@ def masked_median(ns, mask):
         return np.nanmedian(x, axis=0)
 
 
+def _degenerate(a, b):
+    return len(a) < 3 or np.ptp(a) == 0 or np.ptp(b) == 0
+
+
 def spearman(a, b):
-    """Rank correlation, or None when either side is constant (e.g. a flat model)."""
-    if np.ptp(a) == 0 or np.ptp(b) == 0:
-        return None
-    return float(stats.spearmanr(a, b)[0])
+    """Rank correlation, or None for < 3 pairs or a constant side (e.g. a flat model)."""
+    return None if _degenerate(a, b) else float(stats.spearmanr(a, b)[0])
+
+
+def log_pearson(a, b):
+    return None if _degenerate(a, b) else float(np.corrcoef(np.log(a), np.log(b))[0, 1])
 
 
 def select_inputs(tab, keep):
@@ -198,14 +204,15 @@ def analyse(tab, ns, cpu, bench):
     if len(ns) >= 2:
         both = mask[0] & mask[1]
         res["repeat_spearman"] = spearman(ns[0][both], ns[1][both])
-        res["repeat_pearson_log"] = float(np.corrcoef(np.log(ns[0][both]), np.log(ns[1][both]))[0, 1])
+        res["repeat_pearson_log"] = log_pearson(ns[0][both], ns[1][both])
         held = masked_median(ns[1:], mask[1:])[ok]
         first = np.where(mask[0], ns[0].astype(float), np.nan)[ok]
         good = ~np.isnan(held) & ~np.isnan(first)
-        res["oracle_repeat"] = {
-            "spearman": spearman(first[good], held[good]),
-            "gain": gains(held[good], first[good], {"free": (0.0, 0.0)})["free"],
-            "note": "rank by timing pass 1, evaluate on the median of the other passes"}
+        if good.sum() >= 3:  # a busy machine can leave almost no fast-CPU pairs
+            res["oracle_repeat"] = {
+                "spearman": spearman(first[good], held[good]),
+                "gain": gains(held[good], first[good], {"free": (0.0, 0.0)})["free"],
+                "note": "rank by timing pass 1, evaluate on the median of the other passes"}
     res["oracle_in_sample"] = gains(y, y, {"free": (0.0, 0.0)})["free"]
     res["predictors"] = {}
     scores = predictors(sub, y)
@@ -229,8 +236,9 @@ def figures(runs, prefix):
         axes[0].hist(rel, bins=np.linspace(lo, hi, 100), density=True, alpha=0.55,
                      label=f"{v}: median {np.median(y) / 1e3:.0f} us")
         if len(ns) >= 2:
+            rho = res["repeat_spearman"]
             axes[1].loglog(ns[0] / 1e3, ns[1] / 1e3, ".", ms=1.5, alpha=0.4,
-                           label=f"{v}: Spearman {res['repeat_spearman']:.3f}")
+                           label=f"{v}: Spearman " + ("n/a" if rho is None else f"{rho:.3f}"))
     axes[0].set_xlabel("per-nonce hash time / median (0.1-99.9 percentile range)")
     axes[0].set_ylabel("density")
     axes[0].legend()
@@ -319,9 +327,9 @@ def main():
         runs[v] = (res, y, ns, scores)
         print(f"{v}: {time.time() - t0:.0f} s, hashes matched {matched}/{len(hashes)}, "
               f"mean {res['hash_time_us']['mean']:.0f} us", flush=True)
-    figures(runs, prefix)
-    out_json.write_text(json.dumps(out, indent=1) + "\n")
+        out_json.write_text(json.dumps(out, indent=1) + "\n")  # per version: a later failure keeps it
     print("wrote", out_json.relative_to(ROOT))
+    figures(runs, prefix)
 
 
 if __name__ == "__main__":
