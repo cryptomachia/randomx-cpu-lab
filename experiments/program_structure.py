@@ -50,14 +50,16 @@ def simt(tab, v2):
     warps = types[: len(types) // WARP * WARP].reshape(-1, WARP, types.shape[1])
     distinct = np.array([[len(np.unique(w[:, s])) for s in range(w.shape[1])] for w in warps])
     p = np.array([f for _, f in params.FREQUENCIES], dtype=float) / 256
-    lane_jump = tab["taken"] / params.PROGRAM_ITERATIONS  # jumps per iteration per program
+    lane_jump = P.per_input(tab, "taken").ravel() / params.PROGRAM_ITERATIONS
+    # Warps of 32 consecutive programs; a lane's jumps in one iteration taken as Poisson.
+    warp_jump = lane_jump[: len(lane_jump) // WARP * WARP].reshape(-1, WARP).sum(1)
     return {
         "programs_sampled": int(len(raw)),
         "distinct_types_per_warp_slot_mean": float(distinct.mean()),
         "distinct_types_per_warp_slot_expected": float(np.sum(1 - (1 - p) ** WARP)),
         "same_type_probability_two_lanes": float(np.sum(p ** 2)),
         "lane_jumps_per_iteration_mean": float(lane_jump.mean()),
-        "warp_iterations_with_a_jump": float(1 - np.mean((1 - lane_jump) ** WARP)),
+        "warp_iterations_with_a_jump": float(1 - np.mean(np.exp(-warp_jump))),
     }
 
 
@@ -79,7 +81,9 @@ def summarise(tab, v2):
     adjacent = np.corrcoef(compute[:, :-1].ravel(), compute[:, 1:].ravel())[0, 1]
     executed = P.per_input(tab, "executed").sum(1)
     reexec = (tab["executed"] - iters * size) / iters
-    expected_taken = tab["cbr_exec"] * 2.0 ** -params.JUMP_BITS
+    # Expected jumps from the static branch count: every jump re-executes its own
+    # CBRANCH once (cbr_exec = static + taken), so cbr_exec depends on the outcome.
+    expected_taken = iters * tab["n_CBRANCH"] * 2.0 ** -params.JUMP_BITS
     return {
         "programs": n,
         "inputs": n // params.PROGRAM_COUNT,
@@ -110,6 +114,8 @@ def summarise(tab, v2):
             "expected_per_program": exp["cbranch"],
             "taken_rate_measured": float(tab["taken"].sum() / tab["cbr_exec"].sum()),
             "taken_rate_expected": 2.0 ** -params.JUMP_BITS,
+            "taken_per_static_execution": float(tab["taken"].sum()
+                                                / (iters * tab["n_CBRANCH"].sum())),
             "body_length_mean": float(tab["cbr_body"].sum() / tab["n_CBRANCH"].sum()),
             "body_length_max": int(tab["cbr_body_max"].max()),
             "reexecuted_slots_per_iteration_measured": float(reexec.mean()),
@@ -137,7 +143,8 @@ def summarise(tab, v2):
                                     for k in ("throughput", "int_chain", "window")},
             "mean_additive_components": {k: float(np.mean(cost[k]))
                                          for k in ("reexec", "mispredict", "fprc")},
-            "memory_floor_cycles": float(cost["memory_floor"]),
+            "memory_floor_cycles": P.describe(cost["memory_floor"]),
+            "compute_bound_above_cycles": float(cost["compute_bound_above"]),
             "compute_above_memory_floor_share": float(np.mean(cost["compute"] > cost["memory_floor"])),
             "cycles_per_iteration": P.describe(cost["cycles"]),
             "per_hash_compute_cycles": P.describe(hash_compute),
@@ -228,8 +235,8 @@ def figures(tabs, out):
         axes[0].hist(tab["cp_model"], bins=60, density=True, alpha=0.4, color=color,
                      label=f"{v} all registers")
         axes[1].hist(cost["compute"], bins=60, density=True, alpha=0.55, color=color, label=v)
-        axes[1].axvline(cost["memory_floor"], color=color, ls="--",
-                        label=f"{v} dataset-latency floor")
+        axes[1].axvline(cost["compute_bound_above"], color=color, ls="--",
+                        label=f"{v} compute-bound threshold")
         axes[2].hist(per_hash / per_hash.mean(), bins=60, density=True, alpha=0.55, color=color,
                      label=f"{v}: CV {per_hash.std() / per_hash.mean():.3f}")
     axes[0].set_xlabel("critical path of one iteration (model cycles)")
