@@ -4,13 +4,14 @@
 #   experiments/run_measurements.sh           # full run (~70 min), writes results/bench_*.json, figures/bench_*.png
 #   experiments/run_measurements.sh --smoke   # every experiment's --smoke run (outputs in data/cache/smoke/)
 #
-# Close other apps, plug in (the run is also valid on battery, but the power
-# source is recorded), and turn Low Power Mode off. The Mac is kept awake with
-# caffeinate for the duration. Order: correctness preflight, then the
-# experiments whose outputs later ones read (thread scaling -> best thread
-# count; tune -> sustained config), and the 20-minute sustained run last, after
-# a cool-down. Env: PYTHON, PAUSE (s between experiments, default 20),
-# COOLDOWN (s before the sustained run, default 180).
+# Builds whatever is missing first (RandomX via scripts/build_randomx.sh, which
+# needs git and cmake; then rxbench). Close other apps, plug in (the run is
+# also valid on battery, but the power source is recorded), and turn Low Power
+# Mode off. The Mac is kept awake with caffeinate for the duration. Order:
+# correctness preflight, then the experiments whose outputs later ones read
+# (thread scaling -> best thread count; tune -> sustained config), and the
+# 20-minute sustained run last, after a cool-down. Env: PYTHON, PAUSE (s between
+# experiments, default 20), COOLDOWN (s before the sustained run, default 180).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -27,6 +28,9 @@ cd "$ROOT"
 say() { printf '[%s] %s\n' "$(date +%H:%M:%S)" "$*"; }
 
 for tag in v1.2.1 v2.0.1; do
+  if ! ls "third_party/build-$tag"/librandomx.* >/dev/null 2>&1; then
+    scripts/build_randomx.sh "$tag"
+  fi
   if [ ! -x "build/rxbench-$tag" ] || [ tools/rxbench.c -nt "build/rxbench-$tag" ]; then
     tools/build_rxbench.sh "$tag"
   fi
