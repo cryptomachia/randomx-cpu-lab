@@ -8,9 +8,13 @@ rate (last 5 min) and the haircut between them.
 
 xmrig --bench=N scores a fixed amount of work: N hashes (250K, 500K, 1M..10M)
 divided by the time from worker start until the last worker finishes
-(xmrig src/base/net/stratum/benchmark/BenchClient.cpp, onBenchDone). The same
-score is emulated here from the cumulative hash trace, which shows how much of
-a published xmrig number is burst. --smoke runs 20 s in light mode.
+(xmrig src/base/net/stratum/benchmark/BenchClient.cpp, onBenchDone). Its clock
+starts when the CPU backend launches the worker threads, which happens only
+once the dataset is ready (Miner.cpp onDatasetReady -> Workers.cpp start), so
+dataset init is excluded; worker VM creation is inside xmrig's clock but before
+t = 0 here. The same score is emulated here from the cumulative hash trace,
+which shows how much of a published xmrig number is burst. --smoke runs 20 s in
+light mode.
 
     python3 experiments/bench_sustained.py [--smoke] [--estimate] [--minutes M]
 """
@@ -76,6 +80,7 @@ def analyse(samples, cfg, clusters):
         "thermal_states_seen": sorted({s["thermal"] for s in samples}),
         "first_non_nominal_thermal_t": next((s["t"] for s in samples if s["thermal"] > 0), None),
         "samples_with_paging": sum(bench.paged(s) for s in samples),
+        "samples_with_decompressions": sum(bench.decompressed(s) for s in samples),
         "p_core_share": p_share,
         "xmrig_fixed_work": [fixed_work_score(t, hashes, n) for n in cfg["xmrig_sizes"]],
     }

@@ -300,6 +300,12 @@ def paged(rec):
     return vm.get("majflt", 0) > 0 or vm.get("swapins", 0) > 0
 
 
+def decompressed(rec):
+    """True if the memory compressor decompressed pages during the window (system-wide:
+    it also counts other processes, so on a busy machine nearly every window shows it)."""
+    return rec.get("vm", {}).get("decompressions", 0) > 0
+
+
 def smoke_mode(smoke):
     """--smoke runs use light mode: no 2080 MiB dataset build, so they fit in 30 s
     on a busy machine. The fast path is covered by the slow tests and the
@@ -316,7 +322,8 @@ def summarize_trials(trials, clusters=None):
     for cfg, ts in groups.items():
         row = dict(parse_spec(cfg), config=cfg, hs=stats.summarize([t["hs"] for t in ts]),
                    incomplete_trials=sum(not t["complete"] for t in ts),
-                   paging_trials=sum(paged(t) for t in ts))
+                   paging_trials=sum(paged(t) for t in ts),
+                   decompression_trials=sum(decompressed(t) for t in ts))
         n = ts[0]["threads"]
         row["thread_hs_median"] = [stats.summarize([t["per_thread"][i]["hs"] for t in ts])["median"]
                                    for i in range(n)]
