@@ -170,7 +170,8 @@ static int thermal_state(void) {
 }
 
 /* Process page faults plus system-wide compressor activity: a trial whose window
- * shows decompressions or swap-ins was slowed by memory pressure. */
+ * shows decompressions or swap-ins may have been slowed by memory pressure (the
+ * system-wide counters also move for other processes' pages). */
 typedef struct {
     uint64_t minflt, majflt, decompressions, swapins;
 } vmstat_t;
@@ -242,10 +243,16 @@ static int qos_lookup(const char *s, size_t len) {
     return -1;
 }
 
+/* Copy s into buf, refusing to truncate it silently. */
+static void copy_arg(char *buf, size_t size, const char *s) {
+    if ((size_t)snprintf(buf, size, "%s", s) >= size)
+        die("argument too long", s);
+}
+
 static void parse_qos(config_t *c, const char *spec) {
     int filled = 0, last = 0;
     char buf[160];
-    snprintf(buf, sizeof buf, "%s", spec);
+    copy_arg(buf, sizeof buf, spec);
     c->qos_spec[0] = 0;
     for (char *save = NULL, *item = strtok_r(buf, "+", &save); item; item = strtok_r(NULL, "+", &save)) {
         char *star = strchr(item, '*');
@@ -273,7 +280,7 @@ static config_t parse_config(const char *spec) {
     config_t c = {.v2 = 0, .full = 1, .jit = 1, .hard_aes = 1, .batch = 1, .threads = 1};
     parse_qos(&c, "unset");
     char buf[256];
-    snprintf(buf, sizeof buf, "%s", spec);
+    copy_arg(buf, sizeof buf, spec);
     for (char *save = NULL, *kv = strtok_r(buf, ",", &save); kv; kv = strtok_r(NULL, ",", &save)) {
         char *eq = strchr(kv, '=');
         if (!eq)
@@ -749,10 +756,13 @@ static void cmd_info(void) {
 static int parse_list(const char *s, int *out, int max) {
     int n = 0;
     char buf[256];
-    snprintf(buf, sizeof buf, "%s", s);
-    for (char *save = NULL, *t = strtok_r(buf, ",", &save); t && n < max; t = strtok_r(NULL, ",", &save))
+    copy_arg(buf, sizeof buf, s);
+    for (char *save = NULL, *t = strtok_r(buf, ",", &save); t; t = strtok_r(NULL, ",", &save)) {
+        if (n == max)
+            die("too many thread counts", s);
         if ((out[n++] = atoi(t)) < 1 || out[n - 1] > MAX_THREADS)
             die("thread counts must be in 1..64", t);
+    }
     return n;
 }
 
@@ -819,8 +829,11 @@ static void command(int argc, char **argv, int top) {
         size_t cap = 0;
         while (getline(&line, &cap, stdin) > 0) {
             int n = 0;
-            for (char *save = NULL, *t = strtok_r(line, " \t\r\n", &save); t && n < 256; t = strtok_r(NULL, " \t\r\n", &save))
+            for (char *save = NULL, *t = strtok_r(line, " \t\r\n", &save); t; t = strtok_r(NULL, " \t\r\n", &save)) {
+                if (n == 256)
+                    die("more than 256 tokens on one serve line", NULL);
                 tok[n++] = t;
+            }
             if (n)
                 command(n, tok, 0);
         }
