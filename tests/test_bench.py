@@ -5,10 +5,12 @@ bench.UPSTREAM_REFERENCE and checked against the upstream source here) and
 hashes recomputed through rxlab.binding. Timing values are never asserted.
 """
 import functools
+import importlib.util
 import struct
 import subprocess
 import sys
 
+import numpy as np
 import pytest
 
 from rxlab import bench, binding, tune
@@ -68,7 +70,8 @@ def test_rxbench_echoes_canonical_specs(session):
 
 
 @needs_rxbench
-@pytest.mark.parametrize("cfg", [{"v": 1, "batch": True}, {"v": 2, "batch": False}, {"v": 1, "jit": False}])
+@pytest.mark.parametrize("cfg", [{"v": 1, "batch": True}, {"v": 2, "batch": False}, {"v": 1, "jit": False},
+                                 {"v": 2, "jit": False, "aes": "soft", "batch": False}])
 def test_verify_xor_matches_binding(session, verifier, cfg):
     """rxbench's XOR over nonces 0..15 equals the XOR of binding light hashes."""
     rec = next(r for r in session.run("verify", "--nonces", 16, bench.spec(mode="light", threads=3, **cfg))
@@ -195,3 +198,28 @@ def test_blob_places_nonce_little_endian():
     info = {"template": "00" * 76, "nonce_offset": 39}
     v = bench.Verifier(TAG, info=info)
     assert v.blob(0x01020304)[39:43] == struct.pack("<I", 0x01020304)
+
+
+def _experiment(name):
+    spec = importlib.util.spec_from_file_location(name, bench.ROOT / "experiments" / f"{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_xmrig_fixed_work_score():
+    """N hashes over the (interpolated) time the cumulative count reaches N."""
+    sustained = _experiment("bench_sustained")
+    t, hashes = np.array([10.0, 20.0]), np.array([100.0, 300.0])
+    assert sustained.fixed_work_score(t, hashes, 100) == {"hashes": 100, "seconds": 10.0, "hs": 10.0}
+    mid = sustained.fixed_work_score(t, hashes, 250)
+    assert mid["seconds"] == pytest.approx(15.0) and mid["hs"] == pytest.approx(250 / 15)
+    assert sustained.fixed_work_score(t, hashes, 401) is None
+    assert [sustained.size_label(n) for n in (250_000, 1_000_000, 10_000_000)] == ["250K", "1M", "10M"]
+
+
+def test_contamination_flags():
+    quiet = {"vm": {"minflt": 9, "majflt": 0, "decompressions": 0, "swapins": 0}}
+    assert not bench.paged(quiet) and not bench.decompressed(quiet)
+    assert bench.paged({"vm": {"majflt": 1}}) and bench.paged({"vm": {"swapins": 2}})
+    assert bench.decompressed({"vm": {"decompressions": 5}}) and not bench.paged({"vm": {"decompressions": 5}})

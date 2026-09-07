@@ -27,6 +27,12 @@ def test_bootstrap_is_deterministic():
     assert stats.bootstrap_ci(x, np.mean, seed=1) != stats.bootstrap_ci(x, np.mean, seed=2)
 
 
+def test_small_sample_interval_is_the_range():
+    # at n = 2 or 3 the bootstrap median interval collapses onto [min, max]
+    assert stats.bootstrap_ci([10.0, 12.0, 15.0]) == [10.0, 15.0]
+    assert stats.bootstrap_ci([10.0, 15.0]) == [10.0, 15.0]
+
+
 def test_single_value():
     s = stats.summarize([42.0])
     assert s["sd"] == 0.0 and s["ci95"] == [42.0, 42.0]

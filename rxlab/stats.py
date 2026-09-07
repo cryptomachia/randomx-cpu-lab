@@ -2,6 +2,12 @@
 
 Bootstrap resampling always uses a fixed seed, so the same trials give the same
 intervals on every run. Intervals are percentile bootstraps at 95%.
+
+Small samples: with 2 or 3 values the bootstrap interval of a median is exactly
+[min, max], which covers the true median only 1 - 2**(1 - n) of the time (50%
+at n = 2, 75% at n = 3), and the rank tests cannot reach p < 0.05 (3 vs 3
+Mann-Whitney: p >= 0.1; 3 Wilcoxon pairs: p >= 0.25). Read such intervals as
+ranges, not 95% intervals.
 """
 import numpy as np
 
