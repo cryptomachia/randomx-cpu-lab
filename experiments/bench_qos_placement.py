@@ -55,10 +55,9 @@ def analyse(rows, labels, p, e):
                 thread_rates["E"].append(hs)
     out = {"cluster_curves": curves,
            "thread_rate_by_cluster": {k: stats.summarize(v) for k, v in thread_rates.items() if v}}
-    best_p = max(curves["P"], key=lambda c: c["hs_median"])
-    best_e = max(curves["E"], key=lambda c: c["hs_median"])
+    best = {k: max(c, key=lambda x: x["hs_median"]) if c else None for k, c in curves.items()}
     mix = by_label.get(f"P x{p} + E x{e}")
-    out["best_p_only"], out["best_e_only"] = best_p, best_e
+    out["best_p_only"], out["best_e_only"] = best["P"], best["E"]
     if mix:
         out["additivity"] = {
             "mixed_hs_median": mix["hs"]["median"],
