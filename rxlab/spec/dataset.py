@@ -5,6 +5,8 @@ programs unrolled into straight-line integer code (the same idea as the C
 library's JIT for dataset init). reference_item() follows the spec text with
 the superscalar interpreter; both must agree.
 """
+import operator
+
 import numpy as np
 
 from rxlab.spec import params, superscalar
@@ -47,7 +49,9 @@ def _compile(programs, words):
     namespace = {"M": MASK64, "S": 1 << 63, "LINES": params.CACHE_LINE_COUNT, "words": words,
                  "initial_registers": initial_registers}
     exec("\n".join(src), namespace)
-    return namespace["item"]
+    # pop, not get: a function listed in its own globals is a reference cycle, and
+    # the 256 MiB cache would outlive its DatasetItemSource until a gc pass.
+    return namespace.pop("item")
 
 
 class DatasetItemSource:
@@ -73,10 +77,13 @@ class DatasetItemSource:
 
     def item(self, number):
         """Dataset item `number` as a tuple of 8 ints (little-endian words r0..r7)."""
-        return self._item(number)
+        # A numpy integer would switch the register arithmetic to wrapping
+        # fixed-width math (np.uint64: silently wrong items), so take a Python int.
+        return self._item(operator.index(number))
 
     def reference_item(self, number):
         """§7.3 step by step with the superscalar interpreter; slow, for checking item()."""
+        number = operator.index(number)
         r = initial_registers(number)
         cache_index = number
         for program in self.programs:
