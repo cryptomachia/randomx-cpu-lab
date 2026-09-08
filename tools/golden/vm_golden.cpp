@@ -407,6 +407,12 @@ std::string dumpInstructions() {
 				const uint64_t sign = name == "FADD_R" ? 1ULL << 63 : 0;
 				s.f[2 * (instr.dst % 4)] = s.a[2 * (instr.src % 4)] ^ sign;
 			}
+			if (name == "FMUL_R" && n % 4 == 1) {  // gradual underflow: a denormal E times an A in [1, 2)
+				for (int h = 0; h < 2; ++h) {      // (bits only, so the rng stream is unchanged)
+					s.e[2 * (instr.dst % 4) + h] &= 0x000FFFFFFFFFFFFFULL;
+					s.a[2 * (instr.src % 4) + h] = (s.a[2 * (instr.src % 4) + h] & 0x000FFFFFFFFFFFFFULL) | (1023ULL << 52);
+				}
+			}
 			alignas(16) randomx::ProgramConfiguration config;
 			config.eMask[0] = floatMask(rng.next());
 			config.eMask[1] = floatMask(rng.next());
