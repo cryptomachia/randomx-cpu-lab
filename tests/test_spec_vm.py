@@ -15,12 +15,15 @@ from pathlib import Path
 
 import pytest
 
+from rxlab import binding
 from rxlab.spec import aes, fp, program, vm
 from rxlab.spec.hasher import CDatasetItemSource, hash256, hash512, randomx_hash
 from rxlab.spec.params import FREQUENCIES, MASK64, SCRATCHPAD_L3, reciprocal, signext32
 from test_binding_vectors import VECTORS
 
 GOLDEN = Path(__file__).resolve().parent.parent / "data" / "golden"
+needs_c_library = pytest.mark.skipif(not binding.library_path().exists(),
+                                     reason="RandomX library missing; run scripts/build_randomx.sh")
 
 
 def golden(name):
@@ -442,6 +445,30 @@ def test_instructions_match_c_interpreter():
     assert not failures, failures[:10]
 
 
+def test_instruction_goldens_cover_ieee_edges():
+    """The C cases above include rounded results that are denormal, +-inf, +-DBL_MAX and -0."""
+    rounded = {"FADD_R", "FADD_M", "FSUB_R", "FSUB_M", "FMUL_R", "FDIV_M", "FSQRT_R"}
+    seen = collections.Counter()
+    for case in golden("instructions")["cases"]:
+        if case["name"] not in rounded:
+            continue
+        before = struct.unpack("<32Q", bytes.fromhex(case["before"]))
+        after = struct.unpack("<32Q", bytes.fromhex(case["after"]))
+        for q in (a for a, b in zip(after[8:24], before[8:24]) if a != b):
+            magnitude = q & ~(1 << 63)
+            if 0 < magnitude < 1 << 52:
+                seen["denormal", case["fprc"]] += 1
+            elif magnitude == 0x7FF << 52:
+                seen["inf"] += 1
+            elif magnitude == (0x7FF << 52) - 1:
+                seen["dbl_max"] += 1
+            elif q == 1 << 63:
+                seen["-0", case["fprc"]] += 1
+    assert all(seen["denormal", mode] for mode in range(4))
+    assert seen["inf"] and seen["dbl_max"]
+    assert seen["-0", fp.ROUND_DOWN] and not any(seen["-0", m] for m in (0, 2, 3))
+
+
 # ---------------------------------------------------------------- floating point
 
 def test_float_modes_bracket_the_exact_result():
@@ -502,7 +529,7 @@ def test_float_edge_semantics():
 
 
 def test_group_e_conversion():
-    """specs.md 4.3.2: sign cleared, exponent 0b011sssssdddd, low 22 fraction bits from the mask."""
+    """specs.md 4.3.2: sign cleared, exponent 0b011ssssdddd, low 22 fraction bits from the mask."""
     rng = random.Random(3)
     for _ in range(1000):
         v = rng.randint(-2 ** 31, 2 ** 31 - 1)
@@ -547,6 +574,7 @@ def run_program(t, index, source, stats=None):
     return machine, register_file
 
 
+@needs_c_library
 @pytest.mark.parametrize("v2", [False, True], ids=["v1", "v2"])
 def test_first_program_matches_c(v2):
     """Program 0 of vector 1a against the C VM, with lazily built C Dataset items."""
@@ -559,6 +587,7 @@ def test_first_program_matches_c(v2):
     assert machine.fprc == want["fprc"]
 
 
+@needs_c_library
 def test_dynamic_counters_match_the_executed_work():
     """stats= counts what actually runs: directed-mode FP instructions equal the MPFR
     calls made (two lanes each), and the instrumented VM still matches the C trace."""
@@ -623,6 +652,7 @@ def full_dataset():
 
 
 @pytest.mark.slow
+@needs_c_library
 @pytest.mark.parametrize("t", sorted(trace_vectors(), key=lambda t: (t["key"], t["id"], t["v2"])),
                          ids=lambda t: "%s-%s" % (t["id"], "v2" if t["v2"] else "v1"))
 def test_official_vector_end_to_end(t, full_dataset):
