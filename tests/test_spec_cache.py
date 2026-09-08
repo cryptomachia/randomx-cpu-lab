@@ -67,11 +67,10 @@ def check_cache(words, g):
 def c_cache():
     """The C library's cache for KEY (randomx_get_cache_memory) as bytes, or None."""
     try:
-        cache = binding.Cache(KEY, flags=binding.Flags.DEFAULT)
-    except OSError:  # includes FileNotFoundError: library not built
+        with binding.Cache(KEY, flags=binding.Flags.DEFAULT) as cache:
+            return ctypes.string_at(cache.memory(), argon2d.CACHE_WORDS * 8)
+    except (OSError, NotImplementedError):  # library not built, or a v1.x one (RXLAB_LIB)
         return None
-    with cache:
-        return ctypes.string_at(cache.memory(), argon2d.CACHE_WORDS * 8)
 
 
 @pytest.fixture(scope="module")
@@ -113,7 +112,7 @@ def test_argon2d_randomx_pass0_prefix():
 
 def test_c_cache_matches_golden(c_cache):
     if c_cache is None:
-        pytest.skip("RandomX library unavailable; run scripts/build_randomx.sh")
+        pytest.skip("RandomX v2.x library unavailable; run scripts/build_randomx.sh")
     check_cache(np.frombuffer(c_cache, dtype="<u8"), golden("argon2"))
 
 
@@ -121,6 +120,27 @@ def test_memoised_cache_matches_golden():
     if not argon2d.cache_path(KEY).exists():
         pytest.skip("no memoised Python cache; argon2d.fill_cache(KEY) makes one")
     check_cache(argon2d.fill_cache(KEY), golden("argon2"))
+
+
+def test_fill_cache_memo(tmp_path, monkeypatch):
+    """The memo mechanics on a stand-in 128-word cache: write once, reload, reject bad files."""
+    calls = []
+
+    def fake_cache_memory(key):
+        calls.append(key)
+        return np.arange(128, dtype=np.uint64)
+
+    monkeypatch.setattr(argon2d, "CACHE_DIR", tmp_path)
+    monkeypatch.setattr(argon2d, "CACHE_WORDS", 128)
+    monkeypatch.setattr(argon2d, "cache_memory", fake_cache_memory)
+    first = argon2d.fill_cache(KEY)
+    again = argon2d.fill_cache(KEY)
+    assert calls == [KEY] and not first.flags.writeable
+    assert np.array_equal(again, np.arange(128))
+    assert [p.name for p in tmp_path.iterdir()] == [argon2d.cache_path(KEY).name]
+    np.save(argon2d.cache_path(b"other"), np.zeros(3, np.uint64))
+    with pytest.raises(ValueError):
+        argon2d.fill_cache(b"other")
 
 
 @pytest.mark.slow
@@ -152,7 +172,9 @@ def test_superscalar_tests_cpp_hashes():
 
 def check_keys(count):
     g = golden("superscalar_keys")
-    for row in g["rows"][:count * params.CACHE_ACCESSES]:
+    rows = g["rows"][:count * params.CACHE_ACCESSES]
+    assert len(rows) == count * params.CACHE_ACCESSES
+    for row in rows:
         expected = dict(zip(g["columns"], row))
         if expected["program"] == 0:
             gen = BlakeGenerator((g["key_format"] % expected["key"]).encode())
@@ -230,6 +252,15 @@ def test_dataset_items_match_c(cache_words):
     for number, word0 in TESTS_CPP_ITEM_WORD0.items():
         assert source.item(number)[0] == word0
     assert str(params.DATASET_ITEM_COUNT - 1) in g["items"]  # C's last item index agrees
+
+
+def test_dataset_item_accepts_numpy_integers(cache_words):
+    """Item numbers from numpy arrays; np.uint64 once gave a silently wrong item."""
+    source = dataset.DatasetItemSource(cache_words, KEY)
+    expected = tuple(ints(golden("dataset")["items"]["1000"]))
+    for number in (np.uint64(1000), np.int64(1000), np.uint32(1000), np.arange(1001)[-1]):
+        assert source.item(number) == expected, type(number)
+        assert source.reference_item(number) == expected, type(number)
 
 
 def test_dataset_item0_trace(cache_words):
