@@ -11,6 +11,7 @@ blocks: per-call overhead is the whole cost of a fill.
 import hashlib
 import os
 import struct
+import tempfile
 from pathlib import Path
 
 import numpy as np
@@ -210,10 +211,16 @@ def fill_cache(key):
     if not path.exists():
         words = cache_memory(key)
         path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = path.with_name(path.name + ".partial")
-        with open(tmp, "wb") as fh:
-            np.save(fh, words)
-        os.replace(tmp, path)
+        # A unique temporary name: concurrent first fills of one key must not
+        # write into (or rename away) each other's partial file.
+        fd, tmp = tempfile.mkstemp(prefix=path.name + ".", suffix=".partial", dir=path.parent)
+        try:
+            with os.fdopen(fd, "wb") as fh:
+                np.save(fh, words)
+            os.replace(tmp, path)
+        finally:
+            if os.path.exists(tmp):
+                os.unlink(tmp)
     words = np.load(path, mmap_mode="r")
     if words.shape != (CACHE_WORDS,) or words.dtype != np.uint64:
         raise ValueError(f"{path} is not a RandomX cache; delete it")
