@@ -2,13 +2,13 @@
 
 `item_source.item(i)` must return the eight 64-bit words of Dataset item i.
 CDatasetItemSource serves them from the reference C library, so the Python VM
-can be checked in full-memory mode independently of the Python Dataset code.
+can be checked in full-memory mode independently of the Python Dataset code;
+rxlab.spec.light serves them from the Python cache, with no C at all.
 """
 import ctypes
 import hashlib
 import struct
-
-from rxlab import binding
+import time
 
 from .aes import AesGenerator1R, aes_hash_1r
 from .params import PROGRAM_COUNT, SCRATCHPAD_L3
@@ -26,21 +26,46 @@ def hash256(data):
     return hashlib.blake2b(data, digest_size=32).digest()
 
 
-def randomx_hash(data, item_source, v2=False, observer=None, stats=None):
+class _Laps:
+    """Adds the wall seconds since the previous lap to timings[phase]; no-op without a dict."""
+
+    def __init__(self, timings):
+        self.timings = timings
+        self.mark = time.perf_counter()
+
+    def __call__(self, phase):
+        if self.timings is not None:
+            now = time.perf_counter()
+            self.timings[phase] = self.timings.get(phase, 0.0) + now - self.mark
+            self.mark = now
+
+
+def randomx_hash(data, item_source, v2=False, observer=None, stats=None, timings=None):
     """RandomX(K, H) for the key behind `item_source` and input `data`; 32 bytes.
 
     observer(index, register_file, vm), if given, runs after each program;
-    a Counter passed as `stats` collects the dynamic instruction mix (vm.py)."""
+    a Counter passed as `stats` collects the dynamic instruction mix (vm.py);
+    a dict passed as `timings` accumulates wall seconds per phase: scratchpad
+    (AesGenerator1R fill), programs (generation), execute (the VM, item_source
+    included), observer, and final (AesHash1R and Blake2b)."""
+    lap = _Laps(timings)
     gen1 = AesGenerator1R(hash512(data))
     scratchpad = bytearray(gen1.generate(SCRATCHPAD_L3))
+    lap("scratchpad")
     vm = VirtualMachine(scratchpad, item_source, v2, stats)
     seed = gen1.state
     for i in range(PROGRAM_COUNT):
-        register_file = vm.execute(generate(seed, v2))
+        program = generate(seed, v2)
+        lap("programs")
+        register_file = vm.execute(program)
+        lap("execute")
         if observer:
             observer(i, register_file, vm)
+            lap("observer")
         seed = hash512(register_file)
-    return hash256(register_file[:192] + aes_hash_1r(bytes(scratchpad)))
+    digest = hash256(register_file[:192] + aes_hash_1r(bytes(scratchpad)))
+    lap("final")
+    return digest
 
 
 class CDatasetItemSource:
@@ -51,6 +76,10 @@ class CDatasetItemSource:
     randomx_init_dataset(start=i, count=1), so only touched pages get memory."""
 
     def __init__(self, key, threads=4, lazy=False):
+        # Imported here, not at the top: the pure-Python path (light.py) must
+        # never import the C wrapper.
+        from rxlab import binding
+
         self.cache = binding.Cache(key)
         self.lib = self.cache.lib
         self.lazy = lazy
