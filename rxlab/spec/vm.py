@@ -147,7 +147,7 @@ def _define(source, name, spq, spi, stats=None):
         "fscal": fp.fscal, "convert_e": fp.convert_e, "STATS": stats,
     }
     exec(compile(source, "<randomx %s>" % name, "exec"), env)
-    return env[name]
+    return env.pop(name)  # no self-reference: the scratchpad views go with the function
 
 
 class CompiledProgram:
