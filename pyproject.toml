@@ -7,10 +7,10 @@ name = "rxlab"
 version = "0.1.0"
 description = "Measurement and analysis tools for RandomX (Monero PoW) on CPUs"
 requires-python = ">=3.9"
-dependencies = ["numpy", "scipy", "matplotlib"]
+dependencies = ["numpy", "scipy", "matplotlib", "gmpy2"]
 
-[tool.setuptools]
-packages = ["rxlab"]
+[tool.setuptools.packages.find]
+include = ["rxlab*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
