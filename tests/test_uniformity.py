@@ -103,7 +103,8 @@ def test_uniform_bytes_pass_and_biased_bytes_fail():
     slight = h.copy()
     slight[::50, 31] &= 0x7F  # top bit cleared in 2% of rows: ~1% more leading zeros
     assert U.geometric_lz_test(U.leading_zero_bits(slight))["p_value"] < 1e-6
-    assert U.bit_balance(U.byte_counts(slight))["max_abs_z"] > 8
+    # ~2,000 flipped bits against sd 224 puts z near 8.9 +- 1; > 5 keeps a wide margin
+    assert U.bit_balance(U.byte_counts(slight))["max_abs_z"] > 5
     # the joint tests spread one biased bit over 256 bits / 8160 cells, so need more bias
     strong = h.copy()
     strong[::10, 31] &= 0x7F
