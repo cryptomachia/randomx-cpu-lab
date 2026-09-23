@@ -1,0 +1,270 @@
+{
+  "keys": [
+    {
+      "key": "74657374206b657920303030",
+      "setup": {
+        "cache": "argon2d",
+        "cache_seconds": 23.224515916,
+        "cache_cpu_seconds": 23.186552,
+        "superscalar_seconds": 0.038027625000001564
+      },
+      "hashes": [
+        {
+          "hash": "639183aae1bf4c9a35884cb46b09cad9175f04efd7684e7262a0ac1c2f0b4e3f",
+          "seconds": {
+            "scratchpad": 0.12265275000000031,
+            "programs": 0.006518042999999807,
+            "final": 0.12094233399999865,
+            "dataset_items": 3.2980954679996977,
+            "vm": 0.8771796970003045
+          },
+          "items": 16384,
+          "wall_seconds": 4.425421291999999,
+          "cpu_seconds": 4.417484999999999,
+          "id": "1a",
+          "version": "v1",
+          "expected": "639183aae1bf4c9a35884cb46b09cad9175f04efd7684e7262a0ac1c2f0b4e3f",
+          "match": true
+        },
+        {
+          "hash": "22ec6b861b3eb23686b2efbad69513c967ecfce80983df66c9c5b4fbfb4cdb6f",
+          "seconds": {
+            "scratchpad": 0.12294212499999801,
+            "programs": 0.009897250999991059,
+            "final": 0.12530324999999465,
+            "dataset_items": 3.273553179000082,
+            "vm": 1.4279216539999453
+          },
+          "items": 16384,
+          "wall_seconds": 4.959649749999997,
+          "cpu_seconds": 4.958213000000001,
+          "id": "1a",
+          "version": "v2",
+          "expected": "22ec6b861b3eb23686b2efbad69513c967ecfce80983df66c9c5b4fbfb4cdb6f",
+          "match": true,
+          "commitment": {
+            "hash": "133be717399046b03ae82ce8ddd9d1ee4d3ea7fca03a50dec09b6848cbb98e18",
+            "expected": "133be717399046b03ae82ce8ddd9d1ee4d3ea7fca03a50dec09b6848cbb98e18",
+            "match": true
+          }
+        },
+        {
+          "hash": "300a0adb47603dedb42228ccb2b211104f4da45af709cd7547cd049e9489c969",
+          "seconds": {
+            "scratchpad": 0.12052416699999924,
+            "programs": 0.007009290999995699,
+            "final": 0.12061158300000585,
+            "dataset_items": 3.2722581849997354,
+            "vm": 0.8264461070002653
+          },
+          "items": 16384,
+          "wall_seconds": 4.3468768749999995,
+          "cpu_seconds": 4.3460250000000045,
+          "id": "1b",
+          "version": "v1",
+          "expected": "300a0adb47603dedb42228ccb2b211104f4da45af709cd7547cd049e9489c969",
+          "match": true
+        },
+        {
+          "hash": "9e2c772c12fd48f93c14c97fdc89d556264d9100597023f44d9163e279012ecf",
+          "seconds": {
+            "scratchpad": 0.12150400000000161,
+            "programs": 0.009347041000012268,
+            "final": 0.12744195799999858,
+            "dataset_items": 3.2785455320000594,
+            "vm": 1.4613576349999278
+          },
+          "items": 16384,
+          "wall_seconds": 4.998221832999995,
+          "cpu_seconds": 4.9832350000000005,
+          "id": "1b",
+          "version": "v2",
+          "expected": "9e2c772c12fd48f93c14c97fdc89d556264d9100597023f44d9163e279012ecf",
+          "match": true
+        },
+        {
+          "hash": "c36d4ed4191e617309867ed66a443be4075014e2b061bcdaf9ce7b721d2b77a8",
+          "seconds": {
+            "scratchpad": 0.123439249999997,
+            "programs": 0.006973582999989958,
+            "final": 0.12090395899999606,
+            "dataset_items": 3.2760131359993636,
+            "vm": 0.8807301140006487
+          },
+          "items": 16384,
+          "wall_seconds": 4.408086375000003,
+          "cpu_seconds": 4.407122000000001,
+          "id": "1c",
+          "version": "v1",
+          "expected": "c36d4ed4191e617309867ed66a443be4075014e2b061bcdaf9ce7b721d2b77a8",
+          "match": true
+        },
+        {
+          "hash": "4d6b063a1a603751d525f18a171336a4002f2f06df6c17e4b25fe17e17796e42",
+          "seconds": {
+            "scratchpad": 0.11988204099999678,
+            "programs": 0.00947254399999764,
+            "final": 0.1267692500000024,
+            "dataset_items": 3.2802186789997947,
+            "vm": 1.5040017770002052
+          },
+          "items": 16384,
+          "wall_seconds": 5.0403747920000015,
+          "cpu_seconds": 5.029714000000006,
+          "id": "1c",
+          "version": "v2",
+          "expected": "4d6b063a1a603751d525f18a171336a4002f2f06df6c17e4b25fe17e17796e42",
+          "match": true
+        }
+      ]
+    },
+    {
+      "key": "74657374206b657920303031",
+      "setup": {
+        "cache": "argon2d",
+        "cache_seconds": 23.247113,
+        "cache_cpu_seconds": 23.11887,
+        "superscalar_seconds": 0.03797079199999587
+      },
+      "hashes": [
+        {
+          "hash": "e9ff4503201c0c2cca26d285c93ae883f9b1d30c9eb240b820756f2d5a7905fc",
+          "seconds": {
+            "scratchpad": 0.12355595799999719,
+            "programs": 0.006782541000006859,
+            "final": 0.11985154200000636,
+            "dataset_items": 3.2451764000003607,
+            "vm": 0.849292183999637
+          },
+          "items": 16384,
+          "wall_seconds": 4.344682792,
+          "cpu_seconds": 4.338628,
+          "id": "1d",
+          "version": "v1",
+          "expected": "e9ff4503201c0c2cca26d285c93ae883f9b1d30c9eb240b820756f2d5a7905fc",
+          "match": true
+        },
+        {
+          "hash": "97024134686ce27d362ea8d86d8ef16483ac272abdabd46ef13359400777fe5e",
+          "seconds": {
+            "scratchpad": 0.11759358300000144,
+            "programs": 0.00961516699995002,
+            "final": 0.12442500000000223,
+            "dataset_items": 3.1970368810001872,
+            "vm": 1.4878609519998633
+          },
+          "items": 16384,
+          "wall_seconds": 4.9365662499999985,
+          "cpu_seconds": 4.936081999999999,
+          "id": "1d",
+          "version": "v2",
+          "expected": "97024134686ce27d362ea8d86d8ef16483ac272abdabd46ef13359400777fe5e",
+          "match": true
+        },
+        {
+          "hash": "c56414121acda1713c2f2a819d8ae38aed7c80c35c2a769298d34f03833cd5f1",
+          "seconds": {
+            "scratchpad": 0.12272070899999221,
+            "programs": 0.006485459000003857,
+            "final": 0.11879195800000275,
+            "dataset_items": 3.2163149040002708,
+            "vm": 0.7338106369997348
+          },
+          "items": 16384,
+          "wall_seconds": 4.198150291999994,
+          "cpu_seconds": 4.195391000000001,
+          "id": "1e",
+          "version": "v1",
+          "expected": "c56414121acda1713c2f2a819d8ae38aed7c80c35c2a769298d34f03833cd5f1",
+          "match": true
+        },
+        {
+          "hash": "c8e92c5f7c1946fecf06bc382b92e3111da38ee3e6a5ad90704e1a9d8aaf6e76",
+          "seconds": {
+            "scratchpad": 0.12295445799999527,
+            "programs": 0.00925420799998733,
+            "final": 0.11967791700000419,
+            "dataset_items": 3.212316219999934,
+            "vm": 1.30753444700008
+          },
+          "items": 16384,
+          "wall_seconds": 4.771766583000002,
+          "cpu_seconds": 4.7700710000000015,
+          "id": "1e",
+          "version": "v2",
+          "expected": "c8e92c5f7c1946fecf06bc382b92e3111da38ee3e6a5ad90704e1a9d8aaf6e76",
+          "match": true
+        }
+      ]
+    },
+    {
+      "key": "7797373ea4633194640bf8d8c3b66724d6aa7bd2dc20e009df2f8f1710abe8",
+      "setup": {
+        "cache": "argon2d",
+        "cache_seconds": 23.26577870899999,
+        "cache_cpu_seconds": 23.256730000000005,
+        "superscalar_seconds": 0.04209174999999732
+      },
+      "hashes": [
+        {
+          "hash": "78af2a1864c42abce36d2e8983e13df99b2af0ce1362999af09fab004d4435a8",
+          "seconds": {
+            "scratchpad": 0.12573683300000482,
+            "programs": 0.006680955999968319,
+            "final": 0.12105133400000057,
+            "dataset_items": 3.305818473000187,
+            "vm": 0.7778868209998393
+          },
+          "items": 16384,
+          "wall_seconds": 4.337207082999996,
+          "cpu_seconds": 4.3321049999999985,
+          "id": "1f",
+          "version": "v1",
+          "expected": "78af2a1864c42abce36d2e8983e13df99b2af0ce1362999af09fab004d4435a8",
+          "match": true
+        }
+      ]
+    }
+  ],
+  "reproduced": [
+    "1a-v1",
+    "1a-v2",
+    "1b-v1",
+    "1b-v2",
+    "1c-v1",
+    "1c-v2",
+    "1d-v1",
+    "1d-v2",
+    "1e-v1",
+    "1e-v2",
+    "1f-v1"
+  ],
+  "all_match": true,
+  "machine": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.9.6",
+    "logical_cpus": 10,
+    "cpu": "Apple M4",
+    "model": "Mac16,13",
+    "memory_bytes": 25769803776,
+    "page_size": 16384,
+    "power_source": "battery",
+    "clusters": [
+      {
+        "name": "Performance",
+        "cores": 4,
+        "l1d_bytes": 131072,
+        "l2_bytes": 16777216,
+        "cpus_per_l2": 4
+      },
+      {
+        "name": "Efficiency",
+        "cores": 6,
+        "l1d_bytes": 65536,
+        "l2_bytes": 4194304,
+        "cpus_per_l2": 6
+      }
+    ]
+  }
+}
