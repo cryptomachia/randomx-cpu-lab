@@ -1,0 +1,74 @@
+{
+ "machine": {
+  "system": "Darwin",
+  "machine": "arm64",
+  "python": "3.9.6",
+  "logical_cpus": 10,
+  "cpu": "Apple M4",
+  "model": "Mac16,13",
+  "memory_bytes": 25769803776,
+  "page_size": 16384,
+  "power_source": "battery",
+  "clusters": [
+   {
+    "name": "Performance",
+    "cores": 4,
+    "l1d_bytes": 131072,
+    "l2_bytes": 16777216,
+    "cpus_per_l2": 4
+   },
+   {
+    "name": "Efficiency",
+    "cores": 6,
+    "l1d_bytes": 65536,
+    "l2_bytes": 4194304,
+    "cpus_per_l2": 6
+   }
+  ]
+ },
+ "microbenchmark": {
+  "iterations": 20000000,
+  "repeats": 9,
+  "statistic": "min over repeats",
+  "base_ns_per_iter": 1.9303,
+  "same_ns_per_iter": 2.5164,
+  "toggle_ns_per_iter": 9.855,
+  "same_write_ns": 0.586,
+  "toggle_write_ns": 7.9246,
+  "sink": 29.16
+ },
+ "single_thread_fast_mode": {
+  "v1": 412.90615,
+  "v2": 473.10515,
+  "v2_over_v1_paired": {
+   "ratio": 1.1547509704318422,
+   "ci95": [
+    1.0713450614587594,
+    1.4547374435124962
+   ],
+   "n_pairs": 6,
+   "pairs_other_faster": 6,
+   "wilcoxon_w": 0.0,
+   "p_value": 0.03125
+  }
+ },
+ "per_version": {
+  "v1": {
+   "mode_changes_per_hash": 12331.37295,
+   "same_mode_writes_per_hash": 4159.848249999999,
+   "write_cost_ms_per_hash": 0.10015886915407,
+   "single_thread_hash_ms": 2.421857848327035,
+   "share_of_hash_time": 0.0413562130507608
+  },
+  "v2": {
+   "mode_changes_per_hash": 1212.2011,
+   "same_mode_writes_per_hash": 428.73804999999993,
+   "write_cost_ms_per_hash": 0.009857449334359999,
+   "single_thread_hash_ms": 2.1136950210751246,
+   "share_of_hash_time": 0.004663610045949788
+  }
+ },
+ "v1_time_saved_by_v2_cfround_ms": 0.09030141981971,
+ "v1_speedup_from_fewer_writes_alone": 1.0387301026540119,
+ "note": "marginal write costs measured inside a dependent FP loop on one thread; in the JIT a write may overlap more or less with surrounding work, so the share is an estimate"
+}
