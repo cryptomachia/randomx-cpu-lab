@@ -1,0 +1,1801 @@
+{
+ "machine": {
+  "system": "Darwin",
+  "machine": "arm64",
+  "python": "3.9.6",
+  "logical_cpus": 10,
+  "cpu": "Apple M4",
+  "model": "Mac16,13",
+  "memory_bytes": 25769803776,
+  "page_size": 16384,
+  "power_source": "ac",
+  "clusters": [
+   {
+    "name": "Performance",
+    "cores": 4,
+    "l1d_bytes": 131072,
+    "l2_bytes": 16777216,
+    "cpus_per_l2": 4
+   },
+   {
+    "name": "Efficiency",
+    "cores": 6,
+    "l1d_bytes": 65536,
+    "l2_bytes": 4194304,
+    "cpus_per_l2": 6
+   }
+  ]
+ },
+ "source": "api.xmrig.com /1/benchmarks, /1/benchmarks?cpu=, /1/benchmark/<id>",
+ "filters": {
+  "algo": "rx/0",
+  "min_size": 10000000,
+  "status": 3,
+  "packages": 1,
+  "cpu_topology": "rigs whose (cores, L3) match the brand's modal topology"
+ },
+ "crawl_counts": {
+  "index_brands": 2334,
+  "index_submissions": 89776,
+  "brands_with_runs_over_1M": 1184,
+  "listed_submissions": 85190,
+  "rx0_done_size_ge_10M": 12145,
+  "kept_packages_eq_1": 9604,
+  "details_fetched": 9604,
+  "details_usable": 9604,
+  "rigs": 5726,
+  "rigs_by_basis": {
+   "dmi": 5511,
+   "user": 11,
+   "anon": 204
+  }
+ },
+ "n_rigs": 5726,
+ "n_cpus_x86_model": 927,
+ "n_cpus_x86_with_min3_rigs": 392,
+ "excluded_non_x86_or_l3_under_2mib": [
+  "AMD A10-7300 Radeon R6, 10 Compute Cores 4C+6G",
+  "AMD A10-7700K Radeon R7, 10 Compute Cores 4C+6G",
+  "AMD A10-7800 Radeon R7, 12 Compute Cores 4C+8G",
+  "AMD A10-9600P RADEON R5, 10 COMPUTE CORES 4C+6G",
+  "AMD A10-9700 RADEON R7, 10 COMPUTE CORES 4C+6G",
+  "AMD A4-5000 APU with Radeon(TM) HD Graphics",
+  "AMD A4-9125 RADEON R3, 4 COMPUTE CORES 2C+2G",
+  "AMD A6-3420M APU with Radeon(tm) HD Graphics",
+  "AMD A6-6400K APU with Radeon(tm) HD Graphics",
+  "AMD A8-4500M APU with Radeon(tm) HD Graphics",
+  "AMD A8-5557M APU with Radeon(tm) HD Graphics",
+  "AMD A8-7410 APU with AMD Radeon R5 Graphics",
+  "AMD A8-7600 Radeon R7, 10 Compute Cores 4C+6G",
+  "AMD A9-9425 RADEON R5, 5 COMPUTE CORES 2C+3G",
+  "AMD Athlon(tm) II Dual-Core M300",
+  "AMD Athlon(tm) II X4 640 Processor",
+  "AMD Athlon(tm) II X4 641 Quad-Core Processor",
+  "AMD Athlon(tm) X4 840 Quad Core Processor",
+  "AMD E2-3000 APU with Radeon(TM) HD Graphics",
+  "AMD FX-9830P RADEON R7, 12 COMPUTE CORES 4C+8G",
+  "ARM Cortex-A53",
+  "ARM Cortex-A72",
+  "ARM Cortex-A720",
+  "ARM Cortex-A725",
+  "ARM Neoverse-N1",
+  "ARM Neoverse-V1",
+  "Celeron(R) Dual-Core CPU T3300 @ 2.00GHz",
+  "Celeron(R) Dual-Core CPU T3500 @ 2.10GHz",
+  "Common KVM processor",
+  "DO-Premium-Intel",
+  "General Purpose Processor",
+  "HiSilicon Kunpeng-920",
+  "HiSilicon TaiShan-v110",
+  "Hygon C86 7380 32-core Processor",
+  "Intel Core Processor (Haswell, IBRS)",
+  "Intel(R) Celeron(R) CPU N2930 @ 1.83GHz",
+  "Intel(R) Celeron(R) CPU N3060 @ 1.60GHz",
+  "Intel(R) Celeron(R) CPU N3450 @ 1.10GHz",
+  "Intel(R) Celeron(R) J4125 CPU @ 2.00GHz",
+  "Intel(R) Celeron(R) N4000 CPU @ 1.10GHz",
+  "Intel(R) Celeron(R) N4020 CPU @ 1.10GHz",
+  "Intel(R) Celeron(R) N4100 CPU @ 1.10GHz",
+  "Intel(R) Core(TM) i7-4750HQ CPU @ 2.00GHz",
+  "Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz",
+  "Intel(R) Core(TM) i7-4870HQ CPU @ 2.50GHz",
+  "Intel(R) Core(TM) i7-4980HQ CPU @ 2.80GHz",
+  "Intel(R) Core(TM) i7-5950HQ CPU @ 2.90GHz",
+  "Intel(R) Core(TM)2 Duo CPU E7400 @ 2.80GHz",
+  "Intel(R) Core(TM)2 Duo CPU E7500 @ 2.93GHz",
+  "Intel(R) Core(TM)2 Duo CPU E8400 @ 3.00GHz",
+  "Intel(R) Core(TM)2 Duo CPU T9550 @ 2.66GHz",
+  "Intel(R) Core(TM)2 Quad CPU Q8400 @ 2.66GHz",
+  "Intel(R) Pentium(R) CPU N3540 @ 2.16GHz",
+  "Intel(R) Pentium(R) CPU N3700 @ 1.60GHz",
+  "Intel(R) Pentium(R) CPU N4200 @ 1.10GHz",
+  "Intel(R) Xeon(R) CPU E5-26xx v4",
+  "Pentium(R) Dual-Core CPU E6600 @ 3.06GHz",
+  "QEMU Virtual CPU version 2.5+",
+  "Snapdragon(R) X Elite - X1E78100 - Qualcomm(R) Oryon(TM) CPU"
+ ],
+ "cv": {
+  "k": 10,
+  "repeats": 5,
+  "seed": 0,
+  "unit": "CPU (median of rig medians)"
+ },
+ "models": [
+  {
+   "r2_log_hashrate": 0.9127,
+   "r2_log_hashrate_sd": 0.0003763,
+   "r2_log_per_thread": 0.2105,
+   "r2_log_per_thread_sd": 0.003405,
+   "median_abs_pct_error": 26.58,
+   "name": "structural[uarch, l3, smt=1]",
+   "n": 927,
+   "cache": "l3",
+   "smt": 1.0,
+   "by_power": false
+  },
+  {
+   "r2_log_hashrate": 0.9126,
+   "r2_log_hashrate_sd": 0.0003563,
+   "r2_log_per_thread": 0.209,
+   "r2_log_per_thread_sd": 0.003223,
+   "median_abs_pct_error": 26.53,
+   "name": "structural[uarch, l3, smt fitted]",
+   "n": 927,
+   "cache": "l3",
+   "smt": null,
+   "by_power": false,
+   "smt_fitted_on_all_rows": 0.95
+  },
+  {
+   "r2_log_hashrate": 0.9122,
+   "r2_log_hashrate_sd": 0.0003987,
+   "r2_log_per_thread": 0.2059,
+   "r2_log_per_thread_sd": 0.003607,
+   "median_abs_pct_error": 26.46,
+   "name": "structural[uarch, l3+l2, smt=1]",
+   "n": 927,
+   "cache": "l3+l2",
+   "smt": 1.0,
+   "by_power": false
+  },
+  {
+   "r2_log_hashrate": 0.912,
+   "r2_log_hashrate_sd": 0.0004109,
+   "r2_log_per_thread": 0.2042,
+   "r2_log_per_thread_sd": 0.003717,
+   "median_abs_pct_error": 26.41,
+   "name": "structural[uarch, l3+l2, smt fitted]",
+   "n": 927,
+   "cache": "l3+l2",
+   "smt": null,
+   "by_power": false,
+   "smt_fitted_on_all_rows": 0.95
+  },
+  {
+   "r2_log_hashrate": 0.9105,
+   "r2_log_hashrate_sd": 0.0004029,
+   "r2_log_per_thread": 0.1906,
+   "r2_log_per_thread_sd": 0.003645,
+   "median_abs_pct_error": 26.8,
+   "name": "structural[uarch, nocache, smt=1]",
+   "n": 927,
+   "cache": null,
+   "smt": 1.0,
+   "by_power": false
+  },
+  {
+   "r2_log_hashrate": 0.9103,
+   "r2_log_hashrate_sd": 0.0003652,
+   "r2_log_per_thread": 0.1889,
+   "r2_log_per_thread_sd": 0.003304,
+   "median_abs_pct_error": 26.65,
+   "name": "structural[uarch, nocache, smt fitted]",
+   "n": 927,
+   "cache": null,
+   "smt": null,
+   "by_power": false,
+   "smt_fitted_on_all_rows": 0.9
+  },
+  {
+   "r2_log_hashrate": 0.9196,
+   "r2_log_hashrate_sd": 0.000572,
+   "r2_log_per_thread": 0.2731,
+   "r2_log_per_thread_sd": 0.005175,
+   "median_abs_pct_error": 22.83,
+   "name": "structural[uarch x power_class, l3, smt=1]",
+   "n": 927,
+   "cache": "l3",
+   "smt": 1.0,
+   "by_power": true
+  },
+  {
+   "r2_log_hashrate": 0.9194,
+   "r2_log_hashrate_sd": 0.0005337,
+   "r2_log_per_thread": 0.2709,
+   "r2_log_per_thread_sd": 0.004828,
+   "median_abs_pct_error": 22.96,
+   "name": "structural[uarch x power_class, l3, smt fitted]",
+   "n": 927,
+   "cache": "l3",
+   "smt": null,
+   "by_power": true,
+   "smt_fitted_on_all_rows": 0.9
+  },
+  {
+   "r2_log_hashrate": 0.9197,
+   "r2_log_hashrate_sd": 0.0005118,
+   "r2_log_per_thread": 0.2738,
+   "r2_log_per_thread_sd": 0.00463,
+   "median_abs_pct_error": 23.23,
+   "name": "structural[uarch x power_class, l3+l2, smt=1]",
+   "n": 927,
+   "cache": "l3+l2",
+   "smt": 1.0,
+   "by_power": true
+  },
+  {
+   "r2_log_hashrate": 0.9196,
+   "r2_log_hashrate_sd": 0.0004751,
+   "r2_log_per_thread": 0.2722,
+   "r2_log_per_thread_sd": 0.004298,
+   "median_abs_pct_error": 23.43,
+   "name": "structural[uarch x power_class, l3+l2, smt fitted]",
+   "n": 927,
+   "cache": "l3+l2",
+   "smt": null,
+   "by_power": true,
+   "smt_fitted_on_all_rows": 0.8
+  },
+  {
+   "r2_log_hashrate": 0.9184,
+   "r2_log_hashrate_sd": 0.0004961,
+   "r2_log_per_thread": 0.262,
+   "r2_log_per_thread_sd": 0.004488,
+   "median_abs_pct_error": 23.53,
+   "name": "structural[uarch x power_class, nocache, smt=1]",
+   "n": 927,
+   "cache": null,
+   "smt": 1.0,
+   "by_power": true
+  },
+  {
+   "r2_log_hashrate": 0.9183,
+   "r2_log_hashrate_sd": 0.0004979,
+   "r2_log_per_thread": 0.2611,
+   "r2_log_per_thread_sd": 0.004504,
+   "median_abs_pct_error": 23.71,
+   "name": "structural[uarch x power_class, nocache, smt fitted]",
+   "n": 927,
+   "cache": null,
+   "smt": null,
+   "by_power": true,
+   "smt_fitted_on_all_rows": 0.8
+  },
+  {
+   "r2_log_hashrate": 0.8914,
+   "r2_log_hashrate_sd": 0.0001185,
+   "r2_log_per_thread": 0.01772,
+   "r2_log_per_thread_sd": 0.001072,
+   "median_abs_pct_error": 32.68,
+   "name": "loglinear[threads]",
+   "n": 927
+  },
+  {
+   "r2_log_hashrate": 0.893,
+   "r2_log_hashrate_sd": 0.0004371,
+   "r2_log_per_thread": 0.03168,
+   "r2_log_per_thread_sd": 0.003955,
+   "median_abs_pct_error": 32.29,
+   "name": "loglinear[threads,cores,l3,l2 + vendor]",
+   "n": 927
+  },
+  {
+   "r2_log_hashrate": 0.9104,
+   "r2_log_hashrate_sd": 0.0008575,
+   "r2_log_per_thread": 0.1897,
+   "r2_log_per_thread_sd": 0.007757,
+   "median_abs_pct_error": 27.27,
+   "name": "loglinear[threads,cores,l3,l2 + uarch]",
+   "n": 927
+  },
+  {
+   "r2_log_hashrate": 0.9133,
+   "r2_log_hashrate_sd": 0.0002814,
+   "r2_log_per_thread": 0.2154,
+   "r2_log_per_thread_sd": 0.002545,
+   "median_abs_pct_error": 26.37,
+   "name": "loglinear[min(threads,l3slots) + uarch]",
+   "n": 927
+  },
+  {
+   "r2_log_hashrate": 0.9172,
+   "r2_log_hashrate_sd": 0.0008677,
+   "r2_log_per_thread": 0.2514,
+   "r2_log_per_thread_sd": 0.007849,
+   "median_abs_pct_error": 25.75,
+   "name": "loglinear[threads,cores,l3,l2,min(threads,l3slots) + uarch]",
+   "n": 927
+  },
+  {
+   "r2_log_hashrate": 0.9195,
+   "r2_log_hashrate_sd": 0.0008941,
+   "r2_log_per_thread": 0.2713,
+   "r2_log_per_thread_sd": 0.008088,
+   "median_abs_pct_error": 23.31,
+   "name": "loglinear[min(threads,l3slots) + uarch + power_class]",
+   "n": 927
+  },
+  {
+   "r2_log_hashrate": 0.9234,
+   "r2_log_hashrate_sd": 0.001358,
+   "r2_log_per_thread": 0.3066,
+   "r2_log_per_thread_sd": 0.01228,
+   "median_abs_pct_error": 23.14,
+   "name": "loglinear[threads,cores,l3,l2,min(threads,l3slots) + uarch + power_class]",
+   "n": 927
+  }
+ ],
+ "models_cpus_with_min3_rigs": [
+  {
+   "r2_log_hashrate": 0.9604,
+   "r2_log_hashrate_sd": 0.0003358,
+   "r2_log_per_thread": 0.3189,
+   "r2_log_per_thread_sd": 0.005773,
+   "median_abs_pct_error": 20.08,
+   "name": "structural[uarch, l3, smt=1]",
+   "n": 392,
+   "cache": "l3",
+   "smt": 1.0,
+   "by_power": false
+  },
+  {
+   "r2_log_hashrate": 0.9607,
+   "r2_log_hashrate_sd": 0.0002947,
+   "r2_log_per_thread": 0.3247,
+   "r2_log_per_thread_sd": 0.005066,
+   "median_abs_pct_error": 20.85,
+   "name": "structural[uarch, l3, smt fitted]",
+   "n": 392,
+   "cache": "l3",
+   "smt": null,
+   "by_power": false,
+   "smt_fitted_on_all_rows": 0.75
+  },
+  {
+   "r2_log_hashrate": 0.9578,
+   "r2_log_hashrate_sd": 0.0003293,
+   "r2_log_per_thread": 0.2752,
+   "r2_log_per_thread_sd": 0.005661,
+   "median_abs_pct_error": 21.15,
+   "name": "structural[uarch, l3+l2, smt=1]",
+   "n": 392,
+   "cache": "l3+l2",
+   "smt": 1.0,
+   "by_power": false
+  },
+  {
+   "r2_log_hashrate": 0.9583,
+   "r2_log_hashrate_sd": 0.0002988,
+   "r2_log_per_thread": 0.2829,
+   "r2_log_per_thread_sd": 0.005137,
+   "median_abs_pct_error": 22.08,
+   "name": "structural[uarch, l3+l2, smt fitted]",
+   "n": 392,
+   "cache": "l3+l2",
+   "smt": null,
+   "by_power": false,
+   "smt_fitted_on_all_rows": 0.75
+  },
+  {
+   "r2_log_hashrate": 0.9557,
+   "r2_log_hashrate_sd": 0.0003211,
+   "r2_log_per_thread": 0.2376,
+   "r2_log_per_thread_sd": 0.005521,
+   "median_abs_pct_error": 21.38,
+   "name": "structural[uarch, nocache, smt=1]",
+   "n": 392,
+   "cache": null,
+   "smt": 1.0,
+   "by_power": false
+  },
+  {
+   "r2_log_hashrate": 0.9561,
+   "r2_log_hashrate_sd": 0.0002985,
+   "r2_log_per_thread": 0.2451,
+   "r2_log_per_thread_sd": 0.005132,
+   "median_abs_pct_error": 22.45,
+   "name": "structural[uarch, nocache, smt fitted]",
+   "n": 392,
+   "cache": null,
+   "smt": null,
+   "by_power": false,
+   "smt_fitted_on_all_rows": 0.75
+  },
+  {
+   "r2_log_hashrate": 0.9678,
+   "r2_log_hashrate_sd": 0.0005049,
+   "r2_log_per_thread": 0.4473,
+   "r2_log_per_thread_sd": 0.00868,
+   "median_abs_pct_error": 14.56,
+   "name": "structural[uarch x power_class, l3, smt=1]",
+   "n": 392,
+   "cache": "l3",
+   "smt": 1.0,
+   "by_power": true
+  },
+  {
+   "r2_log_hashrate": 0.9682,
+   "r2_log_hashrate_sd": 0.0005233,
+   "r2_log_per_thread": 0.4525,
+   "r2_log_per_thread_sd": 0.008996,
+   "median_abs_pct_error": 14.51,
+   "name": "structural[uarch x power_class, l3, smt fitted]",
+   "n": 392,
+   "cache": "l3",
+   "smt": null,
+   "by_power": true,
+   "smt_fitted_on_all_rows": 0.75
+  },
+  {
+   "r2_log_hashrate": 0.9675,
+   "r2_log_hashrate_sd": 0.0004748,
+   "r2_log_per_thread": 0.4405,
+   "r2_log_per_thread_sd": 0.008162,
+   "median_abs_pct_error": 14.8,
+   "name": "structural[uarch x power_class, l3+l2, smt=1]",
+   "n": 392,
+   "cache": "l3+l2",
+   "smt": 1.0,
+   "by_power": true
+  },
+  {
+   "r2_log_hashrate": 0.9678,
+   "r2_log_hashrate_sd": 0.0004754,
+   "r2_log_per_thread": 0.4457,
+   "r2_log_per_thread_sd": 0.008173,
+   "median_abs_pct_error": 15.28,
+   "name": "structural[uarch x power_class, l3+l2, smt fitted]",
+   "n": 392,
+   "cache": "l3+l2",
+   "smt": null,
+   "by_power": true,
+   "smt_fitted_on_all_rows": 0.75
+  },
+  {
+   "r2_log_hashrate": 0.9658,
+   "r2_log_hashrate_sd": 0.0004567,
+   "r2_log_per_thread": 0.4129,
+   "r2_log_per_thread_sd": 0.007852,
+   "median_abs_pct_error": 15.1,
+   "name": "structural[uarch x power_class, nocache, smt=1]",
+   "n": 392,
+   "cache": null,
+   "smt": 1.0,
+   "by_power": true
+  },
+  {
+   "r2_log_hashrate": 0.9661,
+   "r2_log_hashrate_sd": 0.0004727,
+   "r2_log_per_thread": 0.4181,
+   "r2_log_per_thread_sd": 0.008127,
+   "median_abs_pct_error": 15.55,
+   "name": "structural[uarch x power_class, nocache, smt fitted]",
+   "n": 392,
+   "cache": null,
+   "smt": null,
+   "by_power": true,
+   "smt_fitted_on_all_rows": 0.75
+  },
+  {
+   "r2_log_hashrate": 0.9421,
+   "r2_log_hashrate_sd": 0.0002026,
+   "r2_log_per_thread": 0.003933,
+   "r2_log_per_thread_sd": 0.003483,
+   "median_abs_pct_error": 25.18,
+   "name": "loglinear[threads]",
+   "n": 392
+  },
+  {
+   "r2_log_hashrate": 0.952,
+   "r2_log_hashrate_sd": 0.0002709,
+   "r2_log_per_thread": 0.1752,
+   "r2_log_per_thread_sd": 0.004657,
+   "median_abs_pct_error": 20.59,
+   "name": "loglinear[threads,cores,l3,l2 + vendor]",
+   "n": 392
+  },
+  {
+   "r2_log_hashrate": 0.9572,
+   "r2_log_hashrate_sd": 0.0004301,
+   "r2_log_per_thread": 0.2638,
+   "r2_log_per_thread_sd": 0.007394,
+   "median_abs_pct_error": 18.87,
+   "name": "loglinear[threads,cores,l3,l2 + uarch]",
+   "n": 392
+  },
+  {
+   "r2_log_hashrate": 0.9614,
+   "r2_log_hashrate_sd": 0.0005344,
+   "r2_log_per_thread": 0.336,
+   "r2_log_per_thread_sd": 0.009188,
+   "median_abs_pct_error": 18.28,
+   "name": "loglinear[min(threads,l3slots) + uarch]",
+   "n": 392
+  },
+  {
+   "r2_log_hashrate": 0.9611,
+   "r2_log_hashrate_sd": 0.0004954,
+   "r2_log_per_thread": 0.3317,
+   "r2_log_per_thread_sd": 0.008517,
+   "median_abs_pct_error": 17.71,
+   "name": "loglinear[threads,cores,l3,l2,min(threads,l3slots) + uarch]",
+   "n": 392
+  },
+  {
+   "r2_log_hashrate": 0.9674,
+   "r2_log_hashrate_sd": 0.0002563,
+   "r2_log_per_thread": 0.4393,
+   "r2_log_per_thread_sd": 0.004406,
+   "median_abs_pct_error": 14.75,
+   "name": "loglinear[min(threads,l3slots) + uarch + power_class]",
+   "n": 392
+  },
+  {
+   "r2_log_hashrate": 0.9675,
+   "r2_log_hashrate_sd": 0.0003676,
+   "r2_log_per_thread": 0.4419,
+   "r2_log_per_thread_sd": 0.006319,
+   "median_abs_pct_error": 13.73,
+   "name": "loglinear[threads,cores,l3,l2,min(threads,l3slots) + uarch + power_class]",
+   "n": 392
+  }
+ ],
+ "best_structural": "structural[uarch x power_class, l3+l2, smt=1]",
+ "best_structural_full_fit": {
+  "cache": "l3+l2",
+  "smt_weight": 1.0,
+  "by_power_class": true,
+  "per_thread_rate_by_vendor": {
+   "amd": 425.5,
+   "intel": 353.2
+  },
+  "per_thread_rate_by_uarch": {
+   "alderlake": 322.7,
+   "amd-bulldozer": 252.4,
+   "amd-f0": 173.8,
+   "arrowlake": 372.4,
+   "atom": 301.4,
+   "broadwell": 367.8,
+   "emeraldrapids": 415.5,
+   "haswell": 388.2,
+   "icelake": 274.9,
+   "icelake-sp": 404.6,
+   "intel-f0": 177.6,
+   "intel-f6-m181": 276.8,
+   "intel-unknown": 467.5,
+   "ivybridge": 361.7,
+   "meteorlake": 328.8,
+   "raptorlake": 293.9,
+   "rocketlake": 408.5,
+   "sandybridge": 301.4,
+   "sapphirerapids": 361.7,
+   "skylake": 396.8,
+   "skylake-sp": 406.5,
+   "tigerlake": 345.3,
+   "westmere": 251.4,
+   "zen1": 427.9,
+   "zen2": 413.8,
+   "zen3": 433.8,
+   "zen4": 484.1,
+   "zen5": 462.3
+  },
+  "per_thread_rate_by_uarch_power_class": {
+   "alderlake/desktop": 425.3,
+   "alderlake/mobile": 230.8,
+   "amd-bulldozer/desktop": 239.7,
+   "amd-bulldozer/server": 222.6,
+   "amd-f0/desktop": 129.5,
+   "amd-f0/server": 141.7,
+   "arrowlake/desktop": 408.4,
+   "arrowlake/mobile": 340.8,
+   "atom/desktop": 251.7,
+   "atom/server": 366.0,
+   "broadwell/desktop": 427.0,
+   "broadwell/mobile": 350.6,
+   "broadwell/server": 395.9,
+   "broadwell/unknown": 248.1,
+   "emeraldrapids/desktop": 463.1,
+   "haswell/desktop": 389.2,
+   "haswell/hedt": 427.5,
+   "haswell/mobile": 341.3,
+   "haswell/server": 417.0,
+   "icelake/mobile": 252.8,
+   "icelake-sp/server": 417.0,
+   "intel-f0/desktop": 180.2,
+   "intel-f0/mobile": 164.4,
+   "intel-f0/server": 145.1,
+   "intel-f6-m181/mobile": 235.2,
+   "intel-unknown/server": 563.6,
+   "ivybridge/desktop": 387.9,
+   "ivybridge/hedt": 408.0,
+   "ivybridge/mobile": 350.9,
+   "ivybridge/server": 349.1,
+   "meteorlake/mobile": 317.2,
+   "raptorlake/desktop": 323.1,
+   "raptorlake/mobile": 238.7,
+   "rocketlake/desktop": 458.9,
+   "rocketlake/server": 284.0,
+   "sandybridge/desktop": 347.8,
+   "sandybridge/hedt": 346.0,
+   "sandybridge/mobile": 310.6,
+   "sandybridge/server": 262.3,
+   "sapphirerapids/server": 378.2,
+   "sapphirerapids/unknown": 312.0,
+   "skylake/desktop": 428.4,
+   "skylake/mobile": 330.3,
+   "skylake/server": 442.2,
+   "skylake/unknown": 538.4,
+   "skylake-sp/hedt": 512.1,
+   "skylake-sp/server": 377.5,
+   "tigerlake/desktop": 400.2,
+   "tigerlake/mobile": 325.6,
+   "tigerlake/unknown": 386.8,
+   "westmere/desktop": 263.2,
+   "westmere/server": 214.4,
+   "zen1/desktop": 448.6,
+   "zen1/hedt": 484.2,
+   "zen1/mobile": 330.5,
+   "zen1/server": 438.9,
+   "zen2/desktop": 526.8,
+   "zen2/hedt": 440.4,
+   "zen2/mobile": 411.0,
+   "zen2/server": 361.4,
+   "zen2/unknown": 330.0,
+   "zen3/desktop": 476.8,
+   "zen3/hedt": 479.2,
+   "zen3/mobile": 428.2,
+   "zen3/server": 391.3,
+   "zen3/unknown": 452.8,
+   "zen4/desktop": 553.0,
+   "zen4/hedt": 541.4,
+   "zen4/mobile": 491.0,
+   "zen4/server": 438.1,
+   "zen4/unknown": 427.7,
+   "zen5/desktop": 644.3,
+   "zen5/hedt": 544.6,
+   "zen5/mobile": 432.0,
+   "zen5/server": 468.8,
+   "zen5/unknown": 318.0
+  }
+ },
+ "memory_models": {
+  "n": 704,
+  "models": [
+   {
+    "r2_log_hashrate": 0.9332,
+    "r2_log_hashrate_sd": 0.0002719,
+    "r2_log_per_thread": 0.2464,
+    "r2_log_per_thread_sd": 0.003067,
+    "median_abs_pct_error": 21.06,
+    "name": "loglinear[specs + uarch]",
+    "n": 704
+   },
+   {
+    "r2_log_hashrate": 0.9374,
+    "r2_log_hashrate_sd": 0.0002464,
+    "r2_log_per_thread": 0.2945,
+    "r2_log_per_thread_sd": 0.002778,
+    "median_abs_pct_error": 20.95,
+    "name": "loglinear[specs + memory + uarch, mem_type]",
+    "n": 704
+   },
+   {
+    "r2_log_hashrate": 0.9342,
+    "r2_log_hashrate_sd": 0.0003989,
+    "r2_log_per_thread": 0.2578,
+    "r2_log_per_thread_sd": 0.004499,
+    "median_abs_pct_error": 21.4,
+    "name": "best structural",
+    "n": 704
+   }
+  ],
+  "importance": {
+   "threads_only": {
+    "r2_log_hashrate": 0.911,
+    "r2_log_per_thread": -0.00315
+   },
+   "full": {
+    "r2_log_hashrate": 0.9425,
+    "r2_log_per_thread": 0.3514,
+    "categories": [
+     "uarch",
+     "vendor",
+     "power_class",
+     "mem_type"
+    ]
+   },
+   "add_one_to_threads_only": {
+    "log_cores": {
+     "r2_log_hashrate_gain": -5.997e-05,
+     "r2_log_per_thread_gain": -0.0006763
+    },
+    "log_l3": {
+     "r2_log_hashrate_gain": 0.004867,
+     "r2_log_per_thread_gain": 0.05488
+    },
+    "log_l2": {
+     "r2_log_hashrate_gain": 7.356e-05,
+     "r2_log_per_thread_gain": 0.0008296
+    },
+    "log_min_threads_l3slots": {
+     "r2_log_hashrate_gain": 0.008127,
+     "r2_log_per_thread_gain": 0.09165
+    },
+    "log_mem_mts": {
+     "r2_log_hashrate_gain": 0.003918,
+     "r2_log_per_thread_gain": 0.04418
+    },
+    "log_channels": {
+     "r2_log_hashrate_gain": 0.002131,
+     "r2_log_per_thread_gain": 0.02403
+    },
+    "uarch": {
+     "r2_log_hashrate_gain": 0.01551,
+     "r2_log_per_thread_gain": 0.175
+    },
+    "vendor": {
+     "r2_log_hashrate_gain": 0.004242,
+     "r2_log_per_thread_gain": 0.04784
+    },
+    "power_class": {
+     "r2_log_hashrate_gain": 0.007168,
+     "r2_log_per_thread_gain": 0.08084
+    },
+    "mem_type": {
+     "r2_log_hashrate_gain": 0.003083,
+     "r2_log_per_thread_gain": 0.03477
+    }
+   },
+   "drop_one_from_full": {
+    "log_cores": {
+     "r2_log_hashrate_loss": 0.0003577,
+     "r2_log_per_thread_loss": 0.004034
+    },
+    "log_l3": {
+     "r2_log_hashrate_loss": -1.85e-05,
+     "r2_log_per_thread_loss": -0.0002086
+    },
+    "log_l2": {
+     "r2_log_hashrate_loss": -5.753e-05,
+     "r2_log_per_thread_loss": -0.0006487
+    },
+    "log_min_threads_l3slots": {
+     "r2_log_hashrate_loss": 0.00334,
+     "r2_log_per_thread_loss": 0.03767
+    },
+    "log_mem_mts": {
+     "r2_log_hashrate_loss": 0.002213,
+     "r2_log_per_thread_loss": 0.02496
+    },
+    "log_channels": {
+     "r2_log_hashrate_loss": 0.002119,
+     "r2_log_per_thread_loss": 0.02389
+    },
+    "uarch": {
+     "r2_log_hashrate_loss": 0.003253,
+     "r2_log_per_thread_loss": 0.03669
+    },
+    "vendor": {
+     "r2_log_hashrate_loss": -4.085e-05,
+     "r2_log_per_thread_loss": -0.0004607
+    },
+    "power_class": {
+     "r2_log_hashrate_loss": 0.005071,
+     "r2_log_per_thread_loss": 0.05718
+    },
+    "mem_type": {
+     "r2_log_hashrate_loss": -0.0003986,
+     "r2_log_per_thread_loss": -0.004495
+    }
+   }
+  }
+ },
+ "residual_outliers_min3_rigs": {
+  "slower_than_predicted": [
+   {
+    "cpu": "Intel(R) Core(TM) Ultra 9 275HX",
+    "uarch": "arrowlake",
+    "power_class": "mobile",
+    "rigs": 3,
+    "threads_used": 24,
+    "l3_mib": 36.0,
+    "hashrate": 4623.0,
+    "predicted": 10680.0,
+    "ratio": 0.433
+   },
+   {
+    "cpu": "Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz",
+    "uarch": "sandybridge",
+    "power_class": "server",
+    "rigs": 3,
+    "threads_used": 6,
+    "l3_mib": 15.0,
+    "hashrate": 766.3,
+    "predicted": 1557.0,
+    "ratio": 0.4922
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i7-14700",
+    "uarch": "raptorlake",
+    "power_class": "desktop",
+    "rigs": 4,
+    "threads_used": 28,
+    "l3_mib": 33.0,
+    "hashrate": 4789.0,
+    "predicted": 9425.0,
+    "ratio": 0.5081
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i3-4150 CPU @ 3.50GHz",
+    "uarch": "haswell",
+    "power_class": "desktop",
+    "rigs": 4,
+    "threads_used": 2,
+    "l3_mib": 3.0,
+    "hashrate": 370.0,
+    "predicted": 707.3,
+    "ratio": 0.523
+   },
+   {
+    "cpu": "Intel(R) Xeon(R) CPU E5-2420 v2 @ 2.20GHz",
+    "uarch": "ivybridge",
+    "power_class": "server",
+    "rigs": 4,
+    "threads_used": 6,
+    "l3_mib": 15.0,
+    "hashrate": 1191.0,
+    "predicted": 2153.0,
+    "ratio": 0.5533
+   },
+   {
+    "cpu": "Genuine Intel(R) CPU 0000%@",
+    "uarch": "sapphirerapids",
+    "power_class": "unknown",
+    "rigs": 26,
+    "threads_used": 93,
+    "l3_mib": 90.0,
+    "hashrate": 21590.0,
+    "predicted": 36840.0,
+    "ratio": 0.5861
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz",
+    "uarch": "icelake",
+    "power_class": "mobile",
+    "rigs": 5,
+    "threads_used": 4,
+    "l3_mib": 8.0,
+    "hashrate": 676.6,
+    "predicted": 1141.0,
+    "ratio": 0.5931
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i3-9100F CPU @ 3.60GHz",
+    "uarch": "skylake",
+    "power_class": "desktop",
+    "rigs": 3,
+    "threads_used": 3,
+    "l3_mib": 6.0,
+    "hashrate": 791.8,
+    "predicted": 1303.0,
+    "ratio": 0.6077
+   }
+  ],
+  "faster_than_predicted": [
+   {
+    "cpu": "Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz",
+    "uarch": "skylake",
+    "power_class": "mobile",
+    "rigs": 4,
+    "threads_used": 4,
+    "l3_mib": 8.0,
+    "hashrate": 2504.0,
+    "predicted": 1316.0,
+    "ratio": 1.903
+   },
+   {
+    "cpu": "AMD Eng Sample: 100-000001458-01",
+    "uarch": "zen5",
+    "power_class": "unknown",
+    "rigs": 5,
+    "threads_used": 160,
+    "l3_mib": 320.0,
+    "hashrate": 85480.0,
+    "predicted": 48440.0,
+    "ratio": 1.765
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz",
+    "uarch": "ivybridge",
+    "power_class": "desktop",
+    "rigs": 6,
+    "threads_used": 4,
+    "l3_mib": 8.0,
+    "hashrate": 2531.0,
+    "predicted": 1436.0,
+    "ratio": 1.763
+   },
+   {
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900H",
+    "uarch": "raptorlake",
+    "power_class": "mobile",
+    "rigs": 3,
+    "threads_used": 17,
+    "l3_mib": 24.0,
+    "hashrate": 6890.0,
+    "predicted": 3966.0,
+    "ratio": 1.737
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i3-10105F CPU @ 3.70GHz",
+    "uarch": "skylake",
+    "power_class": "desktop",
+    "rigs": 3,
+    "threads_used": 3,
+    "l3_mib": 6.0,
+    "hashrate": 2164.0,
+    "predicted": 1269.0,
+    "ratio": 1.706
+   },
+   {
+    "cpu": "AMD Ryzen 7 4800H with Radeon Graphics",
+    "uarch": "zen2",
+    "power_class": "mobile",
+    "rigs": 11,
+    "threads_used": 4,
+    "l3_mib": 8.0,
+    "hashrate": 2663.0,
+    "predicted": 1581.0,
+    "ratio": 1.684
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i5-10600K CPU @ 4.10GHz",
+    "uarch": "skylake",
+    "power_class": "desktop",
+    "rigs": 4,
+    "threads_used": 6,
+    "l3_mib": 12.0,
+    "hashrate": 4305.0,
+    "predicted": 2565.0,
+    "ratio": 1.678
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i7-4720HQ CPU @ 2.60GHz",
+    "uarch": "haswell",
+    "power_class": "mobile",
+    "rigs": 4,
+    "threads_used": 3,
+    "l3_mib": 6.0,
+    "hashrate": 1632.0,
+    "predicted": 978.6,
+    "ratio": 1.667
+   }
+  ]
+ },
+ "within_cpu": {
+  "min_rigs_per_cpu": 5,
+  "no_memory": {
+   "n_rigs": 4301,
+   "n_cpus": 242,
+   "coef": {
+    "hugepages_frac": {
+     "estimate": 0.4233,
+     "ci95": [
+      0.3865,
+      0.4616
+     ],
+     "pct_effect_of_unit_change": 52.7
+    },
+    "msr_on": {
+     "estimate": 0.1617,
+     "ci95": [
+      0.1323,
+      0.1973
+     ],
+     "pct_effect_of_unit_change": 17.55
+    },
+    "log_threads_rel": {
+     "estimate": 0.3432,
+     "ci95": [
+      0.2114,
+      0.4222
+     ],
+     "pct_effect_of_unit_change": 40.95
+    },
+    "linux": {
+     "estimate": 0.03679,
+     "ci95": [
+      0.004178,
+      0.06558
+     ],
+     "pct_effect_of_unit_change": 3.748
+    }
+   },
+   "r2_in_sample": 0.3307,
+   "r2_grouped_cv": 0.3272,
+   "rig_over_cpu_median_quantiles": {
+    "0.1": 0.5958,
+    "0.25": 0.8379,
+    "0.5": 1.0,
+    "0.75": 1.11,
+    "0.9": 1.26
+   }
+  },
+  "with_memory": {
+   "n_rigs": 3860,
+   "n_cpus": 238,
+   "coef": {
+    "hugepages_frac": {
+     "estimate": 0.4112,
+     "ci95": [
+      0.3751,
+      0.4556
+     ],
+     "pct_effect_of_unit_change": 50.86
+    },
+    "msr_on": {
+     "estimate": 0.1678,
+     "ci95": [
+      0.1382,
+      0.2029
+     ],
+     "pct_effect_of_unit_change": 18.27
+    },
+    "log_threads_rel": {
+     "estimate": 0.3052,
+     "ci95": [
+      0.13,
+      0.4028
+     ],
+     "pct_effect_of_unit_change": 35.69
+    },
+    "linux": {
+     "estimate": 0.01918,
+     "ci95": [
+      -0.01695,
+      0.05098
+     ],
+     "pct_effect_of_unit_change": 1.936
+    },
+    "log_mem_mts_rel": {
+     "estimate": 0.373,
+     "ci95": [
+      0.3082,
+      0.4391
+     ],
+     "pct_effect_of_unit_change": 45.21
+    },
+    "log_channels_rel": {
+     "estimate": 0.2655,
+     "ci95": [
+      0.2112,
+      0.3283
+     ],
+     "pct_effect_of_unit_change": 30.41
+    }
+   },
+   "r2_in_sample": 0.422,
+   "r2_grouped_cv": 0.4167,
+   "rig_over_cpu_median_quantiles": {
+    "0.1": 0.6092,
+    "0.25": 0.8469,
+    "0.5": 1.0,
+    "0.75": 1.108,
+    "0.9": 1.25
+   }
+  },
+  "hugepages_rig_over_cpu_median": {
+   "full (>=0.99)": {
+    "n": 3269,
+    "median": 1.038
+   },
+   "none (0)": {
+    "n": 581,
+    "median": 0.6626
+   },
+   "partial": {
+    "n": 451,
+    "median": 0.7974
+   }
+  },
+  "dual_channel_cpus_full_hugepages": {
+   "1_channel": {
+    "n": 204,
+    "median_rig_over_cpu_median": 0.956
+   },
+   "2_channel": {
+    "n": 2153,
+    "median_rig_over_cpu_median": 1.053
+   }
+  }
+ },
+ "cache_saturation": {
+  "n_rigs": 3269,
+  "n_cpus": 240,
+  "expected_smt1": {
+   "slope_threads_le_slots": 0.5028,
+   "slope_ci95": [
+    0.3713,
+    0.6314
+   ],
+   "n_rigs_expected_not_1": 32
+  },
+  "expected_smt0": {
+   "slope_threads_le_slots": 0.1406,
+   "slope_ci95": [
+    -0.8585,
+    1.161
+   ],
+   "n_rigs_expected_not_1": 6
+  },
+  "baseline_median_observed_usual_threads": 1.038,
+  "threads_over_slots": {
+   "n_rigs": 189,
+   "median_observed_over_expected_smt1": 1.078
+  },
+  "share_rigs_threads_eq_min_logical_l3slots": 0.8186,
+  "share_rigs_threads_over_l3slots": 0.116
+ },
+ "dram_demand": {
+  "n_rigs": 4705,
+  "bytes_per_hash": 1048576,
+  "quantiles": {
+   "0.5": 0.1537,
+   "0.9": 0.3242,
+   "0.99": 0.5302
+  },
+  "share_over_0.25": 0.2544,
+  "top": [
+   {
+    "cpu": "AMD Ryzen Threadripper 3990X 64-Core Processor",
+    "hashrate": 47520.0,
+    "channels": 4,
+    "mem_mts": 1600.0,
+    "mem_type": "DDR4",
+    "fraction": 0.9732
+   },
+   {
+    "cpu": "AMD Ryzen Threadripper 3990X 64-Core Processor",
+    "hashrate": 26660.0,
+    "channels": 2,
+    "mem_mts": 2400.0,
+    "mem_type": "DDR4",
+    "fraction": 0.7279
+   },
+   {
+    "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+    "hashrate": 11250.0,
+    "channels": 1,
+    "mem_mts": 2133.0,
+    "mem_type": "DDR4",
+    "fraction": 0.6912
+   },
+   {
+    "cpu": "AMD EPYC 7B13 64-Core Processor",
+    "hashrate": 32910.0,
+    "channels": 2,
+    "mem_mts": 3200.0,
+    "mem_type": "DDR4",
+    "fraction": 0.6739
+   },
+   {
+    "cpu": "AMD Ryzen Threadripper 3960X 24-Core Processor",
+    "hashrate": 24090.0,
+    "channels": 2,
+    "mem_mts": 2400.0,
+    "mem_type": "DDR4",
+    "fraction": 0.6579
+   }
+  ]
+ },
+ "headline_bias": {
+  "n_cpus": 392,
+  "headline_over_typical_quantiles": {
+   "0.1": 1.139,
+   "0.5": 1.6,
+   "0.9": 2.492
+  },
+  "share_headline_over_1.10x": 0.926,
+  "filtered_max_over_typical_quantiles": {
+   "0.1": 1.041,
+   "0.5": 1.253,
+   "0.9": 1.749
+  },
+  "share_filtered_max_over_1.10x": 0.7883,
+  "largest": [
+   {
+    "cpu": "Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz",
+    "headline_max": 26600.0,
+    "median_of_rig_medians": 984.6,
+    "rigs": 3,
+    "ratio": 27.01
+   },
+   {
+    "cpu": "Intel(R) Xeon(R) CPU E5-2620 0 @ 2.00GHz",
+    "headline_max": 4074.0,
+    "median_of_rig_medians": 766.3,
+    "rigs": 3,
+    "ratio": 5.316
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz",
+    "headline_max": 2458.0,
+    "median_of_rig_medians": 676.6,
+    "rigs": 5,
+    "ratio": 3.632
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz",
+    "headline_max": 2921.0,
+    "median_of_rig_medians": 839.8,
+    "rigs": 5,
+    "ratio": 3.479
+   },
+   {
+    "cpu": "Intel(R) Xeon(R) CPU E5-2696 v2 @ 2.50GHz",
+    "headline_max": 10410.0,
+    "median_of_rig_medians": 3325.0,
+    "rigs": 4,
+    "ratio": 3.13
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i9-9900 CPU @ 3.10GHz",
+    "headline_max": 6482.0,
+    "median_of_rig_medians": 2193.0,
+    "rigs": 3,
+    "ratio": 2.955
+   },
+   {
+    "cpu": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+    "headline_max": 1874.0,
+    "median_of_rig_medians": 643.4,
+    "rigs": 5,
+    "ratio": 2.913
+   },
+   {
+    "cpu": "Intel(R) Xeon(R) CPU E5-2696 v3 @ 2.30GHz",
+    "headline_max": 18220.0,
+    "median_of_rig_medians": 6359.0,
+    "rigs": 14,
+    "ratio": 2.864
+   }
+  ]
+ },
+ "apple": [
+  {
+   "cpu": "Apple M1",
+   "threads_typical": 8,
+   "index_headline_max": 2496.0,
+   "n_submissions": 100,
+   "n_submissions_10M": 11,
+   "median_submission_10M": 2084.0,
+   "median_submission_under_10M": 2186.0,
+   "rigs_10M": 5,
+   "median_of_rig_medians_10M": 2030.0,
+   "median_per_thread_all_sizes": 280.7,
+   "cores": 8,
+   "l2_mib": 16.0
+  },
+  {
+   "cpu": "Apple M1 Pro",
+   "threads_typical": 10,
+   "index_headline_max": 3514.0,
+   "n_submissions": 28,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 3015.0,
+   "median_submission_under_10M": 3146.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 3015.0,
+   "median_per_thread_all_sizes": 325.5,
+   "cores": 10,
+   "l2_mib": 28.0
+  },
+  {
+   "cpu": "Apple M1 Max",
+   "threads_typical": 10,
+   "index_headline_max": 3718.0,
+   "n_submissions": 25,
+   "n_submissions_10M": 5,
+   "median_submission_10M": 3473.0,
+   "median_submission_under_10M": 3413.0,
+   "rigs_10M": 3,
+   "median_of_rig_medians_10M": 3354.0,
+   "median_per_thread_all_sizes": 342.9,
+   "cores": 10,
+   "l2_mib": 28.0
+  },
+  {
+   "cpu": "Apple M1 Ultra",
+   "threads_typical": 20,
+   "index_headline_max": 6466.0,
+   "n_submissions": 8,
+   "n_submissions_10M": 4,
+   "median_submission_10M": 3606.0,
+   "median_submission_under_10M": 6236.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 3606.0,
+   "median_per_thread_all_sizes": 301.4,
+   "cores": 20,
+   "l2_mib": 40.0
+  },
+  {
+   "cpu": "Apple M2",
+   "threads_typical": 8,
+   "index_headline_max": 2893.0,
+   "n_submissions": 42,
+   "n_submissions_10M": 3,
+   "median_submission_10M": 2650.0,
+   "median_submission_under_10M": 2658.0,
+   "rigs_10M": 2,
+   "median_of_rig_medians_10M": 2634.0,
+   "median_per_thread_all_sizes": 331.7,
+   "cores": 8,
+   "l2_mib": 20.0
+  },
+  {
+   "cpu": "Apple M2 Pro",
+   "threads_typical": 12,
+   "index_headline_max": 4722.0,
+   "n_submissions": 17,
+   "n_submissions_10M": 2,
+   "median_submission_10M": 3538.0,
+   "median_submission_under_10M": 4615.0,
+   "rigs_10M": 2,
+   "median_of_rig_medians_10M": 3538.0,
+   "median_per_thread_all_sizes": 384.6,
+   "cores": 10,
+   "l2_mib": 36.0
+  },
+  {
+   "cpu": "Apple M2 Max",
+   "threads_typical": 12,
+   "index_headline_max": 5185.0,
+   "n_submissions": 17,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 4491.0,
+   "median_submission_under_10M": 4627.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 4491.0,
+   "median_per_thread_all_sizes": 384.4,
+   "cores": 12,
+   "l2_mib": 36.0
+  },
+  {
+   "cpu": "Apple M2 Ultra",
+   "threads_typical": 24,
+   "index_headline_max": 8440.0,
+   "n_submissions": 5,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 7711.0,
+   "median_submission_under_10M": 8012.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 7711.0,
+   "median_per_thread_all_sizes": 327.4,
+   "cores": 24,
+   "l2_mib": 72.0
+  },
+  {
+   "cpu": "Apple M3",
+   "threads_typical": 8,
+   "index_headline_max": 3367.0,
+   "n_submissions": 11,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 1599.0,
+   "median_submission_under_10M": 2947.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 1599.0,
+   "median_per_thread_all_sizes": 368.9,
+   "cores": 8,
+   "l2_mib": 20.0
+  },
+  {
+   "cpu": "Apple M3 Pro",
+   "threads_typical": 12,
+   "index_headline_max": 4156.0,
+   "n_submissions": 5,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 4073.0,
+   "median_submission_under_10M": 3954.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 4073.0,
+   "median_per_thread_all_sizes": 339.4,
+   "cores": 12,
+   "l2_mib": 20.0
+  },
+  {
+   "cpu": "Apple M3 Max",
+   "threads_typical": 16,
+   "index_headline_max": 7582.0,
+   "n_submissions": 19,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 7547.0,
+   "median_submission_under_10M": 7346.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 7547.0,
+   "median_per_thread_all_sizes": 462.5,
+   "cores": 16,
+   "l2_mib": 36.0
+  },
+  {
+   "cpu": "Apple M3 Ultra",
+   "threads_typical": 32,
+   "index_headline_max": 12720.0,
+   "n_submissions": 2,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 12690.0,
+   "median_submission_under_10M": 12720.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 12690.0,
+   "median_per_thread_all_sizes": 397.2,
+   "cores": 32,
+   "l2_mib": 72.0
+  },
+  {
+   "cpu": "Apple M4",
+   "threads_typical": 10,
+   "index_headline_max": 4427.0,
+   "n_submissions": 27,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 4072.0,
+   "median_submission_under_10M": 3940.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 4072.0,
+   "median_per_thread_all_sizes": 395.4,
+   "cores": 10,
+   "l2_mib": 20.0
+  },
+  {
+   "cpu": "Apple M4 Pro",
+   "threads_typical": 12,
+   "index_headline_max": 6819.0,
+   "n_submissions": 19,
+   "n_submissions_10M": 0,
+   "median_submission_10M": null,
+   "median_submission_under_10M": 5691.0,
+   "rigs_10M": 0,
+   "median_of_rig_medians_10M": null,
+   "median_per_thread_all_sizes": 470.7,
+   "cores": null,
+   "l2_mib": null
+  },
+  {
+   "cpu": "Apple M4 Max",
+   "threads_typical": 16,
+   "index_headline_max": 8585.0,
+   "n_submissions": 13,
+   "n_submissions_10M": 3,
+   "median_submission_10M": 6209.0,
+   "median_submission_under_10M": 7706.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 6209.0,
+   "median_per_thread_all_sizes": 500.0,
+   "cores": 14,
+   "l2_mib": 36.0
+  },
+  {
+   "cpu": "Apple M5",
+   "threads_typical": 10,
+   "index_headline_max": 4786.0,
+   "n_submissions": 3,
+   "n_submissions_10M": 0,
+   "median_submission_10M": null,
+   "median_submission_under_10M": 4319.0,
+   "rigs_10M": 0,
+   "median_of_rig_medians_10M": null,
+   "median_per_thread_all_sizes": 431.9,
+   "cores": null,
+   "l2_mib": null
+  },
+  {
+   "cpu": "Apple M5 Pro",
+   "threads_typical": 18,
+   "index_headline_max": 7433.0,
+   "n_submissions": 2,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 7354.0,
+   "median_submission_under_10M": 7433.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 7354.0,
+   "median_per_thread_all_sizes": 410.7,
+   "cores": 18,
+   "l2_mib": 48.0
+  },
+  {
+   "cpu": "Apple M5 Max",
+   "threads_typical": 18,
+   "index_headline_max": 7922.0,
+   "n_submissions": 1,
+   "n_submissions_10M": 0,
+   "median_submission_10M": null,
+   "median_submission_under_10M": 7922.0,
+   "rigs_10M": 0,
+   "median_of_rig_medians_10M": null,
+   "median_per_thread_all_sizes": 440.1,
+   "cores": null,
+   "l2_mib": null
+  }
+ ],
+ "apple_m4": {
+  "summary": {
+   "cpu": "Apple M4",
+   "threads_typical": 10,
+   "index_headline_max": 4427.0,
+   "n_submissions": 27,
+   "n_submissions_10M": 1,
+   "median_submission_10M": 4072.0,
+   "median_submission_under_10M": 3940.0,
+   "rigs_10M": 1,
+   "median_of_rig_medians_10M": 4072.0,
+   "median_per_thread_all_sizes": 395.4,
+   "cores": 10,
+   "l2_mib": 20.0
+  },
+  "rigs_10M": [
+   {
+    "rig_id": "5d6479aea1b9",
+    "basis": "user",
+    "cpu": "Apple M4",
+    "vendor": "other",
+    "arch": "aarch64",
+    "family": null,
+    "model": null,
+    "cores": 10,
+    "threads": 10,
+    "l2_mib": 20.0,
+    "l3_mib": 0.0,
+    "nodes": 1,
+    "os": "macos",
+    "board": "",
+    "dimms": null,
+    "channels": null,
+    "mem_type": "",
+    "mem_mts": null,
+    "mem_gib": null,
+    "n": 1,
+    "threads_used": 10,
+    "hashrate": 4072.0,
+    "hashrate_min": 4072.0,
+    "hashrate_max": 4072.0,
+    "hugepages_frac": 0.0,
+    "msr": false,
+    "asm": "none",
+    "version": "6.25.0",
+    "year_first": 2026,
+    "year_last": 2026
+   }
+  ],
+  "submissions": [
+   {
+    "id": "42biQ",
+    "size": 1000000,
+    "hashrate": 4427.0,
+    "threads": 10,
+    "version": "6.26.0",
+    "os": "macos"
+   },
+   {
+    "id": "5kwroX",
+    "size": 1000000,
+    "hashrate": 4129.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "KF3Kp",
+    "size": 1000000,
+    "hashrate": 4128.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "5uoGnu",
+    "size": 1000000,
+    "hashrate": 4085.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "6HaSXw",
+    "size": 1000000,
+    "hashrate": 4083.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "26MTpY",
+    "size": 10000000,
+    "hashrate": 4072.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "5e3SFP",
+    "size": 1000000,
+    "hashrate": 4040.0,
+    "threads": 10,
+    "version": "6.26.0",
+    "os": "macos"
+   },
+   {
+    "id": "5eMF92",
+    "size": 1000000,
+    "hashrate": 4036.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "3b3k6w",
+    "size": 1000000,
+    "hashrate": 4028.0,
+    "threads": 10,
+    "version": "6.26.0",
+    "os": "macos"
+   },
+   {
+    "id": "5nGrko",
+    "size": 1000000,
+    "hashrate": 4005.0,
+    "threads": 10,
+    "version": "6.22.2",
+    "os": "macos"
+   },
+   {
+    "id": "3wfLox",
+    "size": 1000000,
+    "hashrate": 3990.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "4c5hc3",
+    "size": 1000000,
+    "hashrate": 3987.0,
+    "threads": 10,
+    "version": "6.22.2",
+    "os": "macos"
+   },
+   {
+    "id": "2fk7Ae",
+    "size": 1000000,
+    "hashrate": 3982.0,
+    "threads": 10,
+    "version": "6.22.2",
+    "os": "macos"
+   },
+   {
+    "id": "3wmtFk",
+    "size": 1000000,
+    "hashrate": 3954.0,
+    "threads": 10,
+    "version": "6.23.0",
+    "os": "macos"
+   },
+   {
+    "id": "7W7tAo",
+    "size": 1000000,
+    "hashrate": 3927.0,
+    "threads": 10,
+    "version": "6.24.0",
+    "os": "macos"
+   },
+   {
+    "id": "6PPJgu",
+    "size": 1000000,
+    "hashrate": 3903.0,
+    "threads": 10,
+    "version": "6.22.2",
+    "os": "macos"
+   },
+   {
+    "id": "2oJMrq",
+    "size": 1000000,
+    "hashrate": 3872.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "4U3qYz",
+    "size": 1000000,
+    "hashrate": 3749.0,
+    "threads": 10,
+    "version": "6.26.0",
+    "os": "macos"
+   },
+   {
+    "id": "4rSY95",
+    "size": 1000000,
+    "hashrate": 3736.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "5Xo9Bh",
+    "size": 1000000,
+    "hashrate": 3680.0,
+    "threads": 10,
+    "version": "6.24.0",
+    "os": "macos"
+   },
+   {
+    "id": "2sU3Aj",
+    "size": 1000000,
+    "hashrate": 3672.0,
+    "threads": 10,
+    "version": "6.26.0",
+    "os": "macos"
+   },
+   {
+    "id": "7HsQ55",
+    "size": 1000000,
+    "hashrate": 3646.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "5yxfdg",
+    "size": 1000000,
+    "hashrate": 3510.0,
+    "threads": 10,
+    "version": "6.24.0",
+    "os": "macos"
+   },
+   {
+    "id": "2kuqVa",
+    "size": 1000000,
+    "hashrate": 3433.0,
+    "threads": 10,
+    "version": "6.22.2",
+    "os": "macos"
+   },
+   {
+    "id": "6nLNWT",
+    "size": 1000000,
+    "hashrate": 3353.0,
+    "threads": 10,
+    "version": "6.25.0",
+    "os": "macos"
+   },
+   {
+    "id": "2qPYy2",
+    "size": 1000000,
+    "hashrate": 3308.0,
+    "threads": 10,
+    "version": "6.24.0",
+    "os": "macos"
+   },
+   {
+    "id": "6dvbcn",
+    "size": 1000000,
+    "hashrate": 3287.0,
+    "threads": 10,
+    "version": "6.26.0",
+    "os": "macos"
+   }
+  ],
+  "notes": [
+   "XMRig cannot tell MacBook Air (fanless) from MacBook Pro / Mac mini / iMac M4; all report 'Apple M4'.",
+   "Only size >= 10M rows pass the repo's filter; 1M rows are short bursts (about 4 minutes at M4 speed) and are context only.",
+   "macOS gives XMRig no thread affinity, so its per-thread split is not per-core."
+  ]
+ }
+}
