@@ -199,3 +199,20 @@ def rigs():
     if not lb.RIGS_CSV.exists():
         pytest.skip("data/leaderboard/rigs.csv not built")
     return lb.load_rigs()
+
+
+def test_rigs_csv_is_consistent(rigs):
+    assert len(rigs) > 1000
+    assert len({r["rig_id"] for r in rigs}) == len(rigs)
+    for r in rigs:
+        assert r["basis"] in ("dmi", "user", "anon")
+        assert r["n"] >= 1 and r["threads_used"] >= 1 and r["cores"] >= 1
+        assert r["hashrate_min"] <= r["hashrate"] <= r["hashrate_max"]
+    assert "user" not in rigs[0]
+
+
+def test_known_cpus_in_rigs_csv(rigs):
+    cpus = {c["cpu"]: c for c in lb.cpu_table(rigs)}
+    zen4 = cpus["AMD Ryzen 9 7950X 16-Core Processor"]
+    assert (zen4["cores"], zen4["l3_mib"], zen4["uarch"]) == (16, 64.0, "zen4")
+    assert cpus["AMD Ryzen 9 5950X 16-Core Processor"]["rigs"] >= 50
