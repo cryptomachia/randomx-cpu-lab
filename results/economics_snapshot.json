@@ -1,0 +1,130 @@
+{
+  "machine": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "python": "3.9.6",
+    "logical_cpus": 10,
+    "cpu": "Apple M4",
+    "model": "Mac16,13",
+    "memory_bytes": 25769803776,
+    "page_size": 16384,
+    "power_source": "battery",
+    "clusters": [
+      {
+        "name": "Performance",
+        "cores": 4,
+        "l1d_bytes": 131072,
+        "l2_bytes": 16777216,
+        "cpus_per_l2": 4
+      },
+      {
+        "name": "Efficiency",
+        "cores": 6,
+        "l1d_bytes": 65536,
+        "l2_bytes": 4194304,
+        "cpus_per_l2": 6
+      }
+    ]
+  },
+  "chain": {
+    "source": "http://xmr-node.cakewallet.com:18081",
+    "nodes_polled": [
+      {
+        "node": "http://xmr-node.cakewallet.com:18081",
+        "ok": true,
+        "height": 3771315,
+        "hash": "45775efa2d61532d392ca469fddf314384b076b208f226c047bef5183b677570"
+      },
+      {
+        "node": "http://nodes.hashvault.pro:18081",
+        "ok": true,
+        "height": 3771315,
+        "hash": "45775efa2d61532d392ca469fddf314384b076b208f226c047bef5183b677570"
+      },
+      {
+        "node": "http://node.monerodevs.org:18089",
+        "ok": true,
+        "height": 3771315,
+        "hash": "45775efa2d61532d392ca469fddf314384b076b208f226c047bef5183b677570"
+      },
+      {
+        "node": "http://node.sethforprivacy.com:18089",
+        "ok": false,
+        "error": "URLError"
+      },
+      {
+        "node": "http://monero.stackwallet.com:18081",
+        "ok": true,
+        "height": 3771315,
+        "hash": "45775efa2d61532d392ca469fddf314384b076b208f226c047bef5183b677570"
+      },
+      {
+        "node": "http://node.moneroworld.com:18089",
+        "ok": false,
+        "error": "URLError"
+      },
+      {
+        "node": "http://node.community.rino.io:18081",
+        "ok": false,
+        "error": "URLError"
+      },
+      {
+        "node": "http://p2pmd.xmrvsbeast.com:18081",
+        "ok": false,
+        "error": "URLError"
+      }
+    ],
+    "nodes_agreeing": 4,
+    "height": 3771315,
+    "block_hash": "45775efa2d61532d392ca469fddf314384b076b208f226c047bef5183b677570",
+    "block_timestamp": 1790473901,
+    "difficulty": 766104722765,
+    "reward_xmr": 0.60297582,
+    "target_seconds": 120,
+    "window_blocks": 720,
+    "window_mean_reward_xmr": 0.6076649472734,
+    "window_mean_difficulty": 758526498927.8347,
+    "window_seconds": 87199
+  },
+  "price": {
+    "usd_per_xmr": 556.59,
+    "quotes": [
+      {
+        "source": "coingecko",
+        "url": "https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd&include_last_updated_at=true",
+        "usd": 556.59,
+        "source_timestamp": 1790473880
+      },
+      {
+        "source": "kraken",
+        "url": "https://api.kraken.com/0/public/Ticker?pair=XMRUSD",
+        "usd": 556.1
+      }
+    ]
+  },
+  "formula": "usd_per_hs_day = 86400 * reward_xmr * usd_per_xmr / difficulty; breakeven_h_per_w = 0.024 kWh/(W*day) * usd_per_kwh / usd_per_hs_day",
+  "network_hashrate_hs": 6384206023.041667,
+  "tail_emission_xmr": 0.6,
+  "fees_share_of_tip_reward": 0.00493522277559999,
+  "usd_per_hs_day": 3.7849565555782344e-05,
+  "usd_per_khs_day": 0.037849565555782345,
+  "xmr_per_khs_day": 6.800259716448793e-05,
+  "usd_per_hs_day_window_mean": 3.852499309220689e-05,
+  "breakeven_h_per_w": {
+    "0.05": 31.70445901767224,
+    "0.10": 63.40891803534448,
+    "0.15": 95.1133770530167,
+    "0.20": 126.81783607068895
+  },
+  "breakeven_h_per_w_window_mean": {
+    "0.05": 31.14861038723313,
+    "0.10": 62.29722077446626,
+    "0.15": 93.44583116169937,
+    "0.20": 124.59444154893252
+  },
+  "notes": [
+    "Break-even ignores pool fees (typically 0-1%), hardware cost and luck variance.",
+    "H/W means hashrate per watt at the wall, not per watt of CPU package power.",
+    "Window-mean values use the last window_blocks headers from the same node."
+  ]
+}
